@@ -1,0 +1,41 @@
+
+<h1>numpy.datetime_data<a class="headerlink" href="#numpy-datetime-data" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.datetime_data">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">datetime_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtype</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#numpy.datetime_data" title="Permalink to this definition">#</a></dt>
+<dd><p>Get information about the step size of a date or time type.</p>
+<p>The returned tuple can be passed as the second argument of <a class="reference internal" href="../arrays.scalars.html#numpy.datetime64" title="numpy.datetime64"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.datetime64</span></code></a> and
+<a class="reference internal" href="../arrays.scalars.html#numpy.timedelta64" title="numpy.timedelta64"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.timedelta64</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>dtype</strong><span class="classifier">dtype</span></dt><dd><p>The dtype object, which must be a <a class="reference internal" href="../arrays.scalars.html#numpy.datetime64" title="numpy.datetime64"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datetime64</span></code></a> or <a class="reference internal" href="../arrays.scalars.html#numpy.timedelta64" title="numpy.timedelta64"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timedelta64</span></code></a> type.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>unit</strong><span class="classifier">str</span></dt><dd><p>The <a class="reference internal" href="../arrays.datetime.html#arrays-dtypes-dateunits"><span class="std std-ref">datetime unit</span></a> on which this dtype
+is based.</p>
+</dd>
+<dt><strong>count</strong><span class="classifier">int</span></dt><dd><p>The number of base units in a step.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dt_25s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;timedelta64[25s]&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">datetime_data</span><span class="p">(</span><span class="n">dt_25s</span><span class="p">)</span>
+<span class="go">(&#39;s&#39;, 25)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">dt_25s</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;timedelta64[s]&#39;</span><span class="p">)</span>
+<span class="go">array(250, dtype=&#39;timedelta64[s]&#39;)</span>
+</pre></div>
+</div>
+<p>The result can be used to construct a datetime that uses the same units
+as a timedelta</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="s1">&#39;2010&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">datetime_data</span><span class="p">(</span><span class="n">dt_25s</span><span class="p">))</span>
+<span class="go">numpy.datetime64(&#39;2010-01-01T00:00:00&#39;,&#39;25s&#39;)</span>
+</pre></div>
+</div>
+</dd></dl>
+

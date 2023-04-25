@@ -1,0 +1,70 @@
+
+<h1>numpy.errstate<a class="headerlink" href="#numpy-errstate" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.errstate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">errstate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/__init__.py"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.errstate" title="Permalink to this definition">#</a></dt>
+<dd><p>Context manager for floating-point error handling.</p>
+<p>Using an instance of <a class="reference internal" href="#numpy.errstate" title="numpy.errstate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">errstate</span></code></a> as a context manager allows statements in
+that context to execute with a known error handling behavior. Upon entering
+the context the error handling is set with <a class="reference internal" href="numpy.seterr.html#numpy.seterr" title="numpy.seterr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">seterr</span></code></a> and <a class="reference internal" href="numpy.seterrcall.html#numpy.seterrcall" title="numpy.seterrcall"><code class="xref py py-obj docutils literal notranslate"><span class="pre">seterrcall</span></code></a>, and
+upon exiting it is reset to what it was before.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 1.17.0: </span><a class="reference internal" href="#numpy.errstate" title="numpy.errstate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">errstate</span></code></a> is also usable as a function decorator, saving
+a level of indentation if an entire function is wrapped.
+See <a class="reference external" href="https://docs.python.org/3/library/contextlib.html#contextlib.ContextDecorator" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">contextlib.ContextDecorator</span></code></a> for more information.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>kwargs</strong><span class="classifier">{divide, over, under, invalid}</span></dt><dd><p>Keyword arguments. The valid keywords are the possible floating-point
+exceptions. Each keyword should have a string value that defines the
+treatment for the particular error. Possible values are
+{‘ignore’, ‘warn’, ‘raise’, ‘call’, ‘print’, ‘log’}.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.seterr.html#numpy.seterr" title="numpy.seterr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">seterr</span></code></a>, <a class="reference internal" href="numpy.geterr.html#numpy.geterr" title="numpy.geterr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geterr</span></code></a>, <a class="reference internal" href="numpy.seterrcall.html#numpy.seterrcall" title="numpy.seterrcall"><code class="xref py py-obj docutils literal notranslate"><span class="pre">seterrcall</span></code></a>, <a class="reference internal" href="numpy.geterrcall.html#numpy.geterrcall" title="numpy.geterrcall"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geterrcall</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>For complete documentation of the types of floating-point exceptions and
+treatment options, see <a class="reference internal" href="numpy.seterr.html#numpy.seterr" title="numpy.seterr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">seterr</span></code></a>.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">olderr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">seterr</span><span class="p">(</span><span class="nb">all</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>  <span class="c1"># Set error handling to known state.</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.</span>
+<span class="go">array([nan, inf, inf])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">divide</span><span class="o">=</span><span class="s1">&#39;warn&#39;</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.</span>
+<span class="go">array([nan, inf, inf])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">nan</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">invalid</span><span class="o">=</span><span class="s1">&#39;raise&#39;</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">2</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">FloatingPointError</span>: <span class="n">invalid value encountered in sqrt</span>
+</pre></div>
+</div>
+<p>Outside the context the error handling behavior has not changed:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">geterr</span><span class="p">()</span>
+<span class="go">{&#39;divide&#39;: &#39;ignore&#39;, &#39;over&#39;: &#39;ignore&#39;, &#39;under&#39;: &#39;ignore&#39;, &#39;invalid&#39;: &#39;ignore&#39;}</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="numpy.errstate.__call__.html#numpy.errstate.__call__" title="numpy.errstate.__call__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__call__</span></code></a>(func)</p></td>
+<td><p>Call self as a function.</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+

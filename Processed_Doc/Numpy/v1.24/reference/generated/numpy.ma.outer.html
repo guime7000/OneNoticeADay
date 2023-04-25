@@ -1,0 +1,96 @@
+
+<h1>numpy.ma.outer<a class="headerlink" href="#numpy-ma-outer" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.ma.outer">
+<span class="sig-prename descclassname"><span class="pre">ma.</span></span><span class="sig-name descname"><span class="pre">outer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/ma/core.py#L7761-L7773"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.ma.outer" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute the outer product of two vectors.</p>
+<p>Given two vectors, <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">[a0,</span> <span class="pre">a1,</span> <span class="pre">...,</span> <span class="pre">aM]</span></code> and
+<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">[b0,</span> <span class="pre">b1,</span> <span class="pre">...,</span> <span class="pre">bN]</span></code>,
+the outer product <a class="reference internal" href="#r863504129d6e-1" id="id1">[1]</a> is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="n">a0</span><span class="o">*</span><span class="n">b0</span>  <span class="n">a0</span><span class="o">*</span><span class="n">b1</span> <span class="o">...</span> <span class="n">a0</span><span class="o">*</span><span class="n">bN</span> <span class="p">]</span>
+ <span class="p">[</span><span class="n">a1</span><span class="o">*</span><span class="n">b0</span>    <span class="o">.</span>
+ <span class="p">[</span> <span class="o">...</span>          <span class="o">.</span>
+ <span class="p">[</span><span class="n">aM</span><span class="o">*</span><span class="n">b0</span>            <span class="n">aM</span><span class="o">*</span><span class="n">bN</span> <span class="p">]]</span>
+</pre></div>
+</div>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>a</strong><span class="classifier">(M,) array_like</span></dt><dd><p>First input vector.  Input is flattened if
+not already 1-dimensional.</p>
+</dd>
+<dt><strong>b</strong><span class="classifier">(N,) array_like</span></dt><dd><p>Second input vector.  Input is flattened if
+not already 1-dimensional.</p>
+</dd>
+<dt><strong>out</strong><span class="classifier">(M, N) ndarray, optional</span></dt><dd><p>A location where the result is stored</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.9.0.</span></p>
+</div>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">(M, N) ndarray</span></dt><dd><p><code class="docutils literal notranslate"><span class="pre">out[i,</span> <span class="pre">j]</span> <span class="pre">=</span> <span class="pre">a[i]</span> <span class="pre">*</span> <span class="pre">b[j]</span></code></p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.inner.html#numpy.inner" title="numpy.inner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inner</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="numpy.einsum.html#numpy.einsum" title="numpy.einsum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">einsum</span></code></a></dt><dd><p><code class="docutils literal notranslate"><span class="pre">einsum('i,j-&gt;ij',</span> <span class="pre">a.ravel(),</span> <span class="pre">b.ravel())</span></code> is the equivalent.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.ufunc.outer.html#numpy.ufunc.outer" title="numpy.ufunc.outer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ufunc.outer</span></code></a></dt><dd><p>A generalization to dimensions other than 1D and other operations. <code class="docutils literal notranslate"><span class="pre">np.multiply.outer(a.ravel(),</span> <span class="pre">b.ravel())</span></code> is the equivalent.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.tensordot.html#numpy.tensordot" title="numpy.tensordot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tensordot</span></code></a></dt><dd><p><code class="docutils literal notranslate"><span class="pre">np.tensordot(a.ravel(),</span> <span class="pre">b.ravel(),</span> <span class="pre">axes=((),</span> <span class="pre">()))</span></code> is the equivalent.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Masked values are replaced by 0.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r863504129d6e-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>: G. H. Golub and C. F. Van Loan, <em>Matrix Computations</em>, 3rd
+ed., Baltimore, MD, Johns Hopkins University Press, 1996,
+pg. 8.</p>
+</div>
+</div>
+<p class="rubric">Examples</p>
+<p>Make a (<em>very</em> coarse) grid for computing a Mandelbrot set:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">5</span><span class="p">,)),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rl</span>
+<span class="go">array([[-2., -1.,  0.,  1.,  2.],</span>
+<span class="go">       [-2., -1.,  0.,  1.,  2.],</span>
+<span class="go">       [-2., -1.,  0.,  1.,  2.],</span>
+<span class="go">       [-2., -1.,  0.,  1.,  2.],</span>
+<span class="go">       [-2., -1.,  0.,  1.,  2.]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">im</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">5</span><span class="p">,)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">im</span>
+<span class="go">array([[0.+2.j, 0.+2.j, 0.+2.j, 0.+2.j, 0.+2.j],</span>
+<span class="go">       [0.+1.j, 0.+1.j, 0.+1.j, 0.+1.j, 0.+1.j],</span>
+<span class="go">       [0.+0.j, 0.+0.j, 0.+0.j, 0.+0.j, 0.+0.j],</span>
+<span class="go">       [0.-1.j, 0.-1.j, 0.-1.j, 0.-1.j, 0.-1.j],</span>
+<span class="go">       [0.-2.j, 0.-2.j, 0.-2.j, 0.-2.j, 0.-2.j]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">grid</span> <span class="o">=</span> <span class="n">rl</span> <span class="o">+</span> <span class="n">im</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">grid</span>
+<span class="go">array([[-2.+2.j, -1.+2.j,  0.+2.j,  1.+2.j,  2.+2.j],</span>
+<span class="go">       [-2.+1.j, -1.+1.j,  0.+1.j,  1.+1.j,  2.+1.j],</span>
+<span class="go">       [-2.+0.j, -1.+0.j,  0.+0.j,  1.+0.j,  2.+0.j],</span>
+<span class="go">       [-2.-1.j, -1.-1.j,  0.-1.j,  1.-1.j,  2.-1.j],</span>
+<span class="go">       [-2.-2.j, -1.-2.j,  0.-2.j,  1.-2.j,  2.-2.j]])</span>
+</pre></div>
+</div>
+<p>An example using a “vector” of letters:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="go">array([[&#39;a&#39;, &#39;aa&#39;, &#39;aaa&#39;],</span>
+<span class="go">       [&#39;b&#39;, &#39;bb&#39;, &#39;bbb&#39;],</span>
+<span class="go">       [&#39;c&#39;, &#39;cc&#39;, &#39;ccc&#39;]], dtype=object)</span>
+</pre></div>
+</div>
+</dd></dl>
+

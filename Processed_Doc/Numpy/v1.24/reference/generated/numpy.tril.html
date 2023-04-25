@@ -1,0 +1,58 @@
+
+<h1>numpy.tril<a class="headerlink" href="#numpy-tril" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.tril">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">tril</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/twodim_base.py#L442-L494"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.tril" title="Permalink to this definition">#</a></dt>
+<dd><p>Lower triangle of an array.</p>
+<p>Return a copy of an array with elements above the <em class="xref py py-obj">k</em>-th diagonal zeroed.
+For arrays with <code class="docutils literal notranslate"><span class="pre">ndim</span></code> exceeding 2, <a class="reference internal" href="#numpy.tril" title="numpy.tril"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tril</span></code></a> will apply to the final two
+axes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>m</strong><span class="classifier">array_like, shape (…, M, N)</span></dt><dd><p>Input array.</p>
+</dd>
+<dt><strong>k</strong><span class="classifier">int, optional</span></dt><dd><p>Diagonal above which to zero elements.  <em class="xref py py-obj">k = 0</em> (the default) is the
+main diagonal, <em class="xref py py-obj">k &lt; 0</em> is below it and <em class="xref py py-obj">k &gt; 0</em> is above.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>tril</strong><span class="classifier">ndarray, shape (…, M, N)</span></dt><dd><p>Lower triangle of <em class="xref py py-obj">m</em>, of same shape and data-type as <em class="xref py py-obj">m</em>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.triu.html#numpy.triu" title="numpy.triu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">triu</span></code></a></dt><dd><p>same thing, only for the upper triangle</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">tril</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">],[</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">]],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">array([[ 0,  0,  0],</span>
+<span class="go">       [ 4,  0,  0],</span>
+<span class="go">       [ 7,  8,  0],</span>
+<span class="go">       [10, 11, 12]])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">tril</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="mi">4</span><span class="o">*</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="go">array([[[ 0,  0,  0,  0,  0],</span>
+<span class="go">        [ 5,  6,  0,  0,  0],</span>
+<span class="go">        [10, 11, 12,  0,  0],</span>
+<span class="go">        [15, 16, 17, 18,  0]],</span>
+<span class="go">       [[20,  0,  0,  0,  0],</span>
+<span class="go">        [25, 26,  0,  0,  0],</span>
+<span class="go">        [30, 31, 32,  0,  0],</span>
+<span class="go">        [35, 36, 37, 38,  0]],</span>
+<span class="go">       [[40,  0,  0,  0,  0],</span>
+<span class="go">        [45, 46,  0,  0,  0],</span>
+<span class="go">        [50, 51, 52,  0,  0],</span>
+<span class="go">        [55, 56, 57, 58,  0]]])</span>
+</pre></div>
+</div>
+</dd></dl>
+

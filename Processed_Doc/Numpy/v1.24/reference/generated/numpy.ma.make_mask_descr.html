@@ -1,0 +1,36 @@
+
+<h1>numpy.ma.make_mask_descr<a class="headerlink" href="#numpy-ma-make-mask-descr" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.ma.make_mask_descr">
+<span class="sig-prename descclassname"><span class="pre">ma.</span></span><span class="sig-name descname"><span class="pre">make_mask_descr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ndtype</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/ma/core.py#L1329-L1359"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.ma.make_mask_descr" title="Permalink to this definition">#</a></dt>
+<dd><p>Construct a dtype description list from a given dtype.</p>
+<p>Returns a new dtype object, with the type of all fields in <em class="xref py py-obj">ndtype</em> to a
+boolean type. Field names are not altered.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ndtype</strong><span class="classifier">dtype</span></dt><dd><p>The dtype to convert.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>result</strong><span class="classifier">dtype</span></dt><dd><p>A dtype that looks like <em class="xref py py-obj">ndtype</em>, the type of all fields is boolean.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy.ma</span> <span class="k">as</span> <span class="nn">ma</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">({</span><span class="s1">&#39;names&#39;</span><span class="p">:[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">],</span>
+<span class="gp">... </span>                  <span class="s1">&#39;formats&#39;</span><span class="p">:[</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dtype</span>
+<span class="go">dtype([(&#39;foo&#39;, &#39;&lt;f4&#39;), (&#39;bar&#39;, &#39;&lt;i8&#39;)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ma</span><span class="o">.</span><span class="n">make_mask_descr</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+<span class="go">dtype([(&#39;foo&#39;, &#39;|b1&#39;), (&#39;bar&#39;, &#39;|b1&#39;)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ma</span><span class="o">.</span><span class="n">make_mask_descr</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="go">dtype(&#39;bool&#39;)</span>
+</pre></div>
+</div>
+</dd></dl>
+

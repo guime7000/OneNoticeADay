@@ -1,0 +1,31 @@
+
+<h1>numpy.distutils.ccompiler_opt.CCompilerOpt.feature_implies<a class="headerlink" href="#numpy-distutils-ccompiler-opt-ccompileropt-feature-implies" title="Permalink to this heading">#</a></h1>
+<p>method</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="numpy.distutils.ccompiler_opt.CCompilerOpt.feature_implies">
+<span class="sig-prename descclassname"><span class="pre">distutils.ccompiler_opt.CCompilerOpt.</span></span><span class="sig-name descname"><span class="pre">feature_implies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_origins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/distutils/ccompiler_opt.py#L1335-L1382"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.distutils.ccompiler_opt.CCompilerOpt.feature_implies" title="Permalink to this definition">#</a></dt>
+<dd><p>Return a set of CPU features that implied by ‘names’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>names</strong><span class="classifier">str or sequence of str</span></dt><dd><p>CPU feature name(s) in uppercase.</p>
+</dd>
+<dt><strong>keep_origins</strong><span class="classifier">bool</span></dt><dd><p>if False(default) then the returned set will not contain any
+features from ‘names’. This case happens only when two features
+imply each other.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="bp">self</span><span class="o">.</span><span class="n">feature_implies</span><span class="p">(</span><span class="s2">&quot;SSE3&quot;</span><span class="p">)</span>
+<span class="go">{&#39;SSE&#39;, &#39;SSE2&#39;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="bp">self</span><span class="o">.</span><span class="n">feature_implies</span><span class="p">(</span><span class="s2">&quot;SSE2&quot;</span><span class="p">)</span>
+<span class="go">{&#39;SSE&#39;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="bp">self</span><span class="o">.</span><span class="n">feature_implies</span><span class="p">(</span><span class="s2">&quot;SSE2&quot;</span><span class="p">,</span> <span class="n">keep_origins</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go"># &#39;SSE2&#39; found here since &#39;SSE&#39; and &#39;SSE2&#39; imply each other</span>
+<span class="go">{&#39;SSE&#39;, &#39;SSE2&#39;}</span>
+</pre></div>
+</div>
+</dd></dl>
+

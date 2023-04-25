@@ -1,0 +1,51 @@
+
+<h1>numpy.lib.NumpyVersion<a class="headerlink" href="#numpy-lib-numpyversion" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.lib.NumpyVersion">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.lib.</span></span><span class="sig-name descname"><span class="pre">NumpyVersion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vstring</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/_version.py#L14-L155"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.lib.NumpyVersion" title="Permalink to this definition">#</a></dt>
+<dd><p>Parse and compare numpy version strings.</p>
+<p>NumPy has the following versioning scheme (numbers given are examples; they
+can be &gt; 9 in principle):</p>
+<ul class="simple">
+<li><p>Released version: ‘1.8.0’, ‘1.8.1’, etc.</p></li>
+<li><p>Alpha: ‘1.8.0a1’, ‘1.8.0a2’, etc.</p></li>
+<li><p>Beta: ‘1.8.0b1’, ‘1.8.0b2’, etc.</p></li>
+<li><p>Release candidates: ‘1.8.0rc1’, ‘1.8.0rc2’, etc.</p></li>
+<li><p>Development versions: ‘1.8.0.dev-f1234afa’ (git commit hash appended)</p></li>
+<li><dl class="simple">
+<dt>Development versions after a1: ‘1.8.0a1.dev-f1234afa’,</dt><dd><p>‘1.8.0b2.dev-f1234afa’,
+‘1.8.1rc1.dev-f1234afa’, etc.</p>
+</dd>
+</dl>
+</li>
+<li><p>Development versions (no git hash available): ‘1.8.0.dev-Unknown’</p></li>
+</ul>
+<p>Comparing needs to be done against a valid version string or other
+<a class="reference internal" href="#numpy.lib.NumpyVersion" title="numpy.lib.NumpyVersion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NumpyVersion</span></code></a> instance. Note that all development versions of the same
+(pre-)release compare equal.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.9.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>vstring</strong><span class="classifier">str</span></dt><dd><p>NumPy version string (<code class="docutils literal notranslate"><span class="pre">np.__version__</span></code>).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy.lib</span> <span class="kn">import</span> <span class="n">NumpyVersion</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">NumpyVersion</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span> <span class="o">&lt;</span> <span class="s1">&#39;1.7.0&#39;</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;skip&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># skip</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">NumpyVersion</span><span class="p">(</span><span class="s1">&#39;1.7&#39;</span><span class="p">)</span>  <span class="c1"># raises ValueError, add &quot;.0&quot;</span>
+<span class="gt">Traceback (most recent call last):</span>
+    <span class="o">...</span>
+<span class="gr">ValueError</span>: <span class="n">Not a valid numpy version string</span>
+</pre></div>
+</div>
+</dd></dl>
+

@@ -1,0 +1,34 @@
+
+<h1>numpy.DataSource.open<a class="headerlink" href="#numpy-datasource-open" title="Permalink to this heading">#</a></h1>
+<p>method</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="numpy.DataSource.open">
+<span class="sig-prename descclassname"><span class="pre">DataSource.</span></span><span class="sig-name descname"><span class="pre">open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'r'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/_datasource.py#L487-L533"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.DataSource.open" title="Permalink to this definition">#</a></dt>
+<dd><p>Open and return file-like object.</p>
+<p>If <em class="xref py py-obj">path</em> is an URL, it will be downloaded, stored in the
+<a class="reference internal" href="numpy.DataSource.html#numpy.DataSource" title="numpy.DataSource"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSource</span></code></a> directory and opened from there.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Local file path or URL to open.</p>
+</dd>
+<dt><strong>mode</strong><span class="classifier">{‘r’, ‘w’, ‘a’}, optional</span></dt><dd><p>Mode to open <em class="xref py py-obj">path</em>.  Mode ‘r’ for reading, ‘w’ for writing,
+‘a’ to append. Available modes depend on the type of object
+specified by <em class="xref py py-obj">path</em>. Default is ‘r’.</p>
+</dd>
+<dt><strong>encoding</strong><span class="classifier">{None, str}, optional</span></dt><dd><p>Open text file with given encoding. The default encoding will be
+what <a class="reference external" href="https://docs.python.org/3/library/io.html#io.open" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">io.open</span></code></a> uses.</p>
+</dd>
+<dt><strong>newline</strong><span class="classifier">{None, str}, optional</span></dt><dd><p>Newline to use when reading text file.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">file object</span></dt><dd><p>File object.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+

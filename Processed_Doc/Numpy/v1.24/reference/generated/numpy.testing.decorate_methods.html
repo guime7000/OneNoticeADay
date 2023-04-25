@@ -1,0 +1,28 @@
+
+<h1>numpy.testing.decorate_methods<a class="headerlink" href="#numpy-testing-decorate-methods" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.testing.decorate_methods">
+<span class="sig-prename descclassname"><span class="pre">testing.</span></span><span class="sig-name descname"><span class="pre">decorate_methods</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decorator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">testmatch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/testing/_private/utils.py#L1405-L1449"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.testing.decorate_methods" title="Permalink to this definition">#</a></dt>
+<dd><p>Apply a decorator to all methods in a class matching a regular expression.</p>
+<p>The given decorator is applied to all public methods of <em class="xref py py-obj">cls</em> that are
+matched by the regular expression <em class="xref py py-obj">testmatch</em>
+(<code class="docutils literal notranslate"><span class="pre">testmatch.search(methodname)</span></code>). Methods that are private, i.e. start
+with an underscore, are ignored.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>cls</strong><span class="classifier">class</span></dt><dd><p>Class whose methods to decorate.</p>
+</dd>
+<dt><strong>decorator</strong><span class="classifier">function</span></dt><dd><p>Decorator to apply to methods</p>
+</dd>
+<dt><strong>testmatch</strong><span class="classifier">compiled regexp or str, optional</span></dt><dd><p>The regular expression. Default value is None, in which case the
+nose default (<code class="docutils literal notranslate"><span class="pre">re.compile(r'(?:^|[\b_\.%s-])[Tt]est'</span> <span class="pre">%</span> <span class="pre">os.sep)</span></code>)
+is used.
+If <em class="xref py py-obj">testmatch</em> is a string, it is compiled to a regular expression
+first.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+

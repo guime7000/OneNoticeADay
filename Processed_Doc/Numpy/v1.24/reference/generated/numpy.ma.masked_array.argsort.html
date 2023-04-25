@@ -1,0 +1,72 @@
+
+<h1>numpy.ma.masked_array.argsort<a class="headerlink" href="#numpy-ma-masked-array-argsort" title="Permalink to this heading">#</a></h1>
+<p>method</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="numpy.ma.masked_array.argsort">
+<span class="sig-prename descclassname"><span class="pre">ma.masked_array.</span></span><span class="sig-name descname"><span class="pre">argsort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis=&lt;no</span> <span class="pre">value&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endwith=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_value=None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/ma/core.py#L5477-L5555"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.ma.masked_array.argsort" title="Permalink to this definition">#</a></dt>
+<dd><p>Return an ndarray of indices that sort the array along the
+specified axis.  Masked values are filled beforehand to
+<a class="reference internal" href="numpy.ma.masked_array.fill_value.html#numpy.ma.masked_array.fill_value" title="numpy.ma.masked_array.fill_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fill_value</span></code></a>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>axis</strong><span class="classifier">int, optional</span></dt><dd><p>Axis along which to sort. If None, the default, the flattened array
+is used.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 1.13.0: </span>Previously, the default was documented to be -1, but that was
+in error. At some future date, the default will change to -1, as
+originally intended.
+Until then, the axis should be given explicitly when
+<code class="docutils literal notranslate"><span class="pre">arr.ndim</span> <span class="pre">&gt;</span> <span class="pre">1</span></code>, to avoid a FutureWarning.</p>
+</div>
+</dd>
+<dt><strong>kind</strong><span class="classifier">{‘quicksort’, ‘mergesort’, ‘heapsort’, ‘stable’}, optional</span></dt><dd><p>The sorting algorithm used.</p>
+</dd>
+<dt><strong>order</strong><span class="classifier">list, optional</span></dt><dd><p>When <em class="xref py py-obj">a</em> is an array with fields defined, this argument specifies
+which fields to compare first, second, etc.  Not all fields need be
+specified.</p>
+</dd>
+<dt><strong>endwith</strong><span class="classifier">{True, False}, optional</span></dt><dd><p>Whether missing values (if any) should be treated as the largest values
+(True) or the smallest values (False)
+When the array contains unmasked values at the same extremes of the
+datatype, the ordering of these values and the masked values is
+undefined.</p>
+</dd>
+<dt><strong>fill_value</strong><span class="classifier">scalar or None, optional</span></dt><dd><p>Value used internally for the masked values.
+If <code class="docutils literal notranslate"><span class="pre">fill_value</span></code> is not None, it supersedes <code class="docutils literal notranslate"><span class="pre">endwith</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>index_array</strong><span class="classifier">ndarray, int</span></dt><dd><p>Array of indices that sort <em class="xref py py-obj">a</em> along the specified axis.
+In other words, <code class="docutils literal notranslate"><span class="pre">a[index_array]</span></code> yields a sorted <em class="xref py py-obj">a</em>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.ma.MaskedArray.sort.html#numpy.ma.MaskedArray.sort" title="numpy.ma.MaskedArray.sort"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ma.MaskedArray.sort</span></code></a></dt><dd><p>Describes sorting algorithms used.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.lexsort.html#numpy.lexsort" title="numpy.lexsort"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lexsort</span></code></a></dt><dd><p>Indirect stable sort with multiple keys.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.ndarray.sort.html#numpy.ndarray.sort" title="numpy.ndarray.sort"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray.sort</span></code></a></dt><dd><p>Inplace sort.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>See <a class="reference internal" href="numpy.sort.html#numpy.sort" title="numpy.sort"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sort</span></code></a> for notes on the different sorting algorithms.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">mask</span><span class="o">=</span><span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">masked_array(data=[3, 2, --],</span>
+<span class="go">             mask=[False, False,  True],</span>
+<span class="go">       fill_value=999999)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">argsort</span><span class="p">()</span>
+<span class="go">array([1, 0, 2])</span>
+</pre></div>
+</div>
+</dd></dl>
+

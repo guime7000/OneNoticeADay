@@ -1,0 +1,20 @@
+
+<h1>numpy.flatiter.index<a class="headerlink" href="#numpy-flatiter-index" title="Permalink to this heading">#</a></h1>
+<p>attribute</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="numpy.flatiter.index">
+<span class="sig-prename descclassname"><span class="pre">flatiter.</span></span><span class="sig-name descname"><span class="pre">index</span></span><a class="headerlink" href="#numpy.flatiter.index" title="Permalink to this definition">#</a></dt>
+<dd><p>Current flat index into the array.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fl</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">flat</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fl</span><span class="o">.</span><span class="n">index</span>
+<span class="go">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">fl</span><span class="p">)</span>
+<span class="go">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fl</span><span class="o">.</span><span class="n">index</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+</dd></dl>
+

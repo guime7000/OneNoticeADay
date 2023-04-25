@@ -1,0 +1,20 @@
+
+<h1>numpy.ma.masked_array.nbytes<a class="headerlink" href="#numpy-ma-masked-array-nbytes" title="Permalink to this heading">#</a></h1>
+<p>attribute</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="numpy.ma.masked_array.nbytes">
+<span class="sig-prename descclassname"><span class="pre">ma.masked_array.</span></span><span class="sig-name descname"><span class="pre">nbytes</span></span><a class="headerlink" href="#numpy.ma.masked_array.nbytes" title="Permalink to this definition">#</a></dt>
+<dd><p>Total bytes consumed by the elements of the array.</p>
+<p class="rubric">Notes</p>
+<p>Does not include memory consumed by non-element attributes of the
+array object.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">complex128</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">nbytes</span>
+<span class="go">480</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="o">.</span><span class="n">itemsize</span>
+<span class="go">480</span>
+</pre></div>
+</div>
+</dd></dl>
+

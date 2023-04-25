@@ -1,0 +1,69 @@
+
+<h1>numpy.polyder<a class="headerlink" href="#numpy-polyder" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.polyder">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">polyder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/polynomial.py#L372-L445"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.polyder" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the derivative of the specified order of a polynomial.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This forms part of the old polynomial API. Since version 1.4, the
+new polynomial API defined in <a class="reference internal" href="../routines.polynomials.package.html#module-numpy.polynomial" title="numpy.polynomial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.polynomial</span></code></a> is preferred.
+A summary of the differences can be found in the
+<a class="reference internal" href="../routines.polynomials.html"><span class="doc">transition guide</span></a>.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>p</strong><span class="classifier">poly1d or sequence</span></dt><dd><p>Polynomial to differentiate.
+A sequence is interpreted as polynomial coefficients, see <a class="reference internal" href="numpy.poly1d.html#numpy.poly1d" title="numpy.poly1d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">poly1d</span></code></a>.</p>
+</dd>
+<dt><strong>m</strong><span class="classifier">int, optional</span></dt><dd><p>Order of differentiation (default: 1)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>der</strong><span class="classifier">poly1d</span></dt><dd><p>A new polynomial representing the derivative.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.polyint.html#numpy.polyint" title="numpy.polyint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polyint</span></code></a></dt><dd><p>Anti-derivative of a polynomial.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.poly1d.html#numpy.poly1d" title="numpy.poly1d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">poly1d</span></code></a></dt><dd><p>Class for one-dimensional polynomials.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<p>The derivative of the polynomial <span class="math notranslate nohighlight">\(x^3 + x^2 + x^1 + 1\)</span> is:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyder</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p2</span>
+<span class="go">poly1d([3, 2, 1])</span>
+</pre></div>
+</div>
+<p>which evaluates to:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p2</span><span class="p">(</span><span class="mf">2.</span><span class="p">)</span>
+<span class="go">17.0</span>
+</pre></div>
+</div>
+<p>We can verify this, approximating the derivative with
+<code class="docutils literal notranslate"><span class="pre">(f(x</span> <span class="pre">+</span> <span class="pre">h)</span> <span class="pre">-</span> <span class="pre">f(x))/h</span></code>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">p</span><span class="p">(</span><span class="mf">2.</span> <span class="o">+</span> <span class="mf">0.001</span><span class="p">)</span> <span class="o">-</span> <span class="n">p</span><span class="p">(</span><span class="mf">2.</span><span class="p">))</span> <span class="o">/</span> <span class="mf">0.001</span>
+<span class="go">17.007000999997857</span>
+</pre></div>
+</div>
+<p>The fourth-order derivative of a 3rd-order polynomial is zero:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">polyder</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">poly1d([6, 2])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">polyder</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">poly1d([6])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">polyder</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">poly1d([0])</span>
+</pre></div>
+</div>
+</dd></dl>
+

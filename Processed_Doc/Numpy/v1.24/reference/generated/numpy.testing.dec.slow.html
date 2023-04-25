@@ -1,0 +1,40 @@
+
+<h1>numpy.testing.dec.slow<a class="headerlink" href="#numpy-testing-dec-slow" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.testing.dec.slow">
+<span class="sig-prename descclassname"><span class="pre">testing.dec.</span></span><span class="sig-name descname"><span class="pre">slow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/testing/_private/decorators.py#L25-L65"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.testing.dec.slow" title="Permalink to this definition">#</a></dt>
+<dd><div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 1.21: </span>This decorator is retained for compatibility with the nose testing framework, which is being phased out.
+Please use the nose2 or pytest frameworks instead.</p>
+</div>
+<p>Label a test as ‘slow’.</p>
+<p>The exact definition of a slow test is obviously both subjective and
+hardware-dependent, but in general any individual test that requires more
+than a second or two should be labeled as slow (the whole suite consists of
+thousands of tests, so even a second is significant).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>t</strong><span class="classifier">callable</span></dt><dd><p>The test to label as slow.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>t</strong><span class="classifier">callable</span></dt><dd><p>The decorated test <em class="xref py py-obj">t</em>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>The <a class="reference internal" href="../routines.testing.html#module-numpy.testing" title="numpy.testing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.testing</span></code></a> module includes <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">decorators</span> <span class="pre">as</span> <span class="pre">dec</span></code>.
+A test can be decorated as slow like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy.testing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="nd">@dec</span><span class="o">.</span><span class="n">slow</span>
+<span class="k">def</span> <span class="nf">test_big</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Big, slow test&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+

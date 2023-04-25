@@ -1,0 +1,53 @@
+
+<h1>numpy.polynomial.legendre.legtrim<a class="headerlink" href="#numpy-polynomial-legendre-legtrim" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.polynomial.legendre.legtrim">
+<span class="sig-prename descclassname"><span class="pre">polynomial.legendre.</span></span><span class="sig-name descname"><span class="pre">legtrim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/polynomial/polyutils.py#L160-L212"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.polynomial.legendre.legtrim" title="Permalink to this definition">#</a></dt>
+<dd><p>Remove “small” “trailing” coefficients from a polynomial.</p>
+<p>“Small” means “small in absolute value” and is controlled by the
+parameter <em class="xref py py-obj">tol</em>; “trailing” means highest order coefficient(s), e.g., in
+<code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0]</span></code> (which represents <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">+</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">x**2</span> <span class="pre">+</span> <span class="pre">0*x**3</span> <span class="pre">+</span> <span class="pre">0*x**4</span></code>)
+both the 3-rd and 4-th order coefficients would be “trimmed.”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>c</strong><span class="classifier">array_like</span></dt><dd><p>1-d array of coefficients, ordered from lowest order to highest.</p>
+</dd>
+<dt><strong>tol</strong><span class="classifier">number, optional</span></dt><dd><p>Trailing (i.e., highest order) elements with absolute value less
+than or equal to <em class="xref py py-obj">tol</em> (default value is zero) are removed.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>trimmed</strong><span class="classifier">ndarray</span></dt><dd><p>1-d array with trailing zeros removed.  If the resulting series
+would be empty, a series containing a single zero is returned.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>ValueError</dt><dd><p>If <em class="xref py py-obj">tol</em> &lt; 0</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">trimseq</span></code></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy.polynomial</span> <span class="kn">import</span> <span class="n">polyutils</span> <span class="k">as</span> <span class="n">pu</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pu</span><span class="o">.</span><span class="n">trimcoef</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<span class="go">array([0.,  0.,  3.,  0.,  5.])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pu</span><span class="o">.</span><span class="n">trimcoef</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">1e-3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">1e-5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mf">1e-3</span><span class="p">)</span> <span class="c1"># item == tol is trimmed</span>
+<span class="go">array([0.])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># works for complex</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pu</span><span class="o">.</span><span class="n">trimcoef</span><span class="p">((</span><span class="mf">3e-4</span><span class="p">,</span><span class="mf">1e-3</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">i</span><span class="p">),</span><span class="mf">5e-4</span><span class="p">,</span><span class="mf">2e-5</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">i</span><span class="p">)),</span> <span class="mf">1e-3</span><span class="p">)</span>
+<span class="go">array([0.0003+0.j   , 0.001 -0.001j])</span>
+</pre></div>
+</div>
+</dd></dl>
+

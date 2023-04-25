@@ -1,0 +1,40 @@
+
+<h1>numpy.iscomplexobj<a class="headerlink" href="#numpy-iscomplexobj" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.iscomplexobj">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">iscomplexobj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/type_check.py#L303-L341"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.iscomplexobj" title="Permalink to this definition">#</a></dt>
+<dd><p>Check for a complex type or an array of complex numbers.</p>
+<p>The type of the input is checked, not the value. Even if the input
+has an imaginary part equal to zero, <a class="reference internal" href="#numpy.iscomplexobj" title="numpy.iscomplexobj"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iscomplexobj</span></code></a> evaluates to True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">any</span></dt><dd><p>The input can be of any type and shape.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>iscomplexobj</strong><span class="classifier">bool</span></dt><dd><p>The return value, True if <em class="xref py py-obj">x</em> is of a complex type or has at least
+one complex element.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.isrealobj.html#numpy.isrealobj" title="numpy.isrealobj"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isrealobj</span></code></a>, <a class="reference internal" href="numpy.iscomplex.html#numpy.iscomplex" title="numpy.iscomplex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iscomplex</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">iscomplexobj</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">iscomplexobj</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">0</span><span class="n">j</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">iscomplexobj</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="o">+</span><span class="mi">0</span><span class="n">j</span><span class="p">,</span> <span class="kc">True</span><span class="p">])</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+

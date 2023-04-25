@@ -1,0 +1,39 @@
+
+<h1>numpy.char.join<a class="headerlink" href="#numpy-char-join" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.char.join">
+<span class="sig-prename descclassname"><span class="pre">char.</span></span><span class="sig-name descname"><span class="pre">join</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sep</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seq</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/core/defchararray.py#L1013-L1045"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.char.join" title="Permalink to this definition">#</a></dt>
+<dd><p>Return a string which is the concatenation of the strings in the
+sequence <em class="xref py py-obj">seq</em>.</p>
+<p>Calls <em class="xref py py-obj">str.join</em> element-wise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>sep</strong><span class="classifier">array_like of str or unicode</span></dt><dd></dd>
+<dt><strong>seq</strong><span class="classifier">array_like of str or unicode</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ndarray</span></dt><dd><p>Output array of str or unicode, depending on input types</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str.join" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str.join</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">char</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;osd&#39;</span><span class="p">)</span>
+<span class="go">array(&#39;o-s-d&#39;, dtype=&#39;&lt;U5&#39;)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">char</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;ghc&#39;</span><span class="p">,</span> <span class="s1">&#39;osd&#39;</span><span class="p">])</span>
+<span class="go">array([&#39;g-h-c&#39;, &#39;o.s.d&#39;], dtype=&#39;&lt;U5&#39;)</span>
+</pre></div>
+</div>
+</dd></dl>
+

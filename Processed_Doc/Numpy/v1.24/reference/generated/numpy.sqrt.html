@@ -1,0 +1,70 @@
+
+<h1>numpy.sqrt<a class="headerlink" href="#numpy-sqrt" title="Permalink to this heading">#</a></h1>
+<dl class="py data">
+<dt class="sig sig-object py" id="numpy.sqrt">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">sqrt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">casting='same_kind'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order='K'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subok=True</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">signature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extobj</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;ufunc</span> <span class="pre">'sqrt'&gt;</span></em><a class="headerlink" href="#numpy.sqrt" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the non-negative square-root of an array, element-wise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">array_like</span></dt><dd><p>The values whose square-roots are required.</p>
+</dd>
+<dt><strong>out</strong><span class="classifier">ndarray, None, or tuple of ndarray and None, optional</span></dt><dd><p>A location into which the result is stored. If provided, it must have
+a shape that the inputs broadcast to. If not provided or None,
+a freshly-allocated array is returned. A tuple (possible only as a
+keyword argument) must have length equal to the number of outputs.</p>
+</dd>
+<dt><strong>where</strong><span class="classifier">array_like, optional</span></dt><dd><p>This condition is broadcast over the input. At locations where the
+condition is True, the <em class="xref py py-obj">out</em> array will be set to the ufunc result.
+Elsewhere, the <em class="xref py py-obj">out</em> array will retain its original value.
+Note that if an uninitialized <em class="xref py py-obj">out</em> array is created via the default
+<code class="docutils literal notranslate"><span class="pre">out=None</span></code>, locations within it where the condition is False will
+remain uninitialized.</p>
+</dd>
+<dt><strong>**kwargs</strong></dt><dd><p>For other keyword-only arguments, see the
+<a class="reference internal" href="../ufuncs.html#ufuncs-kwargs"><span class="std std-ref">ufunc docs</span></a>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>y</strong><span class="classifier">ndarray</span></dt><dd><p>An array of the same shape as <em class="xref py py-obj">x</em>, containing the positive
+square-root of each element in <em class="xref py py-obj">x</em>.  If any element in <em class="xref py py-obj">x</em> is
+complex, a complex array is returned (and the square-roots of
+negative reals are calculated).  If all of the elements in <em class="xref py py-obj">x</em>
+are real, so is <em class="xref py py-obj">y</em>, with negative elements returning <code class="docutils literal notranslate"><span class="pre">nan</span></code>.
+If <em class="xref py py-obj">out</em> was provided, <em class="xref py py-obj">y</em> is a reference to it.
+This is a scalar if <em class="xref py py-obj">x</em> is a scalar.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.emath.sqrt.html#numpy.emath.sqrt" title="numpy.emath.sqrt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">emath.sqrt</span></code></a></dt><dd><p>A version which returns complex numbers when given negative reals.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Note</span></code></dt><dd><p>0.0 and -0.0 are handled differently for complex inputs.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p><em>sqrt</em> has–consistent with common convention–as its branch cut the
+real “interval” [<em class="xref py py-obj">-inf</em>, 0), and is continuous from above on it.
+A branch cut is a curve in the complex plane across which a given
+complex function fails to be continuous.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">])</span>
+<span class="go">array([ 1.,  2.,  3.])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="o">+</span><span class="mi">4</span><span class="n">J</span><span class="p">])</span>
+<span class="go">array([ 2.+0.j,  0.+1.j,  1.+2.j])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">])</span>
+<span class="go">array([ 2., nan, inf])</span>
+</pre></div>
+</div>
+</dd></dl>
+

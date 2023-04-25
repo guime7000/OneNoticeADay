@@ -1,0 +1,80 @@
+
+<h1>numpy.testing.assert_almost_equal<a class="headerlink" href="#numpy-testing-assert-almost-equal" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.testing.assert_almost_equal">
+<span class="sig-prename descclassname"><span class="pre">testing.</span></span><span class="sig-name descname"><span class="pre">assert_almost_equal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desired</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decimal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">err_msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/testing/_private/utils.py#L480-L604"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.testing.assert_almost_equal" title="Permalink to this definition">#</a></dt>
+<dd><p>Raises an AssertionError if two items are not equal up to desired
+precision.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is recommended to use one of <a class="reference internal" href="numpy.testing.assert_allclose.html#numpy.testing.assert_allclose" title="numpy.testing.assert_allclose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assert_allclose</span></code></a>,
+<a class="reference internal" href="numpy.testing.assert_array_almost_equal_nulp.html#numpy.testing.assert_array_almost_equal_nulp" title="numpy.testing.assert_array_almost_equal_nulp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assert_array_almost_equal_nulp</span></code></a> or <a class="reference internal" href="numpy.testing.assert_array_max_ulp.html#numpy.testing.assert_array_max_ulp" title="numpy.testing.assert_array_max_ulp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assert_array_max_ulp</span></code></a>
+instead of this function for more consistent floating point
+comparisons.</p>
+</div>
+<p>The test verifies that the elements of <em class="xref py py-obj">actual</em> and <em class="xref py py-obj">desired</em> satisfy.</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">abs(desired-actual)</span> <span class="pre">&lt;</span> <span class="pre">float64(1.5</span> <span class="pre">*</span> <span class="pre">10**(-decimal))</span></code></p>
+</div></blockquote>
+<p>That is a looser test than originally documented, but agrees with what the
+actual implementation in <a class="reference internal" href="numpy.testing.assert_array_almost_equal.html#numpy.testing.assert_array_almost_equal" title="numpy.testing.assert_array_almost_equal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assert_array_almost_equal</span></code></a> did up to rounding
+vagaries. An exception is raised at conflicting values. For ndarrays this
+delegates to assert_array_almost_equal</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>actual</strong><span class="classifier">array_like</span></dt><dd><p>The object to check.</p>
+</dd>
+<dt><strong>desired</strong><span class="classifier">array_like</span></dt><dd><p>The expected object.</p>
+</dd>
+<dt><strong>decimal</strong><span class="classifier">int, optional</span></dt><dd><p>Desired precision, default is 7.</p>
+</dd>
+<dt><strong>err_msg</strong><span class="classifier">str, optional</span></dt><dd><p>The error message to be printed in case of failure.</p>
+</dd>
+<dt><strong>verbose</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, the conflicting values are appended to the error message.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>AssertionError</dt><dd><p>If actual and desired are not equal up to specified precision.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.testing.assert_allclose.html#numpy.testing.assert_allclose" title="numpy.testing.assert_allclose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assert_allclose</span></code></a></dt><dd><p>Compare two array_like objects for equality with desired relative and/or absolute precision.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.testing.assert_array_almost_equal_nulp.html#numpy.testing.assert_array_almost_equal_nulp" title="numpy.testing.assert_array_almost_equal_nulp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assert_array_almost_equal_nulp</span></code></a>, <a class="reference internal" href="numpy.testing.assert_array_max_ulp.html#numpy.testing.assert_array_max_ulp" title="numpy.testing.assert_array_max_ulp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assert_array_max_ulp</span></code></a>, <a class="reference internal" href="numpy.testing.assert_equal.html#numpy.testing.assert_equal" title="numpy.testing.assert_equal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assert_equal</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy.testing</span> <span class="kn">import</span> <span class="n">assert_almost_equal</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="mf">2.3333333333333</span><span class="p">,</span> <span class="mf">2.33333334</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="mf">2.3333333333333</span><span class="p">,</span> <span class="mf">2.33333334</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+    <span class="o">...</span>
+<span class="gr">AssertionError</span>:
+<span class="go">Arrays are not almost equal to 10 decimals</span>
+<span class="go"> ACTUAL: 2.3333333333333</span>
+<span class="go"> DESIRED: 2.33333334</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">2.3333333333333</span><span class="p">]),</span>
+<span class="gp">... </span>                    <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">2.33333334</span><span class="p">]),</span> <span class="n">decimal</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+    <span class="o">...</span>
+<span class="gr">AssertionError</span>:
+<span class="go">Arrays are not almost equal to 9 decimals</span>
+
+<span class="go">Mismatched elements: 1 / 2 (50%)</span>
+<span class="go">Max absolute difference: 6.66669964e-09</span>
+<span class="go">Max relative difference: 2.85715698e-09</span>
+<span class="go"> x: array([1.         , 2.333333333])</span>
+<span class="go"> y: array([1.        , 2.33333334])</span>
+</pre></div>
+</div>
+</dd></dl>
+

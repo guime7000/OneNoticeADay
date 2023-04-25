@@ -1,0 +1,76 @@
+
+<h1>numpy.put_along_axis<a class="headerlink" href="#numpy-put-along-axis" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.put_along_axis">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">put_along_axis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/shape_base.py#L177-L260"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.put_along_axis" title="Permalink to this definition">#</a></dt>
+<dd><p>Put values into the destination array by matching 1d index and data slices.</p>
+<p>This iterates over matching 1d slices oriented along the specified axis in
+the index and data arrays, and uses the former to place values into the
+latter. These slices can be different lengths.</p>
+<p>Functions returning an index along an axis, like <a class="reference internal" href="numpy.argsort.html#numpy.argsort" title="numpy.argsort"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argsort</span></code></a> and
+<a class="reference internal" href="numpy.argpartition.html#numpy.argpartition" title="numpy.argpartition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argpartition</span></code></a>, produce suitable indices for this function.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.15.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>arr</strong><span class="classifier">ndarray (Ni…, M, Nk…)</span></dt><dd><p>Destination array.</p>
+</dd>
+<dt><strong>indices</strong><span class="classifier">ndarray (Ni…, J, Nk…)</span></dt><dd><p>Indices to change along each 1d slice of <em class="xref py py-obj">arr</em>. This must match the
+dimension of arr, but dimensions in Ni and Nj may be 1 to broadcast
+against <em class="xref py py-obj">arr</em>.</p>
+</dd>
+<dt><strong>values</strong><span class="classifier">array_like (Ni…, J, Nk…)</span></dt><dd><p>values to insert at those indices. Its shape and dimension are
+broadcast to match that of <a class="reference internal" href="numpy.indices.html#numpy.indices" title="numpy.indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">indices</span></code></a>.</p>
+</dd>
+<dt><strong>axis</strong><span class="classifier">int</span></dt><dd><p>The axis to take 1d slices along. If axis is None, the destination
+array is treated as if a flattened 1d view had been created of it.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.take_along_axis.html#numpy.take_along_axis" title="numpy.take_along_axis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">take_along_axis</span></code></a></dt><dd><p>Take values from the input array by matching 1d index and data slices</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>This is equivalent to (but faster than) the following use of <a class="reference internal" href="numpy.ndindex.html#numpy.ndindex" title="numpy.ndindex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ndindex</span></code></a> and
+<a class="reference internal" href="numpy.s_.html#numpy.s_" title="numpy.s_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">s_</span></code></a>, which sets each of <code class="docutils literal notranslate"><span class="pre">ii</span></code> and <code class="docutils literal notranslate"><span class="pre">kk</span></code> to a tuple of indices:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ni</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">Nk</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="n">axis</span><span class="p">],</span> <span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">axis</span><span class="p">],</span> <span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">axis</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">J</span> <span class="o">=</span> <span class="n">indices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span>  <span class="c1"># Need not equal M</span>
+
+<span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="n">ndindex</span><span class="p">(</span><span class="n">Ni</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">kk</span> <span class="ow">in</span> <span class="n">ndindex</span><span class="p">(</span><span class="n">Nk</span><span class="p">):</span>
+        <span class="n">a_1d</span>       <span class="o">=</span> <span class="n">a</span>      <span class="p">[</span><span class="n">ii</span> <span class="o">+</span> <span class="n">s_</span><span class="p">[:,]</span> <span class="o">+</span> <span class="n">kk</span><span class="p">]</span>
+        <span class="n">indices_1d</span> <span class="o">=</span> <span class="n">indices</span><span class="p">[</span><span class="n">ii</span> <span class="o">+</span> <span class="n">s_</span><span class="p">[:,]</span> <span class="o">+</span> <span class="n">kk</span><span class="p">]</span>
+        <span class="n">values_1d</span>  <span class="o">=</span> <span class="n">values</span> <span class="p">[</span><span class="n">ii</span> <span class="o">+</span> <span class="n">s_</span><span class="p">[:,]</span> <span class="o">+</span> <span class="n">kk</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">J</span><span class="p">):</span>
+            <span class="n">a_1d</span><span class="p">[</span><span class="n">indices_1d</span><span class="p">[</span><span class="n">j</span><span class="p">]]</span> <span class="o">=</span> <span class="n">values_1d</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Equivalently, eliminating the inner loop, the last two lines would be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a_1d</span><span class="p">[</span><span class="n">indices_1d</span><span class="p">]</span> <span class="o">=</span> <span class="n">values_1d</span>
+</pre></div>
+</div>
+<p class="rubric">Examples</p>
+<p>For this sample array</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="mi">60</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>We can replace the maximum values with:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ai</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ai</span>
+<span class="go">array([[1],</span>
+<span class="go">       [0]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">put_along_axis</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">ai</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">array([[10, 99, 20],</span>
+<span class="go">       [99, 40, 50]])</span>
+</pre></div>
+</div>
+</dd></dl>
+

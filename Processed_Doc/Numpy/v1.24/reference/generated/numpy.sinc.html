@@ -1,0 +1,87 @@
+
+<h1>numpy.sinc<a class="headerlink" href="#numpy-sinc" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.sinc">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">sinc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/function_base.py#L3561-L3639"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.sinc" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the normalized sinc function.</p>
+<p>The sinc function is equal to <span class="math notranslate nohighlight">\(\sin(\pi x)/(\pi x)\)</span> for any argument
+<span class="math notranslate nohighlight">\(x\ne 0\)</span>. <code class="docutils literal notranslate"><span class="pre">sinc(0)</span></code> takes the limit value 1, making <code class="docutils literal notranslate"><span class="pre">sinc</span></code> not
+only everywhere continuous but also infinitely differentiable.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note the normalization factor of <code class="docutils literal notranslate"><span class="pre">pi</span></code> used in the definition.
+This is the most commonly used definition in signal processing.
+Use <code class="docutils literal notranslate"><span class="pre">sinc(x</span> <span class="pre">/</span> <span class="pre">np.pi)</span></code> to obtain the unnormalized sinc function
+<span class="math notranslate nohighlight">\(\sin(x)/x\)</span> that is more common in mathematics.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">ndarray</span></dt><dd><p>Array (possibly multi-dimensional) of values for which to calculate
+<code class="docutils literal notranslate"><span class="pre">sinc(x)</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ndarray</span></dt><dd><p><code class="docutils literal notranslate"><span class="pre">sinc(x)</span></code>, which has the same shape as the input.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The name sinc is short for “sine cardinal” or “sinus cardinalis”.</p>
+<p>The sinc function is used in various signal processing applications,
+including in anti-aliasing, in the construction of a Lanczos resampling
+filter, and in interpolation.</p>
+<p>For bandlimited interpolation of discrete-time signals, the ideal
+interpolation kernel is proportional to the sinc function.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r317c588351f3-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p>Weisstein, Eric W. “Sinc Function.” From MathWorld–A Wolfram Web
+Resource. <a class="reference external" href="http://mathworld.wolfram.com/SincFunction.html">http://mathworld.wolfram.com/SincFunction.html</a></p>
+</div>
+<div class="citation" id="r317c588351f3-2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<p>Wikipedia, “Sinc function”,
+<a class="reference external" href="https://en.wikipedia.org/wiki/Sinc_function">https://en.wikipedia.org/wiki/Sinc_function</a></p>
+</div>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">41</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">sinc</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go"> array([-3.89804309e-17,  -4.92362781e-02,  -8.40918587e-02, # may vary</span>
+<span class="go">        -8.90384387e-02,  -5.84680802e-02,   3.89804309e-17,</span>
+<span class="go">        6.68206631e-02,   1.16434881e-01,   1.26137788e-01,</span>
+<span class="go">        8.50444803e-02,  -3.89804309e-17,  -1.03943254e-01,</span>
+<span class="go">        -1.89206682e-01,  -2.16236208e-01,  -1.55914881e-01,</span>
+<span class="go">        3.89804309e-17,   2.33872321e-01,   5.04551152e-01,</span>
+<span class="go">        7.56826729e-01,   9.35489284e-01,   1.00000000e+00,</span>
+<span class="go">        9.35489284e-01,   7.56826729e-01,   5.04551152e-01,</span>
+<span class="go">        2.33872321e-01,   3.89804309e-17,  -1.55914881e-01,</span>
+<span class="go">       -2.16236208e-01,  -1.89206682e-01,  -1.03943254e-01,</span>
+<span class="go">       -3.89804309e-17,   8.50444803e-02,   1.26137788e-01,</span>
+<span class="go">        1.16434881e-01,   6.68206631e-02,   3.89804309e-17,</span>
+<span class="go">        -5.84680802e-02,  -8.90384387e-02,  -8.40918587e-02,</span>
+<span class="go">        -4.92362781e-02,  -3.89804309e-17])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sinc</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="go">[&lt;matplotlib.lines.Line2D object at 0x...&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Sinc Function&quot;</span><span class="p">)</span>
+<span class="go">Text(0.5, 1.0, &#39;Sinc Function&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Amplitude&quot;</span><span class="p">)</span>
+<span class="go">Text(0, 0.5, &#39;Amplitude&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="go">Text(0.5, 0, &#39;X&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../_images/numpy-sinc-1.png" class="plot-directive" src="../../_images/numpy-sinc-1.png" />
+</figure>
+</dd></dl>
+

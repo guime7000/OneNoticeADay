@@ -1,0 +1,42 @@
+
+<h1>numpy.matlib.identity<a class="headerlink" href="#numpy-matlib-identity" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.matlib.identity">
+<span class="sig-prename descclassname"><span class="pre">matlib.</span></span><span class="sig-name descname"><span class="pre">identity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/matlib.py#L151-L185"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.matlib.identity" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the square identity matrix of given size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>n</strong><span class="classifier">int</span></dt><dd><p>Size of the returned identity matrix.</p>
+</dd>
+<dt><strong>dtype</strong><span class="classifier">data-type, optional</span></dt><dd><p>Data-type of the output. Defaults to <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">matrix</span></dt><dd><p><em class="xref py py-obj">n</em> x <em class="xref py py-obj">n</em> matrix with its main diagonal set to one,
+and all other elements zero.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.identity.html#numpy.identity" title="numpy.identity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.identity</span></code></a></dt><dd><p>Equivalent array function.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.matlib.eye.html#numpy.matlib.eye" title="numpy.matlib.eye"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matlib.eye</span></code></a></dt><dd><p>More general matrix identity function.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy.matlib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">matlib</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="go">matrix([[1, 0, 0],</span>
+<span class="go">        [0, 1, 0],</span>
+<span class="go">        [0, 0, 1]])</span>
+</pre></div>
+</div>
+</dd></dl>
+

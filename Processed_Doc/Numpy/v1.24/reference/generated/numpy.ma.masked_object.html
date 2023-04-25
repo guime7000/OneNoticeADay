@@ -1,0 +1,69 @@
+
+<h1>numpy.ma.masked_object<a class="headerlink" href="#numpy-ma-masked-object" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.ma.masked_object">
+<span class="sig-prename descclassname"><span class="pre">ma.</span></span><span class="sig-name descname"><span class="pre">masked_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shrink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/ma/core.py#L2192-L2257"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.ma.masked_object" title="Permalink to this definition">#</a></dt>
+<dd><p>Mask the array <em class="xref py py-obj">x</em> where the data are exactly equal to value.</p>
+<p>This function is similar to <a class="reference internal" href="numpy.ma.masked_values.html#numpy.ma.masked_values" title="numpy.ma.masked_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">masked_values</span></code></a>, but only suitable
+for object arrays: for floating point, use <a class="reference internal" href="numpy.ma.masked_values.html#numpy.ma.masked_values" title="numpy.ma.masked_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">masked_values</span></code></a> instead.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">array_like</span></dt><dd><p>Array to mask</p>
+</dd>
+<dt><strong>value</strong><span class="classifier">object</span></dt><dd><p>Comparison value</p>
+</dd>
+<dt><strong>copy</strong><span class="classifier">{True, False}, optional</span></dt><dd><p>Whether to return a copy of <em class="xref py py-obj">x</em>.</p>
+</dd>
+<dt><strong>shrink</strong><span class="classifier">{True, False}, optional</span></dt><dd><p>Whether to collapse a mask full of False to nomask</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>result</strong><span class="classifier">MaskedArray</span></dt><dd><p>The result of masking <em class="xref py py-obj">x</em> where equal to <em class="xref py py-obj">value</em>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.ma.masked_where.html#numpy.ma.masked_where" title="numpy.ma.masked_where"><code class="xref py py-obj docutils literal notranslate"><span class="pre">masked_where</span></code></a></dt><dd><p>Mask where a condition is met.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.ma.masked_equal.html#numpy.ma.masked_equal" title="numpy.ma.masked_equal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">masked_equal</span></code></a></dt><dd><p>Mask where equal to a given value (integers).</p>
+</dd>
+<dt><a class="reference internal" href="numpy.ma.masked_values.html#numpy.ma.masked_values" title="numpy.ma.masked_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">masked_values</span></code></a></dt><dd><p>Mask using floating point equality.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy.ma</span> <span class="k">as</span> <span class="nn">ma</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">food</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;green_eggs&#39;</span><span class="p">,</span> <span class="s1">&#39;ham&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># don&#39;t eat spoiled food</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eat</span> <span class="o">=</span> <span class="n">ma</span><span class="o">.</span><span class="n">masked_object</span><span class="p">(</span><span class="n">food</span><span class="p">,</span> <span class="s1">&#39;green_eggs&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eat</span>
+<span class="go">masked_array(data=[--, &#39;ham&#39;],</span>
+<span class="go">             mask=[ True, False],</span>
+<span class="go">       fill_value=&#39;green_eggs&#39;,</span>
+<span class="go">            dtype=object)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># plain ol` ham is boring</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fresh_food</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;cheese&#39;</span><span class="p">,</span> <span class="s1">&#39;ham&#39;</span><span class="p">,</span> <span class="s1">&#39;pineapple&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eat</span> <span class="o">=</span> <span class="n">ma</span><span class="o">.</span><span class="n">masked_object</span><span class="p">(</span><span class="n">fresh_food</span><span class="p">,</span> <span class="s1">&#39;green_eggs&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eat</span>
+<span class="go">masked_array(data=[&#39;cheese&#39;, &#39;ham&#39;, &#39;pineapple&#39;],</span>
+<span class="go">             mask=False,</span>
+<span class="go">       fill_value=&#39;green_eggs&#39;,</span>
+<span class="go">            dtype=object)</span>
+</pre></div>
+</div>
+<p>Note that <em class="xref py py-obj">mask</em> is set to <code class="docutils literal notranslate"><span class="pre">nomask</span></code> if possible.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">eat</span>
+<span class="go">masked_array(data=[&#39;cheese&#39;, &#39;ham&#39;, &#39;pineapple&#39;],</span>
+<span class="go">             mask=False,</span>
+<span class="go">       fill_value=&#39;green_eggs&#39;,</span>
+<span class="go">            dtype=object)</span>
+</pre></div>
+</div>
+</dd></dl>
+

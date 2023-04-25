@@ -1,0 +1,30 @@
+
+<h1>numpy.lib.Arrayterator.flat<a class="headerlink" href="#numpy-lib-arrayterator-flat" title="Permalink to this heading">#</a></h1>
+<p>property</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="numpy.lib.Arrayterator.flat">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">lib.Arrayterator.</span></span><span class="sig-name descname"><span class="pre">flat</span></span><a class="headerlink" href="#numpy.lib.Arrayterator.flat" title="Permalink to this definition">#</a></dt>
+<dd><p>A 1-D flat iterator for Arrayterator objects.</p>
+<p>This iterator returns elements of the array to be iterated over in
+<em class="xref py py-obj">Arrayterator</em> one by one. It is similar to <a class="reference internal" href="numpy.flatiter.html#numpy.flatiter" title="numpy.flatiter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flatiter</span></code></a>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Arrayterator</span></code></dt><dd></dd>
+<dt><a class="reference internal" href="numpy.flatiter.html#numpy.flatiter" title="numpy.flatiter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flatiter</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a_itor</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">Arrayterator</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">subarr</span> <span class="ow">in</span> <span class="n">a_itor</span><span class="o">.</span><span class="n">flat</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">subarr</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="n">subarr</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">subarr</span><span class="p">))</span>
+<span class="gp">...</span>
+<span class="go">0 &lt;class &#39;numpy.int64&#39;&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+

@@ -1,0 +1,49 @@
+
+<h1>numpy.polynomial.hermite_e.hermediv<a class="headerlink" href="#numpy-polynomial-hermite-e-hermediv" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.polynomial.hermite_e.hermediv">
+<span class="sig-prename descclassname"><span class="pre">polynomial.hermite_e.</span></span><span class="sig-name descname"><span class="pre">hermediv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c2</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/polynomial/hermite_e.py#L507-L550"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.polynomial.hermite_e.hermediv" title="Permalink to this definition">#</a></dt>
+<dd><p>Divide one Hermite series by another.</p>
+<p>Returns the quotient-with-remainder of two Hermite series
+<em class="xref py py-obj">c1</em> / <em class="xref py py-obj">c2</em>.  The arguments are sequences of coefficients from lowest
+order “term” to highest, e.g., [1,2,3] represents the series
+<code class="docutils literal notranslate"><span class="pre">P_0</span> <span class="pre">+</span> <span class="pre">2*P_1</span> <span class="pre">+</span> <span class="pre">3*P_2</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>c1, c2</strong><span class="classifier">array_like</span></dt><dd><p>1-D arrays of Hermite series coefficients ordered from low to
+high.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>[quo, rem]</strong><span class="classifier">ndarrays</span></dt><dd><p>Of Hermite series coefficients representing the quotient and
+remainder.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.polynomial.hermite_e.hermeadd.html#numpy.polynomial.hermite_e.hermeadd" title="numpy.polynomial.hermite_e.hermeadd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hermeadd</span></code></a>, <a class="reference internal" href="numpy.polynomial.hermite_e.hermesub.html#numpy.polynomial.hermite_e.hermesub" title="numpy.polynomial.hermite_e.hermesub"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hermesub</span></code></a>, <a class="reference internal" href="numpy.polynomial.hermite_e.hermemulx.html#numpy.polynomial.hermite_e.hermemulx" title="numpy.polynomial.hermite_e.hermemulx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hermemulx</span></code></a>, <a class="reference internal" href="numpy.polynomial.hermite_e.hermemul.html#numpy.polynomial.hermite_e.hermemul" title="numpy.polynomial.hermite_e.hermemul"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hermemul</span></code></a>, <a class="reference internal" href="numpy.polynomial.hermite_e.hermepow.html#numpy.polynomial.hermite_e.hermepow" title="numpy.polynomial.hermite_e.hermepow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hermepow</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>In general, the (polynomial) division of one Hermite series by another
+results in quotient and remainder terms that are not in the Hermite
+polynomial basis set.  Thus, to express these results as a Hermite
+series, it is necessary to “reproject” the results onto the Hermite
+basis set, which may produce “unintuitive” (but correct) results; see
+Examples section below.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy.polynomial.hermite_e</span> <span class="kn">import</span> <span class="n">hermediv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hermediv</span><span class="p">([</span> <span class="mf">14.</span><span class="p">,</span>  <span class="mf">15.</span><span class="p">,</span>  <span class="mf">28.</span><span class="p">,</span>   <span class="mf">7.</span><span class="p">,</span>   <span class="mf">6.</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="go">(array([1., 2., 3.]), array([0.]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hermediv</span><span class="p">([</span> <span class="mf">15.</span><span class="p">,</span>  <span class="mf">17.</span><span class="p">,</span>  <span class="mf">28.</span><span class="p">,</span>   <span class="mf">7.</span><span class="p">,</span>   <span class="mf">6.</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="go">(array([1., 2., 3.]), array([1., 2.]))</span>
+</pre></div>
+</div>
+</dd></dl>
+

@@ -1,0 +1,42 @@
+
+<h1>numpy.polynomial.legendre.legmulx<a class="headerlink" href="#numpy-polynomial-legendre-legmulx" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.polynomial.legendre.legmulx">
+<span class="sig-prename descclassname"><span class="pre">polynomial.legendre.</span></span><span class="sig-name descname"><span class="pre">legmulx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/polynomial/legendre.py#L408-L461"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.polynomial.legendre.legmulx" title="Permalink to this definition">#</a></dt>
+<dd><p>Multiply a Legendre series by x.</p>
+<p>Multiply the Legendre series <em class="xref py py-obj">c</em> by x, where x is the independent
+variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>c</strong><span class="classifier">array_like</span></dt><dd><p>1-D array of Legendre series coefficients ordered from low to
+high.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ndarray</span></dt><dd><p>Array representing the result of the multiplication.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.polynomial.legendre.legadd.html#numpy.polynomial.legendre.legadd" title="numpy.polynomial.legendre.legadd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legadd</span></code></a>, <a class="reference internal" href="numpy.polynomial.legendre.legmul.html#numpy.polynomial.legendre.legmul" title="numpy.polynomial.legendre.legmul"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legmul</span></code></a>, <a class="reference internal" href="numpy.polynomial.legendre.legdiv.html#numpy.polynomial.legendre.legdiv" title="numpy.polynomial.legendre.legdiv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legdiv</span></code></a>, <a class="reference internal" href="numpy.polynomial.legendre.legpow.html#numpy.polynomial.legendre.legpow" title="numpy.polynomial.legendre.legpow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legpow</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>The multiplication uses the recursion relationship for Legendre
+polynomials in the form</p>
+<div class="math notranslate nohighlight">
+\[xP_i(x) = ((i + 1)*P_{i + 1}(x) + i*P_{i - 1}(x))/(2i + 1)\]</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy.polynomial</span> <span class="kn">import</span> <span class="n">legendre</span> <span class="k">as</span> <span class="n">L</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">L</span><span class="o">.</span><span class="n">legmulx</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="go">array([ 0.66666667, 2.2, 1.33333333, 1.8]) # may vary</span>
+</pre></div>
+</div>
+</dd></dl>
+

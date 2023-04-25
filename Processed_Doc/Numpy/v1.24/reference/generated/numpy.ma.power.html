@@ -1,0 +1,45 @@
+
+<h1>numpy.ma.power<a class="headerlink" href="#numpy-ma-power" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.ma.power">
+<span class="sig-prename descclassname"><span class="pre">ma.</span></span><span class="sig-name descname"><span class="pre">power</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">third</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/ma/core.py#L6881-L6956"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.ma.power" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns element-wise base array raised to power from second array.</p>
+<p>This is the masked array version of <a class="reference internal" href="numpy.power.html#numpy.power" title="numpy.power"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.power</span></code></a>. For details see
+<a class="reference internal" href="numpy.power.html#numpy.power" title="numpy.power"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.power</span></code></a>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.power.html#numpy.power" title="numpy.power"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.power</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>The <em>out</em> argument to <a class="reference internal" href="numpy.power.html#numpy.power" title="numpy.power"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.power</span></code></a> is not supported, <em class="xref py py-obj">third</em> has to be
+None.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy.ma</span> <span class="k">as</span> <span class="nn">ma</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mf">11.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.973</span><span class="p">,</span> <span class="mf">0.801</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.41</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">masked_x</span> <span class="o">=</span> <span class="n">ma</span><span class="o">.</span><span class="n">masked_array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">masked_x</span>
+<span class="go">masked_array(data=[11.2, -3.973, 0.801, --],</span>
+<span class="go">         mask=[False, False, False,  True],</span>
+<span class="go">   fill_value=1e+20)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ma</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">masked_x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">masked_array(data=[125.43999999999998, 15.784728999999999,</span>
+<span class="go">               0.6416010000000001, --],</span>
+<span class="go">         mask=[False, False, False,  True],</span>
+<span class="go">   fill_value=1e+20)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">17</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">masked_y</span> <span class="o">=</span> <span class="n">ma</span><span class="o">.</span><span class="n">masked_array</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">masked_y</span>
+<span class="go">masked_array(data=[-0.5, 2.0, 0.0, --],</span>
+<span class="go">         mask=[False, False, False,  True],</span>
+<span class="go">   fill_value=1e+20)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ma</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">masked_x</span><span class="p">,</span> <span class="n">masked_y</span><span class="p">)</span>
+<span class="go">masked_array(data=[0.29880715233359845, 15.784728999999999, 1.0, --],</span>
+<span class="go">         mask=[False, False, False,  True],</span>
+<span class="go">   fill_value=1e+20)</span>
+</pre></div>
+</div>
+</dd></dl>
+

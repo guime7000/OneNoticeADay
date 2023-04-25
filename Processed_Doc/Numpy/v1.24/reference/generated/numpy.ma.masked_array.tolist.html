@@ -1,0 +1,34 @@
+
+<h1>numpy.ma.masked_array.tolist<a class="headerlink" href="#numpy-ma-masked-array-tolist" title="Permalink to this heading">#</a></h1>
+<p>method</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="numpy.ma.masked_array.tolist">
+<span class="sig-prename descclassname"><span class="pre">ma.masked_array.</span></span><span class="sig-name descname"><span class="pre">tolist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fill_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/ma/core.py#L6068-L6117"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.ma.masked_array.tolist" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the data portion of the masked array as a hierarchical Python list.</p>
+<p>Data items are converted to the nearest compatible Python type.
+Masked values are converted to <a class="reference internal" href="numpy.ma.masked_array.fill_value.html#numpy.ma.masked_array.fill_value" title="numpy.ma.masked_array.fill_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fill_value</span></code></a>. If <a class="reference internal" href="numpy.ma.masked_array.fill_value.html#numpy.ma.masked_array.fill_value" title="numpy.ma.masked_array.fill_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fill_value</span></code></a> is None,
+the corresponding entries in the output list will be <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>fill_value</strong><span class="classifier">scalar, optional</span></dt><dd><p>The value to use for invalid entries. Default is None.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>result</strong><span class="classifier">list</span></dt><dd><p>The Python list representation of the masked array.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]],</span> <span class="n">mask</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="go">[[1, None, 3], [None, 5, None], [7, None, 9]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">tolist</span><span class="p">(</span><span class="o">-</span><span class="mi">999</span><span class="p">)</span>
+<span class="go">[[1, -999, 3], [-999, 5, -999], [7, -999, 9]]</span>
+</pre></div>
+</div>
+</dd></dl>
+

@@ -1,0 +1,39 @@
+
+<h1>numpy.testing.measure<a class="headerlink" href="#numpy-testing-measure" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.testing.measure">
+<span class="sig-prename descclassname"><span class="pre">testing.</span></span><span class="sig-name descname"><span class="pre">measure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">times</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/testing/_private/utils.py#L1452-L1495"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.testing.measure" title="Permalink to this definition">#</a></dt>
+<dd><p>Return elapsed time for executing code in the namespace of the caller.</p>
+<p>The supplied code string is compiled with the Python builtin <code class="docutils literal notranslate"><span class="pre">compile</span></code>.
+The precision of the timing is 10 milli-seconds. If the code will execute
+fast on this timescale, it can be executed many times to get reasonable
+timing accuracy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>code_str</strong><span class="classifier">str</span></dt><dd><p>The code to be timed.</p>
+</dd>
+<dt><strong>times</strong><span class="classifier">int, optional</span></dt><dd><p>The number of times the code is executed. Default is 1. The code is
+only compiled once.</p>
+</dd>
+<dt><strong>label</strong><span class="classifier">str, optional</span></dt><dd><p>A label to identify <em class="xref py py-obj">code_str</em> with. This is passed into <code class="docutils literal notranslate"><span class="pre">compile</span></code>
+as the second argument (for run-time error messages).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>elapsed</strong><span class="classifier">float</span></dt><dd><p>Total elapsed time in seconds for executing <em class="xref py py-obj">code_str</em> <em class="xref py py-obj">times</em> times.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">times</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">etime</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="s1">&#39;for i in range(1000): np.sqrt(i**2)&#39;</span><span class="p">,</span> <span class="n">times</span><span class="o">=</span><span class="n">times</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Time for a single execution : &quot;</span><span class="p">,</span> <span class="n">etime</span> <span class="o">/</span> <span class="n">times</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span><span class="p">)</span>  
+<span class="go">Time for a single execution :  0.005 s</span>
+</pre></div>
+</div>
+</dd></dl>
+

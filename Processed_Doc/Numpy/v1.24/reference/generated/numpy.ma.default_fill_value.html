@@ -1,0 +1,67 @@
+
+<h1>numpy.ma.default_fill_value<a class="headerlink" href="#numpy-ma-default-fill-value" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.ma.default_fill_value">
+<span class="sig-prename descclassname"><span class="pre">ma.</span></span><span class="sig-name descname"><span class="pre">default_fill_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/ma/core.py#L230-L282"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.ma.default_fill_value" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the default fill value for the argument object.</p>
+<p>The default filling value depends on the datatype of the input
+array or the type of the input scalar:</p>
+<blockquote>
+<div><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>datatype</p></th>
+<th class="head"><p>default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-odd"><td><p>int</p></td>
+<td><p>999999</p></td>
+</tr>
+<tr class="row-even"><td><p>float</p></td>
+<td><p>1.e20</p></td>
+</tr>
+<tr class="row-odd"><td><p>complex</p></td>
+<td><p>1.e20+0j</p></td>
+</tr>
+<tr class="row-even"><td><p>object</p></td>
+<td><p>‘?’</p></td>
+</tr>
+<tr class="row-odd"><td><p>string</p></td>
+<td><p>‘N/A’</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>For structured types, a structured scalar is returned, with each field the
+default fill value for its type.</p>
+<p>For subarray types, the fill value is an array of the same size containing
+the default scalar fill value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>obj</strong><span class="classifier">ndarray, dtype or scalar</span></dt><dd><p>The array data-type or scalar for which the default fill value
+is returned.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>fill_value</strong><span class="classifier">scalar</span></dt><dd><p>The default fill value.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">default_fill_value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">999999</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">default_fill_value</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">]))</span>
+<span class="go">1e+20</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">default_fill_value</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="nb">complex</span><span class="p">))</span>
+<span class="go">(1e+20+0j)</span>
+</pre></div>
+</div>
+</dd></dl>
+

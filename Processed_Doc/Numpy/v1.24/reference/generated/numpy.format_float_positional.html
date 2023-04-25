@@ -1,0 +1,83 @@
+
+<h1>numpy.format_float_positional<a class="headerlink" href="#numpy-format-float-positional" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.format_float_positional">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">format_float_positional</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">precision</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unique</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fractional</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'k'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sign</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_left</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_right</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/core/arrayprint.py#L1130-L1219"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.format_float_positional" title="Permalink to this definition">#</a></dt>
+<dd><p>Format a floating-point scalar as a decimal string in positional notation.</p>
+<p>Provides control over rounding, trimming and padding. Uses and assumes
+IEEE unbiased rounding. Uses the “Dragon4” algorithm.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>x</strong><span class="classifier">python float or numpy floating scalar</span></dt><dd><p>Value to format.</p>
+</dd>
+<dt><strong>precision</strong><span class="classifier">non-negative integer or None, optional</span></dt><dd><p>Maximum number of digits to print. May be None if <a class="reference internal" href="numpy.unique.html#numpy.unique" title="numpy.unique"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unique</span></code></a> is
+<em class="xref py py-obj">True</em>, but must be an integer if unique is <em class="xref py py-obj">False</em>.</p>
+</dd>
+<dt><strong>unique</strong><span class="classifier">boolean, optional</span></dt><dd><p>If <em class="xref py py-obj">True</em>, use a digit-generation strategy which gives the shortest
+representation which uniquely identifies the floating-point number from
+other values of the same type, by judicious rounding. If <em class="xref py py-obj">precision</em>
+is given fewer digits than necessary can be printed, or if <em class="xref py py-obj">min_digits</em>
+is given more can be printed, in which cases the last digit is rounded
+with unbiased rounding.
+If <em class="xref py py-obj">False</em>, digits are generated as if printing an infinite-precision
+value and stopping after <em class="xref py py-obj">precision</em> digits, rounding the remaining
+value with unbiased rounding</p>
+</dd>
+<dt><strong>fractional</strong><span class="classifier">boolean, optional</span></dt><dd><p>If <em class="xref py py-obj">True</em>, the cutoffs of <em class="xref py py-obj">precision</em> and <em class="xref py py-obj">min_digits</em> refer to the
+total number of digits after the decimal point, including leading
+zeros.
+If <em class="xref py py-obj">False</em>, <em class="xref py py-obj">precision</em> and <em class="xref py py-obj">min_digits</em> refer to the total number of
+significant digits, before or after the decimal point, ignoring leading
+zeros.</p>
+</dd>
+<dt><strong>trim</strong><span class="classifier">one of ‘k’, ‘.’, ‘0’, ‘-’, optional</span></dt><dd><p>Controls post-processing trimming of trailing digits, as follows:</p>
+<ul class="simple">
+<li><p>‘k’ : keep trailing zeros, keep decimal point (no trimming)</p></li>
+<li><p>‘.’ : trim all trailing zeros, leave decimal point</p></li>
+<li><p>‘0’ : trim all but the zero before the decimal point. Insert the
+zero if it is missing.</p></li>
+<li><p>‘-’ : trim trailing zeros and any trailing decimal point</p></li>
+</ul>
+</dd>
+<dt><strong>sign</strong><span class="classifier">boolean, optional</span></dt><dd><p>Whether to show the sign for positive values.</p>
+</dd>
+<dt><strong>pad_left</strong><span class="classifier">non-negative integer, optional</span></dt><dd><p>Pad the left side of the string with whitespace until at least that
+many characters are to the left of the decimal point.</p>
+</dd>
+<dt><strong>pad_right</strong><span class="classifier">non-negative integer, optional</span></dt><dd><p>Pad the right side of the string with whitespace until at least that
+many characters are to the right of the decimal point.</p>
+</dd>
+<dt><strong>min_digits</strong><span class="classifier">non-negative integer or None, optional</span></dt><dd><p>Minimum number of digits to print. Only has an effect if <em class="xref py py-obj">unique=True</em>
+in which case additional digits past those necessary to uniquely
+identify the value may be printed, rounding the last additional digit.</p>
+<p>– versionadded:: 1.21.0</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>rep</strong><span class="classifier">string</span></dt><dd><p>The string representation of the floating point value</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.format_float_scientific.html#numpy.format_float_scientific" title="numpy.format_float_scientific"><code class="xref py py-obj docutils literal notranslate"><span class="pre">format_float_scientific</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">format_float_positional</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>
+<span class="go">&#39;3.1415927&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">format_float_positional</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float16</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>
+<span class="go">&#39;3.14&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">format_float_positional</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float16</span><span class="p">(</span><span class="mf">0.3</span><span class="p">))</span>
+<span class="go">&#39;0.3&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">format_float_positional</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float16</span><span class="p">(</span><span class="mf">0.3</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">&#39;0.3000488281&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+

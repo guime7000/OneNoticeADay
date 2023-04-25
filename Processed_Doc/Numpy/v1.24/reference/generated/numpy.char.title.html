@@ -1,0 +1,41 @@
+
+<h1>numpy.char.title<a class="headerlink" href="#numpy-char-title" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.char.title">
+<span class="sig-prename descclassname"><span class="pre">char.</span></span><span class="sig-name descname"><span class="pre">title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/core/defchararray.py#L1683-L1720"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.char.title" title="Permalink to this definition">#</a></dt>
+<dd><p>Return element-wise title cased version of string or unicode.</p>
+<p>Title case words start with uppercase characters, all remaining cased
+characters are lowercase.</p>
+<p>Calls <em class="xref py py-obj">str.title</em> element-wise.</p>
+<p>For 8-bit strings, this method is locale-dependent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>a</strong><span class="classifier">array_like, {str, unicode}</span></dt><dd><p>Input array.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ndarray</span></dt><dd><p>Output array of str or unicode, depending on input type</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str.title" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str.title</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;a1b c&#39;</span><span class="p">,</span><span class="s1">&#39;1b ca&#39;</span><span class="p">,</span><span class="s1">&#39;b ca1&#39;</span><span class="p">,</span><span class="s1">&#39;ca1b&#39;</span><span class="p">],</span><span class="s1">&#39;S5&#39;</span><span class="p">);</span> <span class="n">c</span>
+<span class="go">array([&#39;a1b c&#39;, &#39;1b ca&#39;, &#39;b ca1&#39;, &#39;ca1b&#39;],</span>
+<span class="go">    dtype=&#39;|S5&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">char</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="go">array([&#39;A1B C&#39;, &#39;1B Ca&#39;, &#39;B Ca1&#39;, &#39;Ca1B&#39;],</span>
+<span class="go">    dtype=&#39;|S5&#39;)</span>
+</pre></div>
+</div>
+</dd></dl>
+

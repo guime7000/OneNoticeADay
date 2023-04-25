@@ -1,0 +1,59 @@
+
+<h1>numpy.append<a class="headerlink" href="#numpy-append" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.append">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/function_base.py#L5444-L5499"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.append" title="Permalink to this definition">#</a></dt>
+<dd><p>Append values to the end of an array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>arr</strong><span class="classifier">array_like</span></dt><dd><p>Values are appended to a copy of this array.</p>
+</dd>
+<dt><strong>values</strong><span class="classifier">array_like</span></dt><dd><p>These values are appended to a copy of <em class="xref py py-obj">arr</em>.  It must be of the
+correct shape (the same shape as <em class="xref py py-obj">arr</em>, excluding <em class="xref py py-obj">axis</em>).  If
+<em class="xref py py-obj">axis</em> is not specified, <em class="xref py py-obj">values</em> can be any shape and will be
+flattened before use.</p>
+</dd>
+<dt><strong>axis</strong><span class="classifier">int, optional</span></dt><dd><p>The axis along which <em class="xref py py-obj">values</em> are appended.  If <em class="xref py py-obj">axis</em> is not
+given, both <em class="xref py py-obj">arr</em> and <em class="xref py py-obj">values</em> are flattened before use.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>append</strong><span class="classifier">ndarray</span></dt><dd><p>A copy of <em class="xref py py-obj">arr</em> with <em class="xref py py-obj">values</em> appended to <em class="xref py py-obj">axis</em>.  Note that
+<a class="reference internal" href="#numpy.append" title="numpy.append"><code class="xref py py-obj docutils literal notranslate"><span class="pre">append</span></code></a> does not occur in-place: a new array is allocated and
+filled.  If <em class="xref py py-obj">axis</em> is None, <em class="xref py py-obj">out</em> is a flattened array.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.insert.html#numpy.insert" title="numpy.insert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert</span></code></a></dt><dd><p>Insert elements into an array.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.delete.html#numpy.delete" title="numpy.delete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete</span></code></a></dt><dd><p>Delete elements from an array.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]])</span>
+<span class="go">array([1, 2, 3, ..., 7, 8, 9])</span>
+</pre></div>
+</div>
+<p>When <em class="xref py py-obj">axis</em> is specified, <em class="xref py py-obj">values</em> must have the correct shape.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]],</span> <span class="p">[[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">array([[1, 2, 3],</span>
+<span class="go">       [4, 5, 6],</span>
+<span class="go">       [7, 8, 9]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+    <span class="o">...</span>
+<span class="gr">ValueError</span>: <span class="n">all the input arrays must have same number of dimensions, but</span>
+<span class="go">the array at index 0 has 2 dimension(s) and the array at index 1 has 1</span>
+<span class="go">dimension(s)</span>
+</pre></div>
+</div>
+</dd></dl>
+

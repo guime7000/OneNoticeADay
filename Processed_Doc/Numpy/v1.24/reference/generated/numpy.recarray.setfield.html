@@ -1,0 +1,56 @@
+
+<h1>numpy.recarray.setfield<a class="headerlink" href="#numpy-recarray-setfield" title="Permalink to this heading">#</a></h1>
+<p>method</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="numpy.recarray.setfield">
+<span class="sig-prename descclassname"><span class="pre">recarray.</span></span><span class="sig-name descname"><span class="pre">setfield</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#numpy.recarray.setfield" title="Permalink to this definition">#</a></dt>
+<dd><p>Put a value into a specified place in a field defined by a data-type.</p>
+<p>Place <em class="xref py py-obj">val</em> into <em class="xref py py-obj">a</em>’s field defined by <a class="reference internal" href="numpy.dtype.html#numpy.dtype" title="numpy.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a> and beginning <em class="xref py py-obj">offset</em>
+bytes into the field.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>val</strong><span class="classifier">object</span></dt><dd><p>Value to be placed in field.</p>
+</dd>
+<dt><strong>dtype</strong><span class="classifier">dtype object</span></dt><dd><p>Data-type of the field in which to place <em class="xref py py-obj">val</em>.</p>
+</dd>
+<dt><strong>offset</strong><span class="classifier">int, optional</span></dt><dd><p>The number of bytes into the field at which to place <em class="xref py py-obj">val</em>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>None</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.recarray.getfield.html#numpy.recarray.getfield" title="numpy.recarray.getfield"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getfield</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">getfield</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="go">array([[1.,  0.,  0.],</span>
+<span class="go">       [0.,  1.,  0.],</span>
+<span class="go">       [0.,  0.,  1.]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">setfield</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">getfield</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="go">array([[3, 3, 3],</span>
+<span class="go">       [3, 3, 3],</span>
+<span class="go">       [3, 3, 3]], dtype=int32)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">array([[1.0e+000, 1.5e-323, 1.5e-323],</span>
+<span class="go">       [1.5e-323, 1.0e+000, 1.5e-323],</span>
+<span class="go">       [1.5e-323, 1.5e-323, 1.0e+000]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">setfield</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">array([[1.,  0.,  0.],</span>
+<span class="go">       [0.,  1.,  0.],</span>
+<span class="go">       [0.,  0.,  1.]])</span>
+</pre></div>
+</div>
+</dd></dl>
+

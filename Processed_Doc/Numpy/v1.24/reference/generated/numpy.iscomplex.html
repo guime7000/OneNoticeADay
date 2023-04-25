@@ -1,0 +1,37 @@
+
+<h1>numpy.iscomplex<a class="headerlink" href="#numpy-iscomplex" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.iscomplex">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">iscomplex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/type_check.py#L210-L244"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.iscomplex" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns a bool array, where True if input element is complex.</p>
+<p>What is tested is whether the input has a non-zero imaginary part, not if
+the input type is complex.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">array_like</span></dt><dd><p>Input array.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ndarray of bools</span></dt><dd><p>Output array.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.isreal.html#numpy.isreal" title="numpy.isreal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isreal</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="numpy.iscomplexobj.html#numpy.iscomplexobj" title="numpy.iscomplexobj"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iscomplexobj</span></code></a></dt><dd><p>Return True if x is a complex type or an array of complex numbers.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">iscomplex</span><span class="p">([</span><span class="mi">1</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="p">,</span> <span class="mi">1</span><span class="o">+</span><span class="mi">0</span><span class="n">j</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="n">j</span><span class="p">])</span>
+<span class="go">array([ True, False, False, False, False,  True])</span>
+</pre></div>
+</div>
+</dd></dl>
+

@@ -1,0 +1,43 @@
+
+<h1>numpy.polynomial.polynomial.polypow<a class="headerlink" href="#numpy-polynomial-polynomial-polypow" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.polynomial.polynomial.polypow">
+<span class="sig-prename descclassname"><span class="pre">polynomial.polynomial.</span></span><span class="sig-name descname"><span class="pre">polypow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pow</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxpower</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/polynomial/polynomial.py#L424-L460"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.polynomial.polynomial.polypow" title="Permalink to this definition">#</a></dt>
+<dd><p>Raise a polynomial to a power.</p>
+<p>Returns the polynomial <em class="xref py py-obj">c</em> raised to the power <em class="xref py py-obj">pow</em>. The argument
+<em class="xref py py-obj">c</em> is a sequence of coefficients ordered from low to high. i.e.,
+[1,2,3] is the series  <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">2*x</span> <span class="pre">+</span> <span class="pre">3*x**2.</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>c</strong><span class="classifier">array_like</span></dt><dd><p>1-D array of array of series coefficients ordered from low to
+high degree.</p>
+</dd>
+<dt><strong>pow</strong><span class="classifier">integer</span></dt><dd><p>Power to which the series will be raised</p>
+</dd>
+<dt><strong>maxpower</strong><span class="classifier">integer, optional</span></dt><dd><p>Maximum power allowed. This is mainly to limit growth of the series
+to unmanageable size. Default is 16</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>coef</strong><span class="classifier">ndarray</span></dt><dd><p>Power series of power.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.polyadd.html#numpy.polyadd" title="numpy.polyadd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polyadd</span></code></a>, <a class="reference internal" href="numpy.polysub.html#numpy.polysub" title="numpy.polysub"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polysub</span></code></a>, <a class="reference internal" href="numpy.polynomial.polynomial.polymulx.html#numpy.polynomial.polynomial.polymulx" title="numpy.polynomial.polynomial.polymulx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polymulx</span></code></a>, <a class="reference internal" href="numpy.polymul.html#numpy.polymul" title="numpy.polymul"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polymul</span></code></a>, <a class="reference internal" href="numpy.polydiv.html#numpy.polydiv" title="numpy.polydiv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polydiv</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy.polynomial</span> <span class="kn">import</span> <span class="n">polynomial</span> <span class="k">as</span> <span class="n">P</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">P</span><span class="o">.</span><span class="n">polypow</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">array([ 1., 4., 10., 12., 9.])</span>
+</pre></div>
+</div>
+</dd></dl>
+

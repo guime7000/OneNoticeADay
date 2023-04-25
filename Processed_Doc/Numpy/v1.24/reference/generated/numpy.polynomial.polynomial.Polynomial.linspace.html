@@ -1,0 +1,35 @@
+
+<h1>numpy.polynomial.polynomial.Polynomial.linspace<a class="headerlink" href="#numpy-polynomial-polynomial-polynomial-linspace" title="Permalink to this heading">#</a></h1>
+<p>method</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="numpy.polynomial.polynomial.Polynomial.linspace">
+<span class="sig-prename descclassname"><span class="pre">polynomial.polynomial.Polynomial.</span></span><span class="sig-name descname"><span class="pre">linspace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/polynomial/_polybase.py#L901-L931"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.polynomial.polynomial.Polynomial.linspace" title="Permalink to this definition">#</a></dt>
+<dd><p>Return x, y values at equally spaced points in domain.</p>
+<p>Returns the x, y values at <em class="xref py py-obj">n</em> linearly spaced points across the
+domain.  Here y is the value of the polynomial at the points x. By
+default the domain is the same as that of the series instance.
+This method is intended mostly as a plotting aid.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.5.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>n</strong><span class="classifier">int, optional</span></dt><dd><p>Number of point pairs to return. The default value is 100.</p>
+</dd>
+<dt><strong>domain</strong><span class="classifier">{None, array_like}, optional</span></dt><dd><p>If not None, the specified domain is used instead of that of
+the calling instance. It should be of the form <code class="docutils literal notranslate"><span class="pre">[beg,end]</span></code>.
+The default is None which case the class domain is used.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>x, y</strong><span class="classifier">ndarray</span></dt><dd><p>x is equal to linspace(self.domain[0], self.domain[1], n) and
+y is the series evaluated at element of x.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+

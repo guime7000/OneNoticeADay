@@ -1,0 +1,31 @@
+
+<h1>numpy.distutils.ccompiler_opt.CCompilerOpt.feature_c_preprocessor<a class="headerlink" href="#numpy-distutils-ccompiler-opt-ccompileropt-feature-c-preprocessor" title="Permalink to this heading">#</a></h1>
+<p>method</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="numpy.distutils.ccompiler_opt.CCompilerOpt.feature_c_preprocessor">
+<span class="sig-prename descclassname"><span class="pre">distutils.ccompiler_opt.CCompilerOpt.</span></span><span class="sig-name descname"><span class="pre">feature_c_preprocessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tabs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/distutils/ccompiler_opt.py#L1649-L1696"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.distutils.ccompiler_opt.CCompilerOpt.feature_c_preprocessor" title="Permalink to this definition">#</a></dt>
+<dd><p>Generate C preprocessor definitions and include headers of a CPU feature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>‘feature_name’: str</strong></dt><dd><p>CPU feature name in uppercase.</p>
+</dd>
+<dt><strong>‘tabs’: int</strong></dt><dd><p>if &gt; 0, align the generated strings to the right depend on number of tabs.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>str, generated C preprocessor</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="bp">self</span><span class="o">.</span><span class="n">feature_c_preprocessor</span><span class="p">(</span><span class="s2">&quot;SSE3&quot;</span><span class="p">)</span>
+<span class="go">/** SSE3 **/</span>
+<span class="go">#define NPY_HAVE_SSE3 1</span>
+<span class="go">#include &lt;pmmintrin.h&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+

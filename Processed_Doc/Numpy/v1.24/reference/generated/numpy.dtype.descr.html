@@ -1,0 +1,25 @@
+
+<h1>numpy.dtype.descr<a class="headerlink" href="#numpy-dtype-descr" title="Permalink to this heading">#</a></h1>
+<p>attribute</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="numpy.dtype.descr">
+<span class="sig-prename descclassname"><span class="pre">dtype.</span></span><span class="sig-name descname"><span class="pre">descr</span></span><a class="headerlink" href="#numpy.dtype.descr" title="Permalink to this definition">#</a></dt>
+<dd><p><em class="xref py py-obj">__array_interface__</em> description of the data-type.</p>
+<p>The format is that required by the ‘descr’ key in the
+<em class="xref py py-obj">__array_interface__</em> attribute.</p>
+<p>Warning: This attribute exists specifically for <em class="xref py py-obj">__array_interface__</em>,
+and passing it directly to <em class="xref py py-obj">np.dtype</em> will not accurately reconstruct
+some dtypes (e.g., scalar and subarray dtypes).</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">descr</span>
+<span class="go">[(&#39;&#39;, &#39;&lt;f8&#39;)]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">([(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">str_</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;grades&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,))])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dt</span><span class="o">.</span><span class="n">descr</span>
+<span class="go">[(&#39;name&#39;, &#39;&lt;U16&#39;), (&#39;grades&#39;, &#39;&lt;f8&#39;, (2,))]</span>
+</pre></div>
+</div>
+</dd></dl>
+

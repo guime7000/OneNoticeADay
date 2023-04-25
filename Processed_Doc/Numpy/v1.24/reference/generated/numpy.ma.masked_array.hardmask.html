@@ -1,0 +1,46 @@
+
+<h1>numpy.ma.masked_array.hardmask<a class="headerlink" href="#numpy-ma-masked-array-hardmask" title="Permalink to this heading">#</a></h1>
+<p>property</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="numpy.ma.masked_array.hardmask">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ma.masked_array.</span></span><span class="sig-name descname"><span class="pre">hardmask</span></span><a class="headerlink" href="#numpy.ma.masked_array.hardmask" title="Permalink to this definition">#</a></dt>
+<dd><p>Specifies whether values can be unmasked through assignments.</p>
+<p>By default, assigning definite values to masked array entries will
+unmask them.  When <a class="reference internal" href="#numpy.ma.masked_array.hardmask" title="numpy.ma.masked_array.hardmask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hardmask</span></code></a> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, the mask will not change
+through assignments.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.ma.MaskedArray.harden_mask.html#numpy.ma.MaskedArray.harden_mask" title="numpy.ma.MaskedArray.harden_mask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ma.MaskedArray.harden_mask</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="numpy.ma.MaskedArray.soften_mask.html#numpy.ma.MaskedArray.soften_mask" title="numpy.ma.MaskedArray.soften_mask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ma.MaskedArray.soften_mask</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">&gt;</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="ow">not</span> <span class="n">m</span><span class="o">.</span><span class="n">hardmask</span>
+</pre></div>
+</div>
+<p>Since <em class="xref py py-obj">m</em> has a soft mask, assigning an element value unmasks that
+element:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span>
+<span class="go">masked_array(data=[0, 1, 2, 3, 4, 5, --, --, 42, --],</span>
+<span class="go">             mask=[False, False, False, False, False, False,</span>
+<span class="go">                   True, True, False, True],</span>
+<span class="go">       fill_value=999999)</span>
+</pre></div>
+</div>
+<p>After hardening, the mask is not affected by assignments:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hardened</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">harden_mask</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="n">m</span><span class="o">.</span><span class="n">hardmask</span> <span class="ow">and</span> <span class="n">hardened</span> <span class="ow">is</span> <span class="n">m</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">23</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span>
+<span class="go">masked_array(data=[23, 23, 23, 23, 23, 23, --, --, 23, --],</span>
+<span class="go">             mask=[False, False, False, False, False, False,</span>
+<span class="go">                   True, True, False, True],</span>
+<span class="go">       fill_value=999999)</span>
+</pre></div>
+</div>
+</dd></dl>
+

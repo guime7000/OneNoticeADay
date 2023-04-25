@@ -1,0 +1,76 @@
+
+<h1>numpy.testing.Tester.test<a class="headerlink" href="#numpy-testing-tester-test" title="Permalink to this heading">#</a></h1>
+<p>method</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="numpy.testing.Tester.test">
+<span class="sig-prename descclassname"><span class="pre">testing.Tester.</span></span><span class="sig-name descname"><span class="pre">test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'fast'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_argv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doctests</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coverage</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raise_warnings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/testing/_private/nosetester.py#L326-L463"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.testing.Tester.test" title="Permalink to this definition">#</a></dt>
+<dd><p>Run tests for module using nose.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>label</strong><span class="classifier">{‘fast’, ‘full’, ‘’, attribute identifier}, optional</span></dt><dd><p>Identifies the tests to run. This can be a string to pass to
+the nosetests executable with the ‘-A’ option, or one of several
+special values.  Special values are:</p>
+<ul class="simple">
+<li><p>‘fast’ - the default - which corresponds to the <code class="docutils literal notranslate"><span class="pre">nosetests</span> <span class="pre">-A</span></code>
+option of ‘not slow’.</p></li>
+<li><p>‘full’ - fast (as above) and slow tests as in the
+‘no -A’ option to nosetests - this is the same as ‘’.</p></li>
+<li><p>None or ‘’ - run all tests.</p></li>
+<li><p>attribute_identifier - string passed directly to nosetests as ‘-A’.</p></li>
+</ul>
+</dd>
+<dt><strong>verbose</strong><span class="classifier">int, optional</span></dt><dd><p>Verbosity value for test outputs, in the range 1-10. Default is 1.</p>
+</dd>
+<dt><strong>extra_argv</strong><span class="classifier">list, optional</span></dt><dd><p>List with any extra arguments to pass to nosetests.</p>
+</dd>
+<dt><strong>doctests</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, run doctests in module. Default is False.</p>
+</dd>
+<dt><strong>coverage</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, report coverage of NumPy code. Default is False.
+(This requires the
+<a class="reference external" href="https://pypi.org/project/coverage/">coverage module</a>).</p>
+</dd>
+<dt><strong>raise_warnings</strong><span class="classifier">None, str or sequence of warnings, optional</span></dt><dd><p>This specifies which warnings to configure as ‘raise’ instead
+of being shown once during the test execution. Valid strings are:</p>
+<ul class="simple">
+<li><p>“develop” : equals <code class="docutils literal notranslate"><span class="pre">(Warning,)</span></code></p></li>
+<li><p>“release” : equals <code class="docutils literal notranslate"><span class="pre">()</span></code>, do not raise on any warnings.</p></li>
+</ul>
+</dd>
+<dt><strong>timer</strong><span class="classifier">bool or int, optional</span></dt><dd><p>Timing of individual tests with <code class="docutils literal notranslate"><span class="pre">nose-timer</span></code> (which needs to be
+installed).  If True, time tests and report on all of them.
+If an integer (say <code class="docutils literal notranslate"><span class="pre">N</span></code>), report timing results for <code class="docutils literal notranslate"><span class="pre">N</span></code> slowest
+tests.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>result</strong><span class="classifier">object</span></dt><dd><p>Returns the result of running the tests as a
+<code class="docutils literal notranslate"><span class="pre">nose.result.TextTestResult</span></code> object.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Each NumPy module exposes <a class="reference internal" href="../testing.html#numpy.test" title="numpy.test"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test</span></code></a> in its namespace to run all tests for it.
+For example, to run all tests for numpy.lib:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">test</span><span class="p">()</span> 
+</pre></div>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">test</span><span class="p">()</span> 
+<span class="go">Running unit tests for numpy.lib</span>
+<span class="gp">...</span>
+<span class="go">Ran 976 tests in 3.933s</span>
+</pre></div>
+</div>
+<p>OK</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="o">.</span><span class="n">errors</span> 
+<span class="go">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="o">.</span><span class="n">knownfail</span> 
+<span class="go">[]</span>
+</pre></div>
+</div>
+</dd></dl>
+

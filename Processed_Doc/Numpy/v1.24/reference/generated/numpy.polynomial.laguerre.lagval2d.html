@@ -1,0 +1,51 @@
+
+<h1>numpy.polynomial.laguerre.lagval2d<a class="headerlink" href="#numpy-polynomial-laguerre-lagval2d" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.polynomial.laguerre.lagval2d">
+<span class="sig-prename descclassname"><span class="pre">polynomial.laguerre.</span></span><span class="sig-name descname"><span class="pre">lagval2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/polynomial/laguerre.py#L896-L942"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.polynomial.laguerre.lagval2d" title="Permalink to this definition">#</a></dt>
+<dd><p>Evaluate a 2-D Laguerre series at points (x, y).</p>
+<p>This function returns the values:</p>
+<div class="math notranslate nohighlight">
+\[p(x,y) = \sum_{i,j} c_{i,j} * L_i(x) * L_j(y)\]</div>
+<p>The parameters <em class="xref py py-obj">x</em> and <em class="xref py py-obj">y</em> are converted to arrays only if they are
+tuples or a lists, otherwise they are treated as a scalars and they
+must have the same shape after conversion. In either case, either <em class="xref py py-obj">x</em>
+and <em class="xref py py-obj">y</em> or their elements must support multiplication and addition both
+with themselves and with the elements of <em class="xref py py-obj">c</em>.</p>
+<p>If <em class="xref py py-obj">c</em> is a 1-D array a one is implicitly appended to its shape to make
+it 2-D. The shape of the result will be c.shape[2:] + x.shape.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x, y</strong><span class="classifier">array_like, compatible objects</span></dt><dd><p>The two dimensional series is evaluated at the points <em class="xref py py-obj">(x, y)</em>,
+where <em class="xref py py-obj">x</em> and <em class="xref py py-obj">y</em> must have the same shape. If <em class="xref py py-obj">x</em> or <em class="xref py py-obj">y</em> is a list
+or tuple, it is first converted to an ndarray, otherwise it is left
+unchanged and if it isn’t an ndarray it is treated as a scalar.</p>
+</dd>
+<dt><strong>c</strong><span class="classifier">array_like</span></dt><dd><p>Array of coefficients ordered so that the coefficient of the term
+of multi-degree i,j is contained in <code class="docutils literal notranslate"><span class="pre">c[i,j]</span></code>. If <em class="xref py py-obj">c</em> has
+dimension greater than two the remaining indices enumerate multiple
+sets of coefficients.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>values</strong><span class="classifier">ndarray, compatible object</span></dt><dd><p>The values of the two dimensional polynomial at points formed with
+pairs of corresponding values from <em class="xref py py-obj">x</em> and <em class="xref py py-obj">y</em>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.polynomial.laguerre.lagval.html#numpy.polynomial.laguerre.lagval" title="numpy.polynomial.laguerre.lagval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lagval</span></code></a>, <a class="reference internal" href="numpy.polynomial.laguerre.laggrid2d.html#numpy.polynomial.laguerre.laggrid2d" title="numpy.polynomial.laguerre.laggrid2d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">laggrid2d</span></code></a>, <a class="reference internal" href="numpy.polynomial.laguerre.lagval3d.html#numpy.polynomial.laguerre.lagval3d" title="numpy.polynomial.laguerre.lagval3d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lagval3d</span></code></a>, <a class="reference internal" href="numpy.polynomial.laguerre.laggrid3d.html#numpy.polynomial.laguerre.laggrid3d" title="numpy.polynomial.laguerre.laggrid3d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">laggrid3d</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.7.0.</span></p>
+</div>
+</dd></dl>
+

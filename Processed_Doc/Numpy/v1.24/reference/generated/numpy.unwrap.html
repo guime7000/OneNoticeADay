@@ -1,0 +1,72 @@
+
+<h1>numpy.unwrap<a class="headerlink" href="#numpy-unwrap" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.unwrap">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">unwrap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discont</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6.283185307179586</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/function_base.py#L1659-L1752"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.unwrap" title="Permalink to this definition">#</a></dt>
+<dd><p>Unwrap by taking the complement of large deltas with respect to the period.</p>
+<p>This unwraps a signal <em class="xref py py-obj">p</em> by changing elements which have an absolute
+difference from their predecessor of more than <code class="docutils literal notranslate"><span class="pre">max(discont,</span> <span class="pre">period/2)</span></code>
+to their <em class="xref py py-obj">period</em>-complementary values.</p>
+<p>For the default case where <em class="xref py py-obj">period</em> is <span class="math notranslate nohighlight">\(2\pi\)</span> and <em class="xref py py-obj">discont</em> is
+<span class="math notranslate nohighlight">\(\pi\)</span>, this unwraps a radian phase <em class="xref py py-obj">p</em> such that adjacent differences
+are never greater than <span class="math notranslate nohighlight">\(\pi\)</span> by adding <span class="math notranslate nohighlight">\(2k\pi\)</span> for some
+integer <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>p</strong><span class="classifier">array_like</span></dt><dd><p>Input array.</p>
+</dd>
+<dt><strong>discont</strong><span class="classifier">float, optional</span></dt><dd><p>Maximum discontinuity between values, default is <code class="docutils literal notranslate"><span class="pre">period/2</span></code>.
+Values below <code class="docutils literal notranslate"><span class="pre">period/2</span></code> are treated as if they were <code class="docutils literal notranslate"><span class="pre">period/2</span></code>.
+To have an effect different from the default, <em class="xref py py-obj">discont</em> should be
+larger than <code class="docutils literal notranslate"><span class="pre">period/2</span></code>.</p>
+</dd>
+<dt><strong>axis</strong><span class="classifier">int, optional</span></dt><dd><p>Axis along which unwrap will operate, default is the last axis.</p>
+</dd>
+<dt><strong>period</strong><span class="classifier">float, optional</span></dt><dd><p>Size of the range over which the input wraps. By default, it is
+<code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">pi</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.21.0.</span></p>
+</div>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ndarray</span></dt><dd><p>Output array.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.rad2deg.html#numpy.rad2deg" title="numpy.rad2deg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rad2deg</span></code></a>, <a class="reference internal" href="numpy.deg2rad.html#numpy.deg2rad" title="numpy.deg2rad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deg2rad</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>If the discontinuity in <em class="xref py py-obj">p</em> is smaller than <code class="docutils literal notranslate"><span class="pre">period/2</span></code>,
+but larger than <em class="xref py py-obj">discont</em>, no unwrapping is done because taking
+the complement would only make the discontinuity larger.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">phase</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">phase</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">phase</span>
+<span class="go">array([ 0.        ,  0.78539816,  1.57079633,  5.49778714,  6.28318531]) # may vary</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">unwrap</span><span class="p">(</span><span class="n">phase</span><span class="p">)</span>
+<span class="go">array([ 0.        ,  0.78539816,  1.57079633, -0.78539816,  0.        ]) # may vary</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">unwrap</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">period</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="go">array([0, 1, 2, 3, 4])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">unwrap</span><span class="p">([</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">period</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="go">array([1, 2, 3, 4, 5, 6, 7, 8, 9])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">unwrap</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">period</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="go">array([2, 3, 4, 5, 6, 7, 8, 9])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">phase_deg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span> <span class="p">,</span><span class="mi">720</span><span class="p">,</span> <span class="mi">19</span><span class="p">),</span> <span class="mi">360</span><span class="p">)</span> <span class="o">-</span> <span class="mi">180</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">unwrap</span><span class="p">(</span><span class="n">phase_deg</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="mi">360</span><span class="p">)</span>
+<span class="go">array([-180., -140., -100.,  -60.,  -20.,   20.,   60.,  100.,  140.,</span>
+<span class="go">        180.,  220.,  260.,  300.,  340.,  380.,  420.,  460.,  500.,</span>
+<span class="go">        540.])</span>
+</pre></div>
+</div>
+</dd></dl>
+

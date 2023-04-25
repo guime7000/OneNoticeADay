@@ -1,0 +1,74 @@
+
+<h1>numpy.divide<a class="headerlink" href="#numpy-divide" title="Permalink to this heading">#</a></h1>
+<dl class="py data">
+<dt class="sig sig-object py" id="numpy.divide">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">divide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">casting='same_kind'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order='K'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subok=True</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">signature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extobj</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;ufunc</span> <span class="pre">'divide'&gt;</span></em><a class="headerlink" href="#numpy.divide" title="Permalink to this definition">#</a></dt>
+<dd><p>Divide arguments element-wise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x1</strong><span class="classifier">array_like</span></dt><dd><p>Dividend array.</p>
+</dd>
+<dt><strong>x2</strong><span class="classifier">array_like</span></dt><dd><p>Divisor array.
+If <code class="docutils literal notranslate"><span class="pre">x1.shape</span> <span class="pre">!=</span> <span class="pre">x2.shape</span></code>, they must be broadcastable to a common
+shape (which becomes the shape of the output).</p>
+</dd>
+<dt><strong>out</strong><span class="classifier">ndarray, None, or tuple of ndarray and None, optional</span></dt><dd><p>A location into which the result is stored. If provided, it must have
+a shape that the inputs broadcast to. If not provided or None,
+a freshly-allocated array is returned. A tuple (possible only as a
+keyword argument) must have length equal to the number of outputs.</p>
+</dd>
+<dt><strong>where</strong><span class="classifier">array_like, optional</span></dt><dd><p>This condition is broadcast over the input. At locations where the
+condition is True, the <em class="xref py py-obj">out</em> array will be set to the ufunc result.
+Elsewhere, the <em class="xref py py-obj">out</em> array will retain its original value.
+Note that if an uninitialized <em class="xref py py-obj">out</em> array is created via the default
+<code class="docutils literal notranslate"><span class="pre">out=None</span></code>, locations within it where the condition is False will
+remain uninitialized.</p>
+</dd>
+<dt><strong>**kwargs</strong></dt><dd><p>For other keyword-only arguments, see the
+<a class="reference internal" href="../ufuncs.html#ufuncs-kwargs"><span class="std std-ref">ufunc docs</span></a>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>y</strong><span class="classifier">ndarray or scalar</span></dt><dd><p>The quotient <code class="docutils literal notranslate"><span class="pre">x1/x2</span></code>, element-wise.
+This is a scalar if both <em class="xref py py-obj">x1</em> and <em class="xref py py-obj">x2</em> are scalars.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.seterr.html#numpy.seterr" title="numpy.seterr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">seterr</span></code></a></dt><dd><p>Set whether to raise or warn on overflow, underflow and division by zero.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Equivalent to <code class="docutils literal notranslate"><span class="pre">x1</span></code> / <code class="docutils literal notranslate"><span class="pre">x2</span></code> in terms of array-broadcasting.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">true_divide(x1,</span> <span class="pre">x2)</span></code> function is an alias for
+<code class="docutils literal notranslate"><span class="pre">divide(x1,</span> <span class="pre">x2)</span></code>.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">)</span>
+<span class="go">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">9.0</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span>
+<span class="go">array([[nan, 1. , 1. ],</span>
+<span class="go">       [inf, 4. , 2.5],</span>
+<span class="go">       [inf, 7. , 4. ]])</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">/</span></code> operator can be used as a shorthand for <code class="docutils literal notranslate"><span class="pre">np.divide</span></code> on
+ndarrays.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">9.0</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x2</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x1</span> <span class="o">/</span> <span class="n">x2</span>
+<span class="go">array([[0. , 0.5, 1. ],</span>
+<span class="go">       [1.5, 2. , 2.5],</span>
+<span class="go">       [3. , 3.5, 4. ]])</span>
+</pre></div>
+</div>
+</dd></dl>
+

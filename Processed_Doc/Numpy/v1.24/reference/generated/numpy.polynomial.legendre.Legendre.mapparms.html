@@ -1,0 +1,33 @@
+
+<h1>numpy.polynomial.legendre.Legendre.mapparms<a class="headerlink" href="#numpy-polynomial-legendre-legendre-mapparms" title="Permalink to this heading">#</a></h1>
+<p>method</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="numpy.polynomial.legendre.Legendre.mapparms">
+<span class="sig-prename descclassname"><span class="pre">polynomial.legendre.Legendre.</span></span><span class="sig-name descname"><span class="pre">mapparms</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/polynomial/_polybase.py#L802-L829"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.polynomial.legendre.Legendre.mapparms" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the mapping parameters.</p>
+<p>The returned values define a linear map <code class="docutils literal notranslate"><span class="pre">off</span> <span class="pre">+</span> <span class="pre">scl*x</span></code> that is
+applied to the input arguments before the series is evaluated. The
+map depends on the <code class="docutils literal notranslate"><span class="pre">domain</span></code> and <code class="docutils literal notranslate"><span class="pre">window</span></code>; if the current
+<code class="docutils literal notranslate"><span class="pre">domain</span></code> is equal to the <code class="docutils literal notranslate"><span class="pre">window</span></code> the resulting map is the
+identity.  If the coefficients of the series instance are to be
+used by themselves outside this class, then the linear function
+must be substituted for the <code class="docutils literal notranslate"><span class="pre">x</span></code> in the standard representation of
+the base polynomials.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>off, scl</strong><span class="classifier">float or complex</span></dt><dd><p>The mapping function is defined by <code class="docutils literal notranslate"><span class="pre">off</span> <span class="pre">+</span> <span class="pre">scl*x</span></code>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>If the current domain is the interval <code class="docutils literal notranslate"><span class="pre">[l1,</span> <span class="pre">r1]</span></code> and the window
+is <code class="docutils literal notranslate"><span class="pre">[l2,</span> <span class="pre">r2]</span></code>, then the linear mapping function <code class="docutils literal notranslate"><span class="pre">L</span></code> is
+defined by the equations:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="p">(</span><span class="n">l1</span><span class="p">)</span> <span class="o">=</span> <span class="n">l2</span>
+<span class="n">L</span><span class="p">(</span><span class="n">r1</span><span class="p">)</span> <span class="o">=</span> <span class="n">r2</span>
+</pre></div>
+</div>
+</dd></dl>
+

@@ -1,0 +1,39 @@
+
+<h1>numpy.polynomial.hermite_e.HermiteE.basis<a class="headerlink" href="#numpy-polynomial-hermite-e-hermitee-basis" title="Permalink to this heading">#</a></h1>
+<p>method</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="numpy.polynomial.hermite_e.HermiteE.basis">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">polynomial.hermite_e.HermiteE.</span></span><span class="sig-name descname"><span class="pre">basis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'x'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/polynomial/_polybase.py#L1103-L1142"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.polynomial.hermite_e.HermiteE.basis" title="Permalink to this definition">#</a></dt>
+<dd><p>Series basis polynomial of degree <em class="xref py py-obj">deg</em>.</p>
+<p>Returns the series representing the basis polynomial of degree <em class="xref py py-obj">deg</em>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.7.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>deg</strong><span class="classifier">int</span></dt><dd><p>Degree of the basis polynomial for the series. Must be &gt;= 0.</p>
+</dd>
+<dt><strong>domain</strong><span class="classifier">{None, array_like}, optional</span></dt><dd><p>If given, the array must be of the form <code class="docutils literal notranslate"><span class="pre">[beg,</span> <span class="pre">end]</span></code>, where
+<code class="docutils literal notranslate"><span class="pre">beg</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code> are the endpoints of the domain. If None is
+given then the class domain is used. The default is None.</p>
+</dd>
+<dt><strong>window</strong><span class="classifier">{None, array_like}, optional</span></dt><dd><p>If given, the resulting array must be if the form
+<code class="docutils literal notranslate"><span class="pre">[beg,</span> <span class="pre">end]</span></code>, where <code class="docutils literal notranslate"><span class="pre">beg</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code> are the endpoints of
+the window. If None is given then the class window is used. The
+default is None.</p>
+</dd>
+<dt><strong>symbol</strong><span class="classifier">str, optional</span></dt><dd><p>Symbol representing the independent variable. Default is ‘x’.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>new_series</strong><span class="classifier">series</span></dt><dd><p>A series with the coefficient of the <em class="xref py py-obj">deg</em> term set to one and
+all others zero.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+

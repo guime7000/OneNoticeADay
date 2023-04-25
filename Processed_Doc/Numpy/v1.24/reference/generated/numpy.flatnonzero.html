@@ -1,0 +1,47 @@
+
+<h1>numpy.flatnonzero<a class="headerlink" href="#numpy-flatnonzero" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.flatnonzero">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">flatnonzero</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/core/numeric.py#L632-L670"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.flatnonzero" title="Permalink to this definition">#</a></dt>
+<dd><p>Return indices that are non-zero in the flattened version of a.</p>
+<p>This is equivalent to <code class="docutils literal notranslate"><span class="pre">np.nonzero(np.ravel(a))[0]</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>a</strong><span class="classifier">array_like</span></dt><dd><p>Input data.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>res</strong><span class="classifier">ndarray</span></dt><dd><p>Output array, containing the indices of the elements of <code class="docutils literal notranslate"><span class="pre">a.ravel()</span></code>
+that are non-zero.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.nonzero.html#numpy.nonzero" title="numpy.nonzero"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nonzero</span></code></a></dt><dd><p>Return the indices of the non-zero elements of the input array.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.ravel.html#numpy.ravel" title="numpy.ravel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ravel</span></code></a></dt><dd><p>Return a 1-D array containing the elements of the input array.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">array([-2, -1,  0,  1,  2])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">flatnonzero</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">array([0, 1, 3, 4])</span>
+</pre></div>
+</div>
+<p>Use the indices of the non-zero elements as an index array to extract
+these elements:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">ravel</span><span class="p">()[</span><span class="n">np</span><span class="o">.</span><span class="n">flatnonzero</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span>
+<span class="go">array([-2, -1,  1,  2])</span>
+</pre></div>
+</div>
+</dd></dl>
+

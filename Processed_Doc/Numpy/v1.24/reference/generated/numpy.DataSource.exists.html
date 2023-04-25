@@ -1,0 +1,36 @@
+
+<h1>numpy.DataSource.exists<a class="headerlink" href="#numpy-datasource-exists" title="Permalink to this heading">#</a></h1>
+<p>method</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="numpy.DataSource.exists">
+<span class="sig-prename descclassname"><span class="pre">DataSource.</span></span><span class="sig-name descname"><span class="pre">exists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/_datasource.py#L431-L485"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.DataSource.exists" title="Permalink to this definition">#</a></dt>
+<dd><p>Test if path exists.</p>
+<p>Test if <em class="xref py py-obj">path</em> exists as (and in this order):</p>
+<ul class="simple">
+<li><p>a local file.</p></li>
+<li><p>a remote URL that has been downloaded and stored locally in the
+<a class="reference internal" href="numpy.DataSource.html#numpy.DataSource" title="numpy.DataSource"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSource</span></code></a> directory.</p></li>
+<li><p>a remote URL that has not been downloaded, but is valid and
+accessible.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Can be a local file or a remote URL.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">bool</span></dt><dd><p>True if <em class="xref py py-obj">path</em> exists.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>When <em class="xref py py-obj">path</em> is an URL, <a class="reference internal" href="#numpy.DataSource.exists" title="numpy.DataSource.exists"><code class="xref py py-obj docutils literal notranslate"><span class="pre">exists</span></code></a> will return True if it’s either
+stored locally in the <a class="reference internal" href="numpy.DataSource.html#numpy.DataSource" title="numpy.DataSource"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSource</span></code></a> directory, or is a valid remote
+URL.  <a class="reference internal" href="numpy.DataSource.html#numpy.DataSource" title="numpy.DataSource"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSource</span></code></a> does not discriminate between the two, the file
+is accessible if it exists in either location.</p>
+</dd></dl>
+

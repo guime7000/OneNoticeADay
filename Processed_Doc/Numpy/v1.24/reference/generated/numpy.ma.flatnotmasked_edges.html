@@ -1,0 +1,54 @@
+
+<h1>numpy.ma.flatnotmasked_edges<a class="headerlink" href="#numpy-ma-flatnotmasked-edges" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.ma.flatnotmasked_edges">
+<span class="sig-prename descclassname"><span class="pre">ma.</span></span><span class="sig-name descname"><span class="pre">flatnotmasked_edges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/ma/extras.py#L1645-L1697"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.ma.flatnotmasked_edges" title="Permalink to this definition">#</a></dt>
+<dd><p>Find the indices of the first and last unmasked values.</p>
+<p>Expects a 1-D <a class="reference internal" href="../maskedarray.baseclass.html#numpy.ma.MaskedArray" title="numpy.ma.MaskedArray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MaskedArray</span></code></a>, returns None if all values are masked.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>a</strong><span class="classifier">array_like</span></dt><dd><p>Input 1-D <a class="reference internal" href="../maskedarray.baseclass.html#numpy.ma.MaskedArray" title="numpy.ma.MaskedArray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MaskedArray</span></code></a></p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>edges</strong><span class="classifier">ndarray or None</span></dt><dd><p>The indices of first and last non-masked value in the array.
+Returns None if all values are masked.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.ma.flatnotmasked_contiguous.html#numpy.ma.flatnotmasked_contiguous" title="numpy.ma.flatnotmasked_contiguous"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flatnotmasked_contiguous</span></code></a>, <a class="reference internal" href="numpy.ma.notmasked_contiguous.html#numpy.ma.notmasked_contiguous" title="numpy.ma.notmasked_contiguous"><code class="xref py py-obj docutils literal notranslate"><span class="pre">notmasked_contiguous</span></code></a>, <a class="reference internal" href="numpy.ma.notmasked_edges.html#numpy.ma.notmasked_edges" title="numpy.ma.notmasked_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">notmasked_edges</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="numpy.ma.clump_masked.html#numpy.ma.clump_masked" title="numpy.ma.clump_masked"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clump_masked</span></code></a>, <a class="reference internal" href="numpy.ma.clump_unmasked.html#numpy.ma.clump_unmasked" title="numpy.ma.clump_unmasked"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clump_unmasked</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Only accepts 1-D arrays.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">flatnotmasked_edges</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">array([0, 9])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="o">~</span><span class="n">a</span><span class="o">.</span><span class="n">mask</span><span class="p">])</span>
+<span class="go">array([3, 4, 6, 7, 8])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">flatnotmasked_edges</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">array([3, 8])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">flatnotmasked_edges</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="go">None</span>
+</pre></div>
+</div>
+</dd></dl>
+

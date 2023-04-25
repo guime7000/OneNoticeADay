@@ -1,0 +1,45 @@
+
+<h1>numpy.polynomial.chebyshev.chebadd<a class="headerlink" href="#numpy-polynomial-chebyshev-chebadd" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.polynomial.chebyshev.chebadd">
+<span class="sig-prename descclassname"><span class="pre">polynomial.chebyshev.</span></span><span class="sig-name descname"><span class="pre">chebadd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c2</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/polynomial/chebyshev.py#L569-L608"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.polynomial.chebyshev.chebadd" title="Permalink to this definition">#</a></dt>
+<dd><p>Add one Chebyshev series to another.</p>
+<p>Returns the sum of two Chebyshev series <em class="xref py py-obj">c1</em> + <em class="xref py py-obj">c2</em>.  The arguments
+are sequences of coefficients ordered from lowest order term to
+highest, i.e., [1,2,3] represents the series <code class="docutils literal notranslate"><span class="pre">T_0</span> <span class="pre">+</span> <span class="pre">2*T_1</span> <span class="pre">+</span> <span class="pre">3*T_2</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>c1, c2</strong><span class="classifier">array_like</span></dt><dd><p>1-D arrays of Chebyshev series coefficients ordered from low to
+high.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ndarray</span></dt><dd><p>Array representing the Chebyshev series of their sum.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.polynomial.chebyshev.chebsub.html#numpy.polynomial.chebyshev.chebsub" title="numpy.polynomial.chebyshev.chebsub"><code class="xref py py-obj docutils literal notranslate"><span class="pre">chebsub</span></code></a>, <a class="reference internal" href="numpy.polynomial.chebyshev.chebmulx.html#numpy.polynomial.chebyshev.chebmulx" title="numpy.polynomial.chebyshev.chebmulx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">chebmulx</span></code></a>, <a class="reference internal" href="numpy.polynomial.chebyshev.chebmul.html#numpy.polynomial.chebyshev.chebmul" title="numpy.polynomial.chebyshev.chebmul"><code class="xref py py-obj docutils literal notranslate"><span class="pre">chebmul</span></code></a>, <a class="reference internal" href="numpy.polynomial.chebyshev.chebdiv.html#numpy.polynomial.chebyshev.chebdiv" title="numpy.polynomial.chebyshev.chebdiv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">chebdiv</span></code></a>, <a class="reference internal" href="numpy.polynomial.chebyshev.chebpow.html#numpy.polynomial.chebyshev.chebpow" title="numpy.polynomial.chebyshev.chebpow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">chebpow</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Unlike multiplication, division, etc., the sum of two Chebyshev series
+is a Chebyshev series (without having to “reproject” the result onto
+the basis set) so addition, just like that of “standard” polynomials,
+is simply “component-wise.”</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy.polynomial</span> <span class="kn">import</span> <span class="n">chebyshev</span> <span class="k">as</span> <span class="n">C</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">C</span><span class="o">.</span><span class="n">chebadd</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span><span class="n">c2</span><span class="p">)</span>
+<span class="go">array([4., 4., 4.])</span>
+</pre></div>
+</div>
+</dd></dl>
+

@@ -1,0 +1,79 @@
+
+<h1>numpy.lib.mixins.NDArrayOperatorsMixin<a class="headerlink" href="#numpy-lib-mixins-ndarrayoperatorsmixin" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="numpy.lib.mixins.NDArrayOperatorsMixin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">numpy.lib.mixins.</span></span><span class="sig-name descname"><span class="pre">NDArrayOperatorsMixin</span></span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/mixins.py#L59-L176"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.lib.mixins.NDArrayOperatorsMixin" title="Permalink to this definition">#</a></dt>
+<dd><p>Mixin defining all operator special methods using __array_ufunc__.</p>
+<p>This class implements the special methods for almost all of Python’s
+builtin operators defined in the <a class="reference external" href="https://docs.python.org/3/library/operator.html#module-operator" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">operator</span></code></a> module, including comparisons
+(<code class="docutils literal notranslate"><span class="pre">==</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, etc.) and arithmetic (<code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, etc.), by
+deferring to the <code class="docutils literal notranslate"><span class="pre">__array_ufunc__</span></code> method, which subclasses must
+implement.</p>
+<p>It is useful for writing classes that do not inherit from <a class="reference internal" href="numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>,
+but that should support arithmetic and numpy universal functions like
+arrays as described in <a class="reference external" href="https://numpy.org/neps/nep-0013-ufunc-overrides.html">A Mechanism for Overriding Ufuncs</a>.</p>
+<p>As an trivial example, consider this implementation of an <code class="docutils literal notranslate"><span class="pre">ArrayLike</span></code>
+class that simply wraps a NumPy array and ensures that the result of any
+arithmetic operation is also an <code class="docutils literal notranslate"><span class="pre">ArrayLike</span></code> object:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ArrayLike</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">mixins</span><span class="o">.</span><span class="n">NDArrayOperatorsMixin</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="c1"># One might also consider adding the built-in list type to this</span>
+    <span class="c1"># list, to support operations like np.add(array_like, list)</span>
+    <span class="n">_HANDLED_TYPES</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">numbers</span><span class="o">.</span><span class="n">Number</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__array_ufunc__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ufunc</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="o">*</span><span class="n">inputs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="p">())</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">inputs</span> <span class="o">+</span> <span class="n">out</span><span class="p">:</span>
+            <span class="c1"># Only support operations with instances of _HANDLED_TYPES.</span>
+            <span class="c1"># Use ArrayLike instead of type(self) for isinstance to</span>
+            <span class="c1"># allow subclasses that don&#39;t override __array_ufunc__ to</span>
+            <span class="c1"># handle ArrayLike objects.</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_HANDLED_TYPES</span> <span class="o">+</span> <span class="p">(</span><span class="n">ArrayLike</span><span class="p">,)):</span>
+                <span class="k">return</span> <span class="bp">NotImplemented</span>
+
+        <span class="c1"># Defer to the implementation of the ufunc on unwrapped values.</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">value</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ArrayLike</span><span class="p">)</span> <span class="k">else</span> <span class="n">x</span>
+                       <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">out</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;out&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
+                <span class="n">x</span><span class="o">.</span><span class="n">value</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ArrayLike</span><span class="p">)</span> <span class="k">else</span> <span class="n">x</span>
+                <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">out</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">ufunc</span><span class="p">,</span> <span class="n">method</span><span class="p">)(</span><span class="o">*</span><span class="n">inputs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">tuple</span><span class="p">:</span>
+            <span class="c1"># multiple return values</span>
+            <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">result</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;at&#39;</span><span class="p">:</span>
+            <span class="c1"># no return value</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># one return value</span>
+            <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)(</span><span class="n">result</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">(</span><span class="si">%r</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In interactions between <code class="docutils literal notranslate"><span class="pre">ArrayLike</span></code> objects and numbers or numpy arrays,
+the result is always another <code class="docutils literal notranslate"><span class="pre">ArrayLike</span></code>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">ArrayLike</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="go">ArrayLike(array([0, 1, 2]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span>
+<span class="go">ArrayLike(array([ 0, -1, -2]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="n">x</span>
+<span class="go">ArrayLike(array([-1, -1, -1]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">ArrayLike(array([1, 1, 1]))</span>
+</pre></div>
+</div>
+<p>Note that unlike <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>, <code class="docutils literal notranslate"><span class="pre">ArrayLike</span></code> does not allow operations
+with arbitrary, unrecognized types. This ensures that interactions with
+ArrayLike preserve a well-defined casting hierarchy.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.13.</span></p>
+</div>
+</dd></dl>
+

@@ -1,0 +1,33 @@
+
+<h1>numpy.distutils.ccompiler_opt.CCompilerOpt.cc_normalize_flags<a class="headerlink" href="#numpy-distutils-ccompiler-opt-ccompileropt-cc-normalize-flags" title="Permalink to this heading">#</a></h1>
+<p>method</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="numpy.distutils.ccompiler_opt.CCompilerOpt.cc_normalize_flags">
+<span class="sig-prename descclassname"><span class="pre">distutils.ccompiler_opt.CCompilerOpt.</span></span><span class="sig-name descname"><span class="pre">cc_normalize_flags</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flags</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/distutils/ccompiler_opt.py#L1099-L1128"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.distutils.ccompiler_opt.CCompilerOpt.cc_normalize_flags" title="Permalink to this definition">#</a></dt>
+<dd><p>Remove the conflicts that caused due gathering implied features flags.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>‘flags’ list, compiler flags</strong></dt><dd><p>flags should be sorted from the lowest to the highest interest.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>list, filtered from any conflicts.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="bp">self</span><span class="o">.</span><span class="n">cc_normalize_flags</span><span class="p">([</span><span class="s1">&#39;-march=armv8.2-a+fp16&#39;</span><span class="p">,</span> <span class="s1">&#39;-march=armv8.2-a+dotprod&#39;</span><span class="p">])</span>
+<span class="go">[&#39;armv8.2-a+fp16+dotprod&#39;]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="bp">self</span><span class="o">.</span><span class="n">cc_normalize_flags</span><span class="p">(</span>
+<span class="go">    [&#39;-msse&#39;, &#39;-msse2&#39;, &#39;-msse3&#39;, &#39;-mssse3&#39;, &#39;-msse4.1&#39;, &#39;-msse4.2&#39;, &#39;-mavx&#39;, &#39;-march=core-avx2&#39;]</span>
+<span class="go">)</span>
+<span class="go">[&#39;-march=core-avx2&#39;]</span>
+</pre></div>
+</div>
+</dd></dl>
+

@@ -1,0 +1,87 @@
+
+<h1>numpy.remainder<a class="headerlink" href="#numpy-remainder" title="Permalink to this heading">#</a></h1>
+<dl class="py data">
+<dt class="sig sig-object py" id="numpy.remainder">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">remainder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">casting='same_kind'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order='K'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subok=True</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">signature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extobj</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;ufunc</span> <span class="pre">'remainder'&gt;</span></em><a class="headerlink" href="#numpy.remainder" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the element-wise remainder of division.</p>
+<p>Computes the remainder complementary to the <a class="reference internal" href="numpy.floor_divide.html#numpy.floor_divide" title="numpy.floor_divide"><code class="xref py py-obj docutils literal notranslate"><span class="pre">floor_divide</span></code></a> function.  It is
+equivalent to the Python modulus operator``x1 % x2`` and has the same sign
+as the divisor <em class="xref py py-obj">x2</em>. The MATLAB function equivalent to <code class="docutils literal notranslate"><span class="pre">np.remainder</span></code>
+is <code class="docutils literal notranslate"><span class="pre">mod</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This should not be confused with:</p>
+<ul class="simple">
+<li><p>Python 3.7’s <a class="reference external" href="https://docs.python.org/3/library/math.html#math.remainder" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">math.remainder</span></code></a> and C’s <code class="docutils literal notranslate"><span class="pre">remainder</span></code>, which
+computes the IEEE remainder, which are the complement to
+<code class="docutils literal notranslate"><span class="pre">round(x1</span> <span class="pre">/</span> <span class="pre">x2)</span></code>.</p></li>
+<li><p>The MATLAB <code class="docutils literal notranslate"><span class="pre">rem</span></code> function and or the C <code class="docutils literal notranslate"><span class="pre">%</span></code> operator which is the
+complement to <code class="docutils literal notranslate"><span class="pre">int(x1</span> <span class="pre">/</span> <span class="pre">x2)</span></code>.</p></li>
+</ul>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x1</strong><span class="classifier">array_like</span></dt><dd><p>Dividend array.</p>
+</dd>
+<dt><strong>x2</strong><span class="classifier">array_like</span></dt><dd><p>Divisor array.
+If <code class="docutils literal notranslate"><span class="pre">x1.shape</span> <span class="pre">!=</span> <span class="pre">x2.shape</span></code>, they must be broadcastable to a common
+shape (which becomes the shape of the output).</p>
+</dd>
+<dt><strong>out</strong><span class="classifier">ndarray, None, or tuple of ndarray and None, optional</span></dt><dd><p>A location into which the result is stored. If provided, it must have
+a shape that the inputs broadcast to. If not provided or None,
+a freshly-allocated array is returned. A tuple (possible only as a
+keyword argument) must have length equal to the number of outputs.</p>
+</dd>
+<dt><strong>where</strong><span class="classifier">array_like, optional</span></dt><dd><p>This condition is broadcast over the input. At locations where the
+condition is True, the <em class="xref py py-obj">out</em> array will be set to the ufunc result.
+Elsewhere, the <em class="xref py py-obj">out</em> array will retain its original value.
+Note that if an uninitialized <em class="xref py py-obj">out</em> array is created via the default
+<code class="docutils literal notranslate"><span class="pre">out=None</span></code>, locations within it where the condition is False will
+remain uninitialized.</p>
+</dd>
+<dt><strong>**kwargs</strong></dt><dd><p>For other keyword-only arguments, see the
+<a class="reference internal" href="../ufuncs.html#ufuncs-kwargs"><span class="std std-ref">ufunc docs</span></a>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>y</strong><span class="classifier">ndarray</span></dt><dd><p>The element-wise remainder of the quotient <code class="docutils literal notranslate"><span class="pre">floor_divide(x1,</span> <span class="pre">x2)</span></code>.
+This is a scalar if both <em class="xref py py-obj">x1</em> and <em class="xref py py-obj">x2</em> are scalars.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.floor_divide.html#numpy.floor_divide" title="numpy.floor_divide"><code class="xref py py-obj docutils literal notranslate"><span class="pre">floor_divide</span></code></a></dt><dd><p>Equivalent of Python <code class="docutils literal notranslate"><span class="pre">//</span></code> operator.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.divmod.html#numpy.divmod" title="numpy.divmod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">divmod</span></code></a></dt><dd><p>Simultaneous floor division and remainder.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.fmod.html#numpy.fmod" title="numpy.fmod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fmod</span></code></a></dt><dd><p>Equivalent of the MATLAB <code class="docutils literal notranslate"><span class="pre">rem</span></code> function.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.divide.html#numpy.divide" title="numpy.divide"><code class="xref py py-obj docutils literal notranslate"><span class="pre">divide</span></code></a>, <a class="reference internal" href="numpy.floor.html#numpy.floor" title="numpy.floor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">floor</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Returns 0 when <em class="xref py py-obj">x2</em> is 0 and both <em class="xref py py-obj">x1</em> and <em class="xref py py-obj">x2</em> are (arrays of)
+integers.
+<code class="docutils literal notranslate"><span class="pre">mod</span></code> is an alias of <code class="docutils literal notranslate"><span class="pre">remainder</span></code>.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">remainder</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="go">array([0, 1])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">remainder</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span> <span class="mi">5</span><span class="p">)</span>
+<span class="go">array([0, 1, 2, 3, 4, 0, 1])</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">%</span></code> operator can be used as a shorthand for <code class="docutils literal notranslate"><span class="pre">np.remainder</span></code> on
+ndarrays.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x1</span> <span class="o">%</span> <span class="mi">5</span>
+<span class="go">array([0, 1, 2, 3, 4, 0, 1])</span>
+</pre></div>
+</div>
+</dd></dl>
+

@@ -1,0 +1,61 @@
+
+<h1>numpy.bmat<a class="headerlink" href="#numpy-bmat" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.bmat">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">bmat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ldict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gdict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/matrixlib/defmatrix.py#L1035-L1111"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.bmat" title="Permalink to this definition">#</a></dt>
+<dd><p>Build a matrix object from a string, nested sequence, or array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>obj</strong><span class="classifier">str or array_like</span></dt><dd><p>Input data. If a string, variables in the current scope may be
+referenced by name.</p>
+</dd>
+<dt><strong>ldict</strong><span class="classifier">dict, optional</span></dt><dd><p>A dictionary that replaces local operands in current frame.
+Ignored if <em class="xref py py-obj">obj</em> is not a string or <em class="xref py py-obj">gdict</em> is None.</p>
+</dd>
+<dt><strong>gdict</strong><span class="classifier">dict, optional</span></dt><dd><p>A dictionary that replaces global operands in current frame.
+Ignored if <em class="xref py py-obj">obj</em> is not a string.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">matrix</span></dt><dd><p>Returns a matrix object, which is a specialized 2-D array.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.block.html#numpy.block" title="numpy.block"><code class="xref py py-obj docutils literal notranslate"><span class="pre">block</span></code></a></dt><dd><p>A generalization of this function for N-d arrays, that returns normal ndarrays.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mat</span><span class="p">(</span><span class="s1">&#39;1 1; 1 1&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mat</span><span class="p">(</span><span class="s1">&#39;2 2; 2 2&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mat</span><span class="p">(</span><span class="s1">&#39;3 4; 5 6&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mat</span><span class="p">(</span><span class="s1">&#39;7 8; 9 0&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>All the following expressions construct the same block matrix:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">bmat</span><span class="p">([[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">],</span> <span class="p">[</span><span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">]])</span>
+<span class="go">matrix([[1, 1, 2, 2],</span>
+<span class="go">        [1, 1, 2, 2],</span>
+<span class="go">        [3, 4, 7, 8],</span>
+<span class="go">        [5, 6, 9, 0]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">bmat</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">]])</span>
+<span class="go">matrix([[1, 1, 2, 2],</span>
+<span class="go">        [1, 1, 2, 2],</span>
+<span class="go">        [3, 4, 7, 8],</span>
+<span class="go">        [5, 6, 9, 0]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">bmat</span><span class="p">(</span><span class="s1">&#39;A,B; C,D&#39;</span><span class="p">)</span>
+<span class="go">matrix([[1, 1, 2, 2],</span>
+<span class="go">        [1, 1, 2, 2],</span>
+<span class="go">        [3, 4, 7, 8],</span>
+<span class="go">        [5, 6, 9, 0]])</span>
+</pre></div>
+</div>
+</dd></dl>
+

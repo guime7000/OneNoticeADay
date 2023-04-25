@@ -1,0 +1,44 @@
+
+<h1>numpy.polynomial.laguerre.lagmul<a class="headerlink" href="#numpy-polynomial-laguerre-lagmul" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.polynomial.laguerre.lagmul">
+<span class="sig-prename descclassname"><span class="pre">polynomial.laguerre.</span></span><span class="sig-name descname"><span class="pre">lagmul</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c2</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/polynomial/laguerre.py#L442-L505"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.polynomial.laguerre.lagmul" title="Permalink to this definition">#</a></dt>
+<dd><p>Multiply one Laguerre series by another.</p>
+<p>Returns the product of two Laguerre series <em class="xref py py-obj">c1</em> * <em class="xref py py-obj">c2</em>.  The arguments
+are sequences of coefficients, from lowest order “term” to highest,
+e.g., [1,2,3] represents the series <code class="docutils literal notranslate"><span class="pre">P_0</span> <span class="pre">+</span> <span class="pre">2*P_1</span> <span class="pre">+</span> <span class="pre">3*P_2</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>c1, c2</strong><span class="classifier">array_like</span></dt><dd><p>1-D arrays of Laguerre series coefficients ordered from low to
+high.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ndarray</span></dt><dd><p>Of Laguerre series coefficients representing their product.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.polynomial.laguerre.lagadd.html#numpy.polynomial.laguerre.lagadd" title="numpy.polynomial.laguerre.lagadd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lagadd</span></code></a>, <a class="reference internal" href="numpy.polynomial.laguerre.lagsub.html#numpy.polynomial.laguerre.lagsub" title="numpy.polynomial.laguerre.lagsub"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lagsub</span></code></a>, <a class="reference internal" href="numpy.polynomial.laguerre.lagmulx.html#numpy.polynomial.laguerre.lagmulx" title="numpy.polynomial.laguerre.lagmulx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lagmulx</span></code></a>, <a class="reference internal" href="numpy.polynomial.laguerre.lagdiv.html#numpy.polynomial.laguerre.lagdiv" title="numpy.polynomial.laguerre.lagdiv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lagdiv</span></code></a>, <a class="reference internal" href="numpy.polynomial.laguerre.lagpow.html#numpy.polynomial.laguerre.lagpow" title="numpy.polynomial.laguerre.lagpow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lagpow</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>In general, the (polynomial) product of two C-series results in terms
+that are not in the Laguerre polynomial basis set.  Thus, to express
+the product as a Laguerre series, it is necessary to “reproject” the
+product onto said basis set, which may produce “unintuitive” (but
+correct) results; see Examples section below.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy.polynomial.laguerre</span> <span class="kn">import</span> <span class="n">lagmul</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lagmul</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="go">array([  8., -13.,  38., -51.,  36.])</span>
+</pre></div>
+</div>
+</dd></dl>
+

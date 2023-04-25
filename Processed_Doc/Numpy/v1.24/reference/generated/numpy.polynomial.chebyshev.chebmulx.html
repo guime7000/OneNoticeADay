@@ -1,0 +1,35 @@
+
+<h1>numpy.polynomial.chebyshev.chebmulx<a class="headerlink" href="#numpy-polynomial-chebyshev-chebmulx" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.polynomial.chebyshev.chebmulx">
+<span class="sig-prename descclassname"><span class="pre">polynomial.chebyshev.</span></span><span class="sig-name descname"><span class="pre">chebmulx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/polynomial/chebyshev.py#L655-L698"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.polynomial.chebyshev.chebmulx" title="Permalink to this definition">#</a></dt>
+<dd><p>Multiply a Chebyshev series by x.</p>
+<p>Multiply the polynomial <em class="xref py py-obj">c</em> by x, where x is the independent
+variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>c</strong><span class="classifier">array_like</span></dt><dd><p>1-D array of Chebyshev series coefficients ordered from low to
+high.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ndarray</span></dt><dd><p>Array representing the result of the multiplication.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.5.0.</span></p>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy.polynomial</span> <span class="kn">import</span> <span class="n">chebyshev</span> <span class="k">as</span> <span class="n">C</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">C</span><span class="o">.</span><span class="n">chebmulx</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="go">array([1. , 2.5, 1. , 1.5])</span>
+</pre></div>
+</div>
+</dd></dl>
+

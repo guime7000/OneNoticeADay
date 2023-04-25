@@ -1,0 +1,35 @@
+
+<h1>numpy.testing.dec.setastest<a class="headerlink" href="#numpy-testing-dec-setastest" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.testing.dec.setastest">
+<span class="sig-prename descclassname"><span class="pre">testing.dec.</span></span><span class="sig-name descname"><span class="pre">setastest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/testing/_private/decorators.py#L67-L105"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.testing.dec.setastest" title="Permalink to this definition">#</a></dt>
+<dd><div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 1.21: </span>This decorator is retained for compatibility with the nose testing framework, which is being phased out.
+Please use the nose2 or pytest frameworks instead.</p>
+</div>
+<p>Signals to nose that this function is or is not a test.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>tf</strong><span class="classifier">bool</span></dt><dd><p>If True, specifies that the decorated callable is a test.
+If False, specifies that the decorated callable is not a test.
+Default is True.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This decorator can’t use the nose namespace, because it can be
+called from a non-test module. See also <code class="docutils literal notranslate"><span class="pre">istest</span></code> and <code class="docutils literal notranslate"><span class="pre">nottest</span></code> in
+<code class="docutils literal notranslate"><span class="pre">nose.tools</span></code>.</p>
+<p class="rubric">Examples</p>
+<p><a class="reference internal" href="#numpy.testing.dec.setastest" title="numpy.testing.dec.setastest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setastest</span></code></a> can be used in the following way:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy.testing</span> <span class="kn">import</span> <span class="n">dec</span>
+
+<span class="nd">@dec</span><span class="o">.</span><span class="n">setastest</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">func_with_test_in_name</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</dd></dl>
+

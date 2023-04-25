@@ -1,0 +1,70 @@
+
+<h1>numpy.fromregex<a class="headerlink" href="#numpy-fromregex" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.fromregex">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">fromregex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regexp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/npyio.py#L1615-L1711"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.fromregex" title="Permalink to this definition">#</a></dt>
+<dd><p>Construct an array from a text file, using regular expression parsing.</p>
+<p>The returned array is always a structured array, and is constructed from
+all matches of the regular expression in the file. Groups in the regular
+expression are converted to fields of the structured array.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>file</strong><span class="classifier">path or file</span></dt><dd><p>Filename or file object to read.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 1.22.0: </span>Now accepts <a class="reference external" href="https://docs.python.org/3/library/os.html#os.PathLike" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">os.PathLike</span></code></a> implementations.</p>
+</div>
+</dd>
+<dt><strong>regexp</strong><span class="classifier">str or regexp</span></dt><dd><p>Regular expression used to parse the file.
+Groups in the regular expression correspond to fields in the dtype.</p>
+</dd>
+<dt><strong>dtype</strong><span class="classifier">dtype or list of dtypes</span></dt><dd><p>Dtype for the structured array; must be a structured datatype.</p>
+</dd>
+<dt><strong>encoding</strong><span class="classifier">str, optional</span></dt><dd><p>Encoding used to decode the inputfile. Does not apply to input streams.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.14.0.</span></p>
+</div>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>output</strong><span class="classifier">ndarray</span></dt><dd><p>The output array, containing the part of the content of <em class="xref py py-obj">file</em> that
+was matched by <em class="xref py py-obj">regexp</em>. <em class="xref py py-obj">output</em> is always a structured array.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>TypeError</dt><dd><p>When <a class="reference internal" href="numpy.dtype.html#numpy.dtype" title="numpy.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a> is not a valid dtype for a structured array.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.fromstring.html#numpy.fromstring" title="numpy.fromstring"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromstring</span></code></a>, <a class="reference internal" href="numpy.loadtxt.html#numpy.loadtxt" title="numpy.loadtxt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">loadtxt</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Dtypes for structured arrays can be specified in several forms, but all
+forms specify at least the data type and field name. For details see
+<em class="xref py py-obj">basics.rec</em>.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="s2">&quot;1312 foo</span><span class="se">\n</span><span class="s2">1534  bar</span><span class="se">\n</span><span class="s2">444   qux&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">regexp</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(\d+)\s+(...)&quot;</span>  <span class="c1"># match [digits, whitespace, anything]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromregex</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">regexp</span><span class="p">,</span>
+<span class="gp">... </span>                      <span class="p">[(</span><span class="s1">&#39;num&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="s1">&#39;S3&#39;</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span>
+<span class="go">array([(1312, b&#39;foo&#39;), (1534, b&#39;bar&#39;), ( 444, b&#39;qux&#39;)],</span>
+<span class="go">      dtype=[(&#39;num&#39;, &#39;&lt;i8&#39;), (&#39;key&#39;, &#39;S3&#39;)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;num&#39;</span><span class="p">]</span>
+<span class="go">array([1312, 1534,  444])</span>
+</pre></div>
+</div>
+</dd></dl>
+

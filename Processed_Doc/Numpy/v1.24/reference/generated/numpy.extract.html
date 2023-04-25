@@ -1,0 +1,54 @@
+
+<h1>numpy.extract<a class="headerlink" href="#numpy-extract" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.extract">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">extract</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">condition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arr</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/function_base.py#L1857-L1906"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.extract" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the elements of an array that satisfy some condition.</p>
+<p>This is equivalent to <code class="docutils literal notranslate"><span class="pre">np.compress(ravel(condition),</span> <span class="pre">ravel(arr))</span></code>.  If
+<em class="xref py py-obj">condition</em> is boolean <code class="docutils literal notranslate"><span class="pre">np.extract</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">arr[condition]</span></code>.</p>
+<p>Note that <a class="reference internal" href="numpy.place.html#numpy.place" title="numpy.place"><code class="xref py py-obj docutils literal notranslate"><span class="pre">place</span></code></a> does the exact opposite of <a class="reference internal" href="#numpy.extract" title="numpy.extract"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>condition</strong><span class="classifier">array_like</span></dt><dd><p>An array whose nonzero or True entries indicate the elements of <em class="xref py py-obj">arr</em>
+to extract.</p>
+</dd>
+<dt><strong>arr</strong><span class="classifier">array_like</span></dt><dd><p>Input array of the same size as <em class="xref py py-obj">condition</em>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>extract</strong><span class="classifier">ndarray</span></dt><dd><p>Rank 1 array of values from <em class="xref py py-obj">arr</em> where <em class="xref py py-obj">condition</em> is True.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.take.html#numpy.take" title="numpy.take"><code class="xref py py-obj docutils literal notranslate"><span class="pre">take</span></code></a>, <a class="reference internal" href="numpy.put.html#numpy.put" title="numpy.put"><code class="xref py py-obj docutils literal notranslate"><span class="pre">put</span></code></a>, <a class="reference internal" href="numpy.copyto.html#numpy.copyto" title="numpy.copyto"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copyto</span></code></a>, <a class="reference internal" href="numpy.compress.html#numpy.compress" title="numpy.compress"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compress</span></code></a>, <a class="reference internal" href="numpy.place.html#numpy.place" title="numpy.place"><code class="xref py py-obj docutils literal notranslate"><span class="pre">place</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span>
+<span class="go">array([[ 0,  1,  2,  3],</span>
+<span class="go">       [ 4,  5,  6,  7],</span>
+<span class="go">       [ 8,  9, 10, 11]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">condition</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">condition</span>
+<span class="go">array([[ True, False, False,  True],</span>
+<span class="go">       [False, False,  True, False],</span>
+<span class="go">       [False,  True, False, False]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">condition</span><span class="p">,</span> <span class="n">arr</span><span class="p">)</span>
+<span class="go">array([0, 3, 6, 9])</span>
+</pre></div>
+</div>
+<p>If <em class="xref py py-obj">condition</em> is boolean:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span><span class="p">[</span><span class="n">condition</span><span class="p">]</span>
+<span class="go">array([0, 3, 6, 9])</span>
+</pre></div>
+</div>
+</dd></dl>
+

@@ -1,0 +1,75 @@
+
+<h1>numpy.correlate<a class="headerlink" href="#numpy-correlate" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.correlate">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">correlate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'valid'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/core/numeric.py#L677-L748"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.correlate" title="Permalink to this definition">#</a></dt>
+<dd><p>Cross-correlation of two 1-dimensional sequences.</p>
+<p>This function computes the correlation as generally defined in signal
+processing texts:</p>
+<div class="math notranslate nohighlight">
+\[c_k = \sum_n a_{n+k} \cdot \overline{v}_n\]</div>
+<p>with a and v sequences being zero-padded where necessary and
+<span class="math notranslate nohighlight">\(\overline x\)</span> denoting complex conjugation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>a, v</strong><span class="classifier">array_like</span></dt><dd><p>Input sequences.</p>
+</dd>
+<dt><strong>mode</strong><span class="classifier">{‘valid’, ‘same’, ‘full’}, optional</span></dt><dd><p>Refer to the <a class="reference internal" href="numpy.convolve.html#numpy.convolve" title="numpy.convolve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convolve</span></code></a> docstring.  Note that the default
+is ‘valid’, unlike <a class="reference internal" href="numpy.convolve.html#numpy.convolve" title="numpy.convolve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convolve</span></code></a>, which uses ‘full’.</p>
+</dd>
+<dt><strong>old_behavior</strong><span class="classifier">bool</span></dt><dd><p><em class="xref py py-obj">old_behavior</em> was removed in NumPy 1.10. If you need the old
+behavior, use <em class="xref py py-obj">multiarray.correlate</em>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ndarray</span></dt><dd><p>Discrete cross-correlation of <em class="xref py py-obj">a</em> and <em class="xref py py-obj">v</em>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.convolve.html#numpy.convolve" title="numpy.convolve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convolve</span></code></a></dt><dd><p>Discrete, linear convolution of two one-dimensional sequences.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">multiarray.correlate</span></code></dt><dd><p>Old, no conjugate, version of correlate.</p>
+</dd>
+<dt><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.correlate.html#scipy.signal.correlate" title="(in SciPy v1.9.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.signal.correlate</span></code></a></dt><dd><p>uses FFT which has superior performance on large arrays.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>The definition of correlation above is not unique and sometimes correlation
+may be defined differently. Another common definition is:</p>
+<div class="math notranslate nohighlight">
+\[c'_k = \sum_n a_{n} \cdot \overline{v_{n+k}}\]</div>
+<p>which is related to <span class="math notranslate nohighlight">\(c_k\)</span> by <span class="math notranslate nohighlight">\(c'_k = c_{-k}\)</span>.</p>
+<p><a class="reference internal" href="#numpy.correlate" title="numpy.correlate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.correlate</span></code></a> may perform slowly in large arrays (i.e. n = 1e5) because it does
+not use the FFT to compute the convolution; in that case, <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.correlate.html#scipy.signal.correlate" title="(in SciPy v1.9.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.signal.correlate</span></code></a> might
+be preferable.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">correlate</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
+<span class="go">array([3.5])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">correlate</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="s2">&quot;same&quot;</span><span class="p">)</span>
+<span class="go">array([2. ,  3.5,  3. ])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">correlate</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="s2">&quot;full&quot;</span><span class="p">)</span>
+<span class="go">array([0.5,  2. ,  3.5,  3. ,  0. ])</span>
+</pre></div>
+</div>
+<p>Using complex sequences:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">correlate</span><span class="p">([</span><span class="mi">1</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="n">j</span><span class="p">],</span> <span class="s1">&#39;full&#39;</span><span class="p">)</span>
+<span class="go">array([ 0.5-0.5j,  1.0+0.j ,  1.5-1.5j,  3.0-1.j ,  0.0+0.j ])</span>
+</pre></div>
+</div>
+<p>Note that you get the time reversed, complex conjugated result
+(<span class="math notranslate nohighlight">\(\overline{c_{-k}}\)</span>) when the two input sequences a and v change 
+places:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">correlate</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="n">j</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="p">],</span> <span class="s1">&#39;full&#39;</span><span class="p">)</span>
+<span class="go">array([ 0.0+0.j ,  3.0+1.j ,  1.5+1.5j,  1.0+0.j ,  0.5+0.5j])</span>
+</pre></div>
+</div>
+</dd></dl>
+

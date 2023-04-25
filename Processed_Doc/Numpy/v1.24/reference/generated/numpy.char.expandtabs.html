@@ -1,0 +1,38 @@
+
+<h1>numpy.char.expandtabs<a class="headerlink" href="#numpy-char-expandtabs" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.char.expandtabs">
+<span class="sig-prename descclassname"><span class="pre">char.</span></span><span class="sig-name descname"><span class="pre">expandtabs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tabsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/core/defchararray.py#L692-L725"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.char.expandtabs" title="Permalink to this definition">#</a></dt>
+<dd><p>Return a copy of each string element where all tab characters are
+replaced by one or more spaces.</p>
+<p>Calls <em class="xref py py-obj">str.expandtabs</em> element-wise.</p>
+<p>Return a copy of each string element where all tab characters are
+replaced by one or more spaces, depending on the current column
+and the given <em class="xref py py-obj">tabsize</em>. The column number is reset to zero after
+each newline occurring in the string. This doesn’t understand other
+non-printing characters or escape sequences.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>a</strong><span class="classifier">array_like of str or unicode</span></dt><dd><p>Input array</p>
+</dd>
+<dt><strong>tabsize</strong><span class="classifier">int, optional</span></dt><dd><p>Replace tabs with <em class="xref py py-obj">tabsize</em> number of spaces.  If not given defaults
+to 8 spaces.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ndarray</span></dt><dd><p>Output array of str or unicode, depending on input type</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str.expandtabs" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str.expandtabs</span></code></a></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
+

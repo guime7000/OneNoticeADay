@@ -1,0 +1,60 @@
+
+<h1>numpy.find_common_type<a class="headerlink" href="#numpy-find-common-type" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.find_common_type">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">find_common_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array_types</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scalar_types</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/core/numerictypes.py#L597-L670"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.find_common_type" title="Permalink to this definition">#</a></dt>
+<dd><p>Determine common type following standard coercion rules.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>array_types</strong><span class="classifier">sequence</span></dt><dd><p>A list of dtypes or dtype convertible objects representing arrays.</p>
+</dd>
+<dt><strong>scalar_types</strong><span class="classifier">sequence</span></dt><dd><p>A list of dtypes or dtype convertible objects representing scalars.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>datatype</strong><span class="classifier">dtype</span></dt><dd><p>The common data type, which is the maximum of <em class="xref py py-obj">array_types</em> ignoring
+<em class="xref py py-obj">scalar_types</em>, unless the maximum of <em class="xref py py-obj">scalar_types</em> is of a
+different kind (<a class="reference internal" href="numpy.dtype.kind.html#numpy.dtype.kind" title="numpy.dtype.kind"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype.kind</span></code></a>). If the kind is not understood, then
+None is returned.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.dtype.html#numpy.dtype" title="numpy.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a>, <a class="reference internal" href="numpy.common_type.html#numpy.common_type" title="numpy.common_type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">common_type</span></code></a>, <a class="reference internal" href="numpy.can_cast.html#numpy.can_cast" title="numpy.can_cast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">can_cast</span></code></a>, <a class="reference internal" href="numpy.mintypecode.html#numpy.mintypecode" title="numpy.mintypecode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mintypecode</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">find_common_type</span><span class="p">([],</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="nb">complex</span><span class="p">])</span>
+<span class="go">dtype(&#39;complex128&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">find_common_type</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">],</span> <span class="p">[])</span>
+<span class="go">dtype(&#39;float64&#39;)</span>
+</pre></div>
+</div>
+<p>The standard casting rules ensure that a scalar cannot up-cast an
+array unless the scalar is of a fundamentally different kind of data
+(i.e. under a different hierarchy in the data type hierarchy) then
+the array:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">find_common_type</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">],</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span>
+<span class="go">dtype(&#39;float32&#39;)</span>
+</pre></div>
+</div>
+<p>Complex is of a different type, so it up-casts the float in the
+<em class="xref py py-obj">array_types</em> argument:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">find_common_type</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">],</span> <span class="p">[</span><span class="nb">complex</span><span class="p">])</span>
+<span class="go">dtype(&#39;complex128&#39;)</span>
+</pre></div>
+</div>
+<p>Type specifier strings are convertible to dtypes and can therefore
+be used instead of dtypes:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">find_common_type</span><span class="p">([</span><span class="s1">&#39;f4&#39;</span><span class="p">,</span> <span class="s1">&#39;f4&#39;</span><span class="p">,</span> <span class="s1">&#39;i4&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;c8&#39;</span><span class="p">])</span>
+<span class="go">dtype(&#39;complex128&#39;)</span>
+</pre></div>
+</div>
+</dd></dl>
+

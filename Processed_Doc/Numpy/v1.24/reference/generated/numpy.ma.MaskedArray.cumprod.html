@@ -1,0 +1,26 @@
+
+<h1>numpy.ma.MaskedArray.cumprod<a class="headerlink" href="#numpy-ma-maskedarray-cumprod" title="Permalink to this heading">#</a></h1>
+<p>method</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="numpy.ma.MaskedArray.cumprod">
+<span class="sig-prename descclassname"><span class="pre">ma.MaskedArray.</span></span><span class="sig-name descname"><span class="pre">cumprod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/ma/core.py#L5241-L5270"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.ma.MaskedArray.cumprod" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the cumulative product of the array elements over the given axis.</p>
+<p>Masked values are set to 1 internally during the computation.
+However, their position is saved, and the result will be masked at
+the same locations.</p>
+<p>Refer to <a class="reference internal" href="numpy.cumprod.html#numpy.cumprod" title="numpy.cumprod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.cumprod</span></code></a> for full documentation.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.ndarray.cumprod.html#numpy.ndarray.cumprod" title="numpy.ndarray.cumprod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray.cumprod</span></code></a></dt><dd><p>corresponding function for ndarrays</p>
+</dd>
+<dt><a class="reference internal" href="numpy.cumprod.html#numpy.cumprod" title="numpy.cumprod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.cumprod</span></code></a></dt><dd><p>equivalent function</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>The mask is lost if <em class="xref py py-obj">out</em> is not a valid MaskedArray !</p>
+<p>Arithmetic is modular when using integer types, and no error is
+raised on overflow.</p>
+</dd></dl>
+

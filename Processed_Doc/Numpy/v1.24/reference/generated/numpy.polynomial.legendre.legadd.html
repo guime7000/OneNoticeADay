@@ -1,0 +1,45 @@
+
+<h1>numpy.polynomial.legendre.legadd<a class="headerlink" href="#numpy-polynomial-legendre-legadd" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.polynomial.legendre.legadd">
+<span class="sig-prename descclassname"><span class="pre">polynomial.legendre.</span></span><span class="sig-name descname"><span class="pre">legadd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c2</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/polynomial/legendre.py#L322-L361"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.polynomial.legendre.legadd" title="Permalink to this definition">#</a></dt>
+<dd><p>Add one Legendre series to another.</p>
+<p>Returns the sum of two Legendre series <em class="xref py py-obj">c1</em> + <em class="xref py py-obj">c2</em>.  The arguments
+are sequences of coefficients ordered from lowest order term to
+highest, i.e., [1,2,3] represents the series <code class="docutils literal notranslate"><span class="pre">P_0</span> <span class="pre">+</span> <span class="pre">2*P_1</span> <span class="pre">+</span> <span class="pre">3*P_2</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>c1, c2</strong><span class="classifier">array_like</span></dt><dd><p>1-D arrays of Legendre series coefficients ordered from low to
+high.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ndarray</span></dt><dd><p>Array representing the Legendre series of their sum.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.polynomial.legendre.legsub.html#numpy.polynomial.legendre.legsub" title="numpy.polynomial.legendre.legsub"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legsub</span></code></a>, <a class="reference internal" href="numpy.polynomial.legendre.legmulx.html#numpy.polynomial.legendre.legmulx" title="numpy.polynomial.legendre.legmulx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legmulx</span></code></a>, <a class="reference internal" href="numpy.polynomial.legendre.legmul.html#numpy.polynomial.legendre.legmul" title="numpy.polynomial.legendre.legmul"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legmul</span></code></a>, <a class="reference internal" href="numpy.polynomial.legendre.legdiv.html#numpy.polynomial.legendre.legdiv" title="numpy.polynomial.legendre.legdiv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legdiv</span></code></a>, <a class="reference internal" href="numpy.polynomial.legendre.legpow.html#numpy.polynomial.legendre.legpow" title="numpy.polynomial.legendre.legpow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legpow</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Unlike multiplication, division, etc., the sum of two Legendre series
+is a Legendre series (without having to “reproject” the result onto
+the basis set) so addition, just like that of “standard” polynomials,
+is simply “component-wise.”</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy.polynomial</span> <span class="kn">import</span> <span class="n">legendre</span> <span class="k">as</span> <span class="n">L</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">L</span><span class="o">.</span><span class="n">legadd</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span><span class="n">c2</span><span class="p">)</span>
+<span class="go">array([4.,  4.,  4.])</span>
+</pre></div>
+</div>
+</dd></dl>
+

@@ -1,0 +1,141 @@
+
+<h1>numpy.nanquantile<a class="headerlink" href="#numpy-nanquantile" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.nanquantile">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">nanquantile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite_input=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method='linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdims=&lt;no</span> <span class="pre">value&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation=None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/nanfunctions.py#L1390-L1539"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.nanquantile" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute the qth quantile of the data along the specified axis,
+while ignoring nan values.
+Returns the qth quantile(s) of the array elements.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.15.0.</span></p>
+</div>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>a</strong><span class="classifier">array_like</span></dt><dd><p>Input array or object that can be converted to an array, containing
+nan values to be ignored</p>
+</dd>
+<dt><strong>q</strong><span class="classifier">array_like of float</span></dt><dd><p>Quantile or sequence of quantiles to compute, which must be between
+0 and 1 inclusive.</p>
+</dd>
+<dt><strong>axis</strong><span class="classifier">{int, tuple of int, None}, optional</span></dt><dd><p>Axis or axes along which the quantiles are computed. The
+default is to compute the quantile(s) along a flattened
+version of the array.</p>
+</dd>
+<dt><strong>out</strong><span class="classifier">ndarray, optional</span></dt><dd><p>Alternative output array in which to place the result. It must
+have the same shape and buffer length as the expected output,
+but the type (of the output) will be cast if necessary.</p>
+</dd>
+<dt><strong>overwrite_input</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, then allow the input array <em class="xref py py-obj">a</em> to be modified by intermediate
+calculations, to save memory. In this case, the contents of the input
+<em class="xref py py-obj">a</em> after this function completes is undefined.</p>
+</dd>
+<dt><strong>method</strong><span class="classifier">str, optional</span></dt><dd><p>This parameter specifies the method to use for estimating the
+quantile.  There are many different methods, some unique to NumPy.
+See the notes for explanation.  The options sorted by their R type
+as summarized in the H&amp;F paper <a class="reference internal" href="#r02de30f409d2-1" id="id1">[1]</a> are:</p>
+<ol class="arabic simple">
+<li><p>‘inverted_cdf’</p></li>
+<li><p>‘averaged_inverted_cdf’</p></li>
+<li><p>‘closest_observation’</p></li>
+<li><p>‘interpolated_inverted_cdf’</p></li>
+<li><p>‘hazen’</p></li>
+<li><p>‘weibull’</p></li>
+<li><p>‘linear’  (default)</p></li>
+<li><p>‘median_unbiased’</p></li>
+<li><p>‘normal_unbiased’</p></li>
+</ol>
+<p>The first three methods are discontinuous.  NumPy further defines the
+following discontinuous variations of the default ‘linear’ (7.) option:</p>
+<ul class="simple">
+<li><p>‘lower’</p></li>
+<li><p>‘higher’,</p></li>
+<li><p>‘midpoint’</p></li>
+<li><p>‘nearest’</p></li>
+</ul>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 1.22.0: </span>This argument was previously called “interpolation” and only
+offered the “linear” default and last four options.</p>
+</div>
+</dd>
+<dt><strong>keepdims</strong><span class="classifier">bool, optional</span></dt><dd><p>If this is set to True, the axes which are reduced are left in
+the result as dimensions with size one. With this option, the
+result will broadcast correctly against the original array <em class="xref py py-obj">a</em>.</p>
+<p>If this is anything but the default value it will be passed
+through (in the special case of an empty array) to the
+<a class="reference internal" href="numpy.mean.html#numpy.mean" title="numpy.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a> function of the underlying array.  If the array is
+a sub-class and <a class="reference internal" href="numpy.mean.html#numpy.mean" title="numpy.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a> does not have the kwarg <em class="xref py py-obj">keepdims</em> this
+will raise a RuntimeError.</p>
+</dd>
+<dt><strong>interpolation</strong><span class="classifier">str, optional</span></dt><dd><p>Deprecated name for the method keyword argument.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 1.22.0.</span></p>
+</div>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>quantile</strong><span class="classifier">scalar or ndarray</span></dt><dd><p>If <em class="xref py py-obj">q</em> is a single percentile and <em class="xref py py-obj">axis=None</em>, then the result
+is a scalar. If multiple quantiles are given, first axis of
+the result corresponds to the quantiles. The other axes are
+the axes that remain after the reduction of <em class="xref py py-obj">a</em>. If the input
+contains integers or floats smaller than <code class="docutils literal notranslate"><span class="pre">float64</span></code>, the output
+data-type is <code class="docutils literal notranslate"><span class="pre">float64</span></code>. Otherwise, the output data-type is the
+same as that of the input. If <em class="xref py py-obj">out</em> is specified, that array is
+returned instead.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.quantile.html#numpy.quantile" title="numpy.quantile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quantile</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="numpy.nanmean.html#numpy.nanmean" title="numpy.nanmean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nanmean</span></code></a>, <a class="reference internal" href="numpy.nanmedian.html#numpy.nanmedian" title="numpy.nanmedian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nanmedian</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="numpy.nanmedian.html#numpy.nanmedian" title="numpy.nanmedian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nanmedian</span></code></a></dt><dd><p>equivalent to <code class="docutils literal notranslate"><span class="pre">nanquantile(...,</span> <span class="pre">0.5)</span></code></p>
+</dd>
+<dt><a class="reference internal" href="numpy.nanpercentile.html#numpy.nanpercentile" title="numpy.nanpercentile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nanpercentile</span></code></a></dt><dd><p>same as nanquantile, but with q in the range [0, 100].</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>For more information please see <a class="reference internal" href="numpy.quantile.html#numpy.quantile" title="numpy.quantile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.quantile</span></code></a></p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r02de30f409d2-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>R. J. Hyndman and Y. Fan,
+“Sample quantiles in statistical packages,”
+The American Statistician, 50(4), pp. 361-365, 1996</p>
+</div>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">10.</span><span class="p">,</span> <span class="mf">7.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">array([[10.,  nan,   4.],</span>
+<span class="go">      [ 3.,   2.,   1.]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="go">nan</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">nanquantile</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="go">3.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">nanquantile</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">array([6.5, 2. , 2.5])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">nanquantile</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">array([[7.],</span>
+<span class="go">       [2.]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanquantile</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">nanquantile</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
+<span class="go">array([6.5, 2. , 2.5])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span>
+<span class="go">array([6.5,  2. ,  2.5])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">nanquantile</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">overwrite_input</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">array([7., 2.])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">a</span><span class="o">==</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+

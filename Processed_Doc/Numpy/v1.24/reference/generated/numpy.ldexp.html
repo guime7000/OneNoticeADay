@@ -1,0 +1,65 @@
+
+<h1>numpy.ldexp<a class="headerlink" href="#numpy-ldexp" title="Permalink to this heading">#</a></h1>
+<dl class="py data">
+<dt class="sig sig-object py" id="numpy.ldexp">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">ldexp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">casting='same_kind'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order='K'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subok=True</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">signature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extobj</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;ufunc</span> <span class="pre">'ldexp'&gt;</span></em><a class="headerlink" href="#numpy.ldexp" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns x1 * 2**x2, element-wise.</p>
+<p>The mantissas <em class="xref py py-obj">x1</em> and twos exponents <em class="xref py py-obj">x2</em> are used to construct
+floating point numbers <code class="docutils literal notranslate"><span class="pre">x1</span> <span class="pre">*</span> <span class="pre">2**x2</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x1</strong><span class="classifier">array_like</span></dt><dd><p>Array of multipliers.</p>
+</dd>
+<dt><strong>x2</strong><span class="classifier">array_like, int</span></dt><dd><p>Array of twos exponents.
+If <code class="docutils literal notranslate"><span class="pre">x1.shape</span> <span class="pre">!=</span> <span class="pre">x2.shape</span></code>, they must be broadcastable to a common
+shape (which becomes the shape of the output).</p>
+</dd>
+<dt><strong>out</strong><span class="classifier">ndarray, None, or tuple of ndarray and None, optional</span></dt><dd><p>A location into which the result is stored. If provided, it must have
+a shape that the inputs broadcast to. If not provided or None,
+a freshly-allocated array is returned. A tuple (possible only as a
+keyword argument) must have length equal to the number of outputs.</p>
+</dd>
+<dt><strong>where</strong><span class="classifier">array_like, optional</span></dt><dd><p>This condition is broadcast over the input. At locations where the
+condition is True, the <em class="xref py py-obj">out</em> array will be set to the ufunc result.
+Elsewhere, the <em class="xref py py-obj">out</em> array will retain its original value.
+Note that if an uninitialized <em class="xref py py-obj">out</em> array is created via the default
+<code class="docutils literal notranslate"><span class="pre">out=None</span></code>, locations within it where the condition is False will
+remain uninitialized.</p>
+</dd>
+<dt><strong>**kwargs</strong></dt><dd><p>For other keyword-only arguments, see the
+<a class="reference internal" href="../ufuncs.html#ufuncs-kwargs"><span class="std std-ref">ufunc docs</span></a>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>y</strong><span class="classifier">ndarray or scalar</span></dt><dd><p>The result of <code class="docutils literal notranslate"><span class="pre">x1</span> <span class="pre">*</span> <span class="pre">2**x2</span></code>.
+This is a scalar if both <em class="xref py py-obj">x1</em> and <em class="xref py py-obj">x2</em> are scalars.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.frexp.html#numpy.frexp" title="numpy.frexp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">frexp</span></code></a></dt><dd><p>Return (y1, y2) from <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">y1</span> <span class="pre">*</span> <span class="pre">2**y2</span></code>, inverse to <a class="reference internal" href="#numpy.ldexp" title="numpy.ldexp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ldexp</span></code></a>.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Complex dtypes are not supported, they will raise a TypeError.</p>
+<p><a class="reference internal" href="#numpy.ldexp" title="numpy.ldexp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ldexp</span></code></a> is useful as the inverse of <a class="reference internal" href="numpy.frexp.html#numpy.frexp" title="numpy.frexp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">frexp</span></code></a>, if used by itself it is
+more clear to simply use the expression <code class="docutils literal notranslate"><span class="pre">x1</span> <span class="pre">*</span> <span class="pre">2**x2</span></code>.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">ldexp</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="go">array([ 5., 10., 20., 40.], dtype=float16)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">ldexp</span><span class="p">(</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">frexp</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="go">array([ 0.,  1.,  2.,  3.,  4.,  5.])</span>
+</pre></div>
+</div>
+</dd></dl>
+

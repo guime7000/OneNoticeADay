@@ -1,0 +1,120 @@
+
+<h1>numpy.ma.arange<a class="headerlink" href="#numpy-ma-arange" title="Permalink to this heading">#</a></h1>
+<dl class="py data">
+<dt class="sig sig-object py" id="numpy.ma.arange">
+<span class="sig-prename descclassname"><span class="pre">ma.</span></span><span class="sig-name descname"><span class="pre">arange</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <span class="optional">]</span><em class="sig-param"><span class="n"><span class="pre">stop</span></span></em>, <span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">step</span></span></em>, <span class="optional">]</span><em class="sig-param"><span class="n"><span class="pre">dtype=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">like=None</span></span></em><span class="sig-paren">)</span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;numpy.ma.core._convert2ma</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#numpy.ma.arange" title="Permalink to this definition">#</a></dt>
+<dd><p>Return evenly spaced values within a given interval.</p>
+<p><code class="docutils literal notranslate"><span class="pre">arange</span></code> can be called with a varying number of positional arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">arange(stop)</span></code>: Values are generated within the half-open interval
+<code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">stop)</span></code> (in other words, the interval including <em class="xref py py-obj">start</em> but
+excluding <em class="xref py py-obj">stop</em>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">arange(start,</span> <span class="pre">stop)</span></code>: Values are generated within the half-open
+interval <code class="docutils literal notranslate"><span class="pre">[start,</span> <span class="pre">stop)</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">arange(start,</span> <span class="pre">stop,</span> <span class="pre">step)</span></code> Values are generated within the half-open
+interval <code class="docutils literal notranslate"><span class="pre">[start,</span> <span class="pre">stop)</span></code>, with spacing between values given by
+<code class="docutils literal notranslate"><span class="pre">step</span></code>.</p></li>
+</ul>
+<p>For integer arguments the function is roughly equivalent to the Python
+built-in <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#range" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">range</span></code></a>, but returns an ndarray rather than a <code class="docutils literal notranslate"><span class="pre">range</span></code>
+instance.</p>
+<p>When using a non-integer step, such as 0.1, it is often better to use
+<a class="reference internal" href="numpy.linspace.html#numpy.linspace" title="numpy.linspace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.linspace</span></code></a>.</p>
+<p>See the Warning sections below for more information.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>start</strong><span class="classifier">integer or real, optional</span></dt><dd><p>Start of interval.  The interval includes this value.  The default
+start value is 0.</p>
+</dd>
+<dt><strong>stop</strong><span class="classifier">integer or real</span></dt><dd><p>End of interval.  The interval does not include this value, except
+in some cases where <em class="xref py py-obj">step</em> is not an integer and floating point
+round-off affects the length of <em class="xref py py-obj">out</em>.</p>
+</dd>
+<dt><strong>step</strong><span class="classifier">integer or real, optional</span></dt><dd><p>Spacing between values.  For any output <em class="xref py py-obj">out</em>, this is the distance
+between two adjacent values, <code class="docutils literal notranslate"><span class="pre">out[i+1]</span> <span class="pre">-</span> <span class="pre">out[i]</span></code>.  The default
+step size is 1.  If <em class="xref py py-obj">step</em> is specified as a position argument,
+<em class="xref py py-obj">start</em> must also be given.</p>
+</dd>
+<dt><strong>dtype</strong><span class="classifier">dtype, optional</span></dt><dd><p>The type of the output array.  If <a class="reference internal" href="numpy.dtype.html#numpy.dtype" title="numpy.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a> is not given, infer the data
+type from the other input arguments.</p>
+</dd>
+<dt><strong>like</strong><span class="classifier">array_like, optional</span></dt><dd><p>Reference object to allow the creation of arrays which are not
+NumPy arrays. If an array-like passed in as <code class="docutils literal notranslate"><span class="pre">like</span></code> supports
+the <code class="docutils literal notranslate"><span class="pre">__array_function__</span></code> protocol, the result will be defined
+by it. In this case, it ensures the creation of an array object
+compatible with that passed in via this argument.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.20.0.</span></p>
+</div>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl>
+<dt><strong>arange</strong><span class="classifier">MaskedArray</span></dt><dd><p>Array of evenly spaced values.</p>
+<p>For floating point arguments, the length of the result is
+<code class="docutils literal notranslate"><span class="pre">ceil((stop</span> <span class="pre">-</span> <span class="pre">start)/step)</span></code>.  Because of floating point overflow,
+this rule may result in the last element of <em class="xref py py-obj">out</em> being greater
+than <em class="xref py py-obj">stop</em>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The length of the output might not be numerically stable.</p>
+<p>Another stability issue is due to the internal implementation of
+<a class="reference internal" href="numpy.arange.html#numpy.arange" title="numpy.arange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.arange</span></code></a>.
+The actual step value used to populate the array is
+<code class="docutils literal notranslate"><span class="pre">dtype(start</span> <span class="pre">+</span> <span class="pre">step)</span> <span class="pre">-</span> <span class="pre">dtype(start)</span></code> and not <em class="xref py py-obj">step</em>. Precision loss
+can occur here, due to casting or due to using floating points when
+<em class="xref py py-obj">start</em> is much larger than <em class="xref py py-obj">step</em>. This can lead to unexpected
+behaviour. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="go">array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="go">array([-3, -2, -1,  0,  1,  2,  3,  4,  5,  6,  7,  8])</span>
+</pre></div>
+</div>
+<p>In such cases, the use of <a class="reference internal" href="numpy.linspace.html#numpy.linspace" title="numpy.linspace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.linspace</span></code></a> should be preferred.</p>
+<p>The built-in <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#range" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">range</span></code></a> generates <a class="reference external" href="https://docs.python.org/3/c-api/long.html" title="(in Python v3.11)"><span class="xref std std-doc">Python built-in integers
+that have arbitrary size</span></a>, while <a class="reference internal" href="numpy.arange.html#numpy.arange" title="numpy.arange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.arange</span></code></a>
+produces <a class="reference internal" href="../arrays.scalars.html#numpy.int32" title="numpy.int32"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.int32</span></code></a> or <a class="reference internal" href="../arrays.scalars.html#numpy.int64" title="numpy.int64"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.int64</span></code></a> numbers. This may result in
+incorrect results for large integer values:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">power</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">modulo</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x1</span> <span class="o">=</span> <span class="p">[(</span><span class="n">n</span> <span class="o">**</span> <span class="n">power</span><span class="p">)</span> <span class="o">%</span> <span class="n">modulo</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x2</span> <span class="o">=</span> <span class="p">[(</span><span class="n">n</span> <span class="o">**</span> <span class="n">power</span><span class="p">)</span> <span class="o">%</span> <span class="n">modulo</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+<span class="go">[0, 1, 7776, 8801, 6176, 625, 6576, 4001]  # correct</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+<span class="go">[0, 1, 7776, 7185, 0, 5969, 4816, 3361]  # incorrect</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.linspace.html#numpy.linspace" title="numpy.linspace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.linspace</span></code></a></dt><dd><p>Evenly spaced numbers with careful handling of endpoints.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.ogrid.html#numpy.ogrid" title="numpy.ogrid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ogrid</span></code></a></dt><dd><p>Arrays of evenly spaced numbers in N-dimensions.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.mgrid.html#numpy.mgrid" title="numpy.mgrid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.mgrid</span></code></a></dt><dd><p>Grid-shaped arrays of evenly spaced numbers in N-dimensions.</p>
+</dd>
+<dt><a class="reference internal" href="../../user/how-to-partition.html#how-to-partition"><span class="std std-ref">How to create arrays with regularly-spaced values</span></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">array([0, 1, 2])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>
+<span class="go">array([ 0.,  1.,  2.])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+<span class="go">array([3, 4, 5, 6])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">array([3, 5])</span>
+</pre></div>
+</div>
+</dd></dl>
+

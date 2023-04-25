@@ -1,0 +1,38 @@
+
+<h1>numpy.number.__class_getitem__<a class="headerlink" href="#numpy-number-class-getitem" title="Permalink to this heading">#</a></h1>
+<p>method</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="numpy.number.__class_getitem__">
+<span class="sig-prename descclassname"><span class="pre">number.</span></span><span class="sig-name descname"><span class="pre">__class_getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#numpy.number.__class_getitem__" title="Permalink to this definition">#</a></dt>
+<dd><p>Return a parametrized wrapper around the <a class="reference internal" href="../arrays.scalars.html#numpy.number" title="numpy.number"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number</span></code></a> type.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.22.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>alias</strong><span class="classifier">types.GenericAlias</span></dt><dd><p>A parametrized <a class="reference internal" href="../arrays.scalars.html#numpy.number" title="numpy.number"><code class="xref py py-obj docutils literal notranslate"><span class="pre">number</span></code></a> type.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><span class="target" id="index-0"></span><a class="pep reference external" href="https://peps.python.org/pep-0585/"><strong>PEP 585</strong></a></dt><dd><p>Type hinting generics in standard collections.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>This method is only available for python 3.9 and later.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">signedinteger</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span>
+<span class="go">numpy.signedinteger[typing.Any]</span>
+</pre></div>
+</div>
+</dd></dl>
+

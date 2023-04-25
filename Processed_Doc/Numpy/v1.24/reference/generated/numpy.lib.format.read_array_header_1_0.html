@@ -1,0 +1,40 @@
+
+<h1>numpy.lib.format.read_array_header_1_0<a class="headerlink" href="#numpy-lib-format-read-array-header-1-0" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.lib.format.read_array_header_1_0">
+<span class="sig-prename descclassname"><span class="pre">lib.format.</span></span><span class="sig-name descname"><span class="pre">read_array_header_1_0</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_header_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/format.py#L483-L517"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.lib.format.read_array_header_1_0" title="Permalink to this definition">#</a></dt>
+<dd><p>Read an array header from a filelike object using the 1.0 file format
+version.</p>
+<p>This will leave the file object located just after the header.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>fp</strong><span class="classifier">filelike object</span></dt><dd><p>A file object or something with a <em class="xref py py-obj">read()</em> method like a file.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>shape</strong><span class="classifier">tuple of int</span></dt><dd><p>The shape of the array.</p>
+</dd>
+<dt><strong>fortran_order</strong><span class="classifier">bool</span></dt><dd><p>The array data will be written out directly if it is either
+C-contiguous or Fortran-contiguous. Otherwise, it will be made
+contiguous before writing it out.</p>
+</dd>
+<dt><strong>dtype</strong><span class="classifier">dtype</span></dt><dd><p>The dtype of the file’s data.</p>
+</dd>
+<dt><strong>max_header_size</strong><span class="classifier">int, optional</span></dt><dd><p>Maximum allowed size of the header.  Large headers may not be safe
+to load securely and thus require explicitly passing a larger value.
+See <code class="xref py py-meth docutils literal notranslate"><span class="pre">ast.literal_eval</span></code> for details.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>ValueError</dt><dd><p>If the data is invalid.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+

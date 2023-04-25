@@ -1,0 +1,122 @@
+
+<h1>numpy.arctan2<a class="headerlink" href="#numpy-arctan2" title="Permalink to this heading">#</a></h1>
+<dl class="py data">
+<dt class="sig sig-object py" id="numpy.arctan2">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">arctan2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">casting='same_kind'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order='K'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subok=True</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">signature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extobj</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;ufunc</span> <span class="pre">'arctan2'&gt;</span></em><a class="headerlink" href="#numpy.arctan2" title="Permalink to this definition">#</a></dt>
+<dd><p>Element-wise arc tangent of <code class="docutils literal notranslate"><span class="pre">x1/x2</span></code> choosing the quadrant correctly.</p>
+<p>The quadrant (i.e., branch) is chosen so that <code class="docutils literal notranslate"><span class="pre">arctan2(x1,</span> <span class="pre">x2)</span></code> is
+the signed angle in radians between the ray ending at the origin and
+passing through the point (1,0), and the ray ending at the origin and
+passing through the point (<em class="xref py py-obj">x2</em>, <em class="xref py py-obj">x1</em>).  (Note the role reversal: the
+“<em class="xref py py-obj">y</em>-coordinate” is the first function parameter, the “<em class="xref py py-obj">x</em>-coordinate”
+is the second.)  By IEEE convention, this function is defined for
+<em class="xref py py-obj">x2</em> = +/-0 and for either or both of <em class="xref py py-obj">x1</em> and <em class="xref py py-obj">x2</em> = +/-inf (see
+Notes for specific values).</p>
+<p>This function is not defined for complex-valued arguments; for the
+so-called argument of complex values, use <a class="reference internal" href="numpy.angle.html#numpy.angle" title="numpy.angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">angle</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x1</strong><span class="classifier">array_like, real-valued</span></dt><dd><p><em class="xref py py-obj">y</em>-coordinates.</p>
+</dd>
+<dt><strong>x2</strong><span class="classifier">array_like, real-valued</span></dt><dd><p><em class="xref py py-obj">x</em>-coordinates.
+If <code class="docutils literal notranslate"><span class="pre">x1.shape</span> <span class="pre">!=</span> <span class="pre">x2.shape</span></code>, they must be broadcastable to a common
+shape (which becomes the shape of the output).</p>
+</dd>
+<dt><strong>out</strong><span class="classifier">ndarray, None, or tuple of ndarray and None, optional</span></dt><dd><p>A location into which the result is stored. If provided, it must have
+a shape that the inputs broadcast to. If not provided or None,
+a freshly-allocated array is returned. A tuple (possible only as a
+keyword argument) must have length equal to the number of outputs.</p>
+</dd>
+<dt><strong>where</strong><span class="classifier">array_like, optional</span></dt><dd><p>This condition is broadcast over the input. At locations where the
+condition is True, the <em class="xref py py-obj">out</em> array will be set to the ufunc result.
+Elsewhere, the <em class="xref py py-obj">out</em> array will retain its original value.
+Note that if an uninitialized <em class="xref py py-obj">out</em> array is created via the default
+<code class="docutils literal notranslate"><span class="pre">out=None</span></code>, locations within it where the condition is False will
+remain uninitialized.</p>
+</dd>
+<dt><strong>**kwargs</strong></dt><dd><p>For other keyword-only arguments, see the
+<a class="reference internal" href="../ufuncs.html#ufuncs-kwargs"><span class="std std-ref">ufunc docs</span></a>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>angle</strong><span class="classifier">ndarray</span></dt><dd><p>Array of angles in radians, in the range <code class="docutils literal notranslate"><span class="pre">[-pi,</span> <span class="pre">pi]</span></code>.
+This is a scalar if both <em class="xref py py-obj">x1</em> and <em class="xref py py-obj">x2</em> are scalars.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.arctan.html#numpy.arctan" title="numpy.arctan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arctan</span></code></a>, <a class="reference internal" href="numpy.tan.html#numpy.tan" title="numpy.tan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tan</span></code></a>, <a class="reference internal" href="numpy.angle.html#numpy.angle" title="numpy.angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">angle</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p><em>arctan2</em> is identical to the <em class="xref py py-obj">atan2</em> function of the underlying
+C library.  The following special values are defined in the C
+standard: <a class="reference internal" href="#r73eacd397847-1" id="id1">[1]</a></p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><em class="xref py py-obj">x1</em></p></th>
+<th class="head"><p><em class="xref py py-obj">x2</em></p></th>
+<th class="head"><p><em class="xref py py-obj">arctan2(x1,x2)</em></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>+/- 0</p></td>
+<td><p>+0</p></td>
+<td><p>+/- 0</p></td>
+</tr>
+<tr class="row-odd"><td><p>+/- 0</p></td>
+<td><p>-0</p></td>
+<td><p>+/- pi</p></td>
+</tr>
+<tr class="row-even"><td><p>&gt; 0</p></td>
+<td><p>+/-inf</p></td>
+<td><p>+0 / +pi</p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt; 0</p></td>
+<td><p>+/-inf</p></td>
+<td><p>-0 / -pi</p></td>
+</tr>
+<tr class="row-even"><td><p>+/-inf</p></td>
+<td><p>+inf</p></td>
+<td><p>+/- (pi/4)</p></td>
+</tr>
+<tr class="row-odd"><td><p>+/-inf</p></td>
+<td><p>-inf</p></td>
+<td><p>+/- (3*pi/4)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Note that +0 and -0 are distinct floating point numbers, as are +inf
+and -inf.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r73eacd397847-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>ISO/IEC standard 9899:1999, “Programming language C.”</p>
+</div>
+</div>
+<p class="rubric">Examples</p>
+<p>Consider four points in different quadrants:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="mi">180</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+<span class="go">array([-135.,  -45.,   45.,  135.])</span>
+</pre></div>
+</div>
+<p>Note the order of the parameters. <a class="reference internal" href="#numpy.arctan2" title="numpy.arctan2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arctan2</span></code></a> is defined also when <em class="xref py py-obj">x2</em> = 0
+and at several other special points, obtaining values in
+the range <code class="docutils literal notranslate"><span class="pre">[-pi,</span> <span class="pre">pi]</span></code>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>
+<span class="go">array([ 1.57079633, -1.57079633])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">],</span> <span class="p">[</span><span class="o">+</span><span class="mf">0.</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">])</span>
+<span class="go">array([0.        , 3.14159265, 0.78539816])</span>
+</pre></div>
+</div>
+</dd></dl>
+

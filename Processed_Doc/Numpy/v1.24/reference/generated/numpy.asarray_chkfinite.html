@@ -1,0 +1,78 @@
+
+<h1>numpy.asarray_chkfinite<a class="headerlink" href="#numpy-asarray-chkfinite" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.asarray_chkfinite">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">asarray_chkfinite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/function_base.py#L562-L630"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.asarray_chkfinite" title="Permalink to this definition">#</a></dt>
+<dd><p>Convert the input to an array, checking for NaNs or Infs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>a</strong><span class="classifier">array_like</span></dt><dd><p>Input data, in any form that can be converted to an array.  This
+includes lists, lists of tuples, tuples, tuples of tuples, tuples
+of lists and ndarrays.  Success requires no NaNs or Infs.</p>
+</dd>
+<dt><strong>dtype</strong><span class="classifier">data-type, optional</span></dt><dd><p>By default, the data-type is inferred from the input data.</p>
+</dd>
+<dt><strong>order</strong><span class="classifier">{‘C’, ‘F’, ‘A’, ‘K’}, optional</span></dt><dd><p>Memory layout.  ‘A’ and ‘K’ depend on the order of input array a.
+‘C’ row-major (C-style),
+‘F’ column-major (Fortran-style) memory representation.
+‘A’ (any) means ‘F’ if <em class="xref py py-obj">a</em> is Fortran contiguous, ‘C’ otherwise
+‘K’ (keep) preserve input order
+Defaults to ‘C’.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ndarray</span></dt><dd><p>Array interpretation of <em class="xref py py-obj">a</em>.  No copy is performed if the input
+is already an ndarray.  If <em class="xref py py-obj">a</em> is a subclass of ndarray, a base
+class ndarray is returned.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>ValueError</dt><dd><p>Raises ValueError if <em class="xref py py-obj">a</em> contains NaN (Not a Number) or Inf (Infinity).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.asarray.html#numpy.asarray" title="numpy.asarray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asarray</span></code></a></dt><dd><p>Create and array.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.asanyarray.html#numpy.asanyarray" title="numpy.asanyarray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asanyarray</span></code></a></dt><dd><p>Similar function which passes through subclasses.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.ascontiguousarray.html#numpy.ascontiguousarray" title="numpy.ascontiguousarray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ascontiguousarray</span></code></a></dt><dd><p>Convert input to a contiguous array.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.asfarray.html#numpy.asfarray" title="numpy.asfarray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asfarray</span></code></a></dt><dd><p>Convert input to a floating point ndarray.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.asfortranarray.html#numpy.asfortranarray" title="numpy.asfortranarray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asfortranarray</span></code></a></dt><dd><p>Convert input to an ndarray with column-major memory order.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.fromiter.html#numpy.fromiter" title="numpy.fromiter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromiter</span></code></a></dt><dd><p>Create an array from an iterator.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.fromfunction.html#numpy.fromfunction" title="numpy.fromfunction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromfunction</span></code></a></dt><dd><p>Construct an array by executing a function on grid positions.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<p>Convert a list into an array.  If all elements are finite
+<code class="docutils literal notranslate"><span class="pre">asarray_chkfinite</span></code> is identical to <code class="docutils literal notranslate"><span class="pre">asarray</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">asarray_chkfinite</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="go">array([1., 2.])</span>
+</pre></div>
+</div>
+<p>Raises ValueError if array_like contains Nans or Infs.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">try</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">np</span><span class="o">.</span><span class="n">asarray_chkfinite</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ValueError&#39;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">ValueError</span>
+</pre></div>
+</div>
+</dd></dl>
+

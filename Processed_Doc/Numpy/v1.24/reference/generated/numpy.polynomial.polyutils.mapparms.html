@@ -1,0 +1,47 @@
+
+<h1>numpy.polynomial.polyutils.mapparms<a class="headerlink" href="#numpy-polynomial-polyutils-mapparms" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.polynomial.polyutils.mapparms">
+<span class="sig-prename descclassname"><span class="pre">polynomial.polyutils.</span></span><span class="sig-name descname"><span class="pre">mapparms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">old</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/polynomial/polyutils.py#L260-L305"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.polynomial.polyutils.mapparms" title="Permalink to this definition">#</a></dt>
+<dd><p>Linear map parameters between domains.</p>
+<p>Return the parameters of the linear map <code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">+</span> <span class="pre">scale*x</span></code> that maps
+<em class="xref py py-obj">old</em> to <em class="xref py py-obj">new</em> such that <code class="docutils literal notranslate"><span class="pre">old[i]</span> <span class="pre">-&gt;</span> <span class="pre">new[i]</span></code>, <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">=</span> <span class="pre">0,</span> <span class="pre">1</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>old, new</strong><span class="classifier">array_like</span></dt><dd><p>Domains. Each domain must (successfully) convert to a 1-d array
+containing precisely two values.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>offset, scale</strong><span class="classifier">scalars</span></dt><dd><p>The map <code class="docutils literal notranslate"><span class="pre">L(x)</span> <span class="pre">=</span> <span class="pre">offset</span> <span class="pre">+</span> <span class="pre">scale*x</span></code> maps the first domain to the
+second.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.polynomial.polyutils.getdomain.html#numpy.polynomial.polyutils.getdomain" title="numpy.polynomial.polyutils.getdomain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getdomain</span></code></a>, <a class="reference internal" href="numpy.polynomial.polyutils.mapdomain.html#numpy.polynomial.polyutils.mapdomain" title="numpy.polynomial.polyutils.mapdomain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mapdomain</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Also works for complex numbers, and thus can be used to calculate the
+parameters required to map any line in the complex plane to any other
+line therein.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy.polynomial</span> <span class="kn">import</span> <span class="n">polyutils</span> <span class="k">as</span> <span class="n">pu</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pu</span><span class="o">.</span><span class="n">mapparms</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="go">(0.0, 1.0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pu</span><span class="o">.</span><span class="n">mapparms</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">),(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="go">(-0.0, -1.0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pu</span><span class="o">.</span><span class="n">mapparms</span><span class="p">((</span><span class="o">-</span><span class="n">i</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="p">))</span>
+<span class="go">((1+1j), (1-0j))</span>
+</pre></div>
+</div>
+</dd></dl>
+

@@ -1,0 +1,33 @@
+
+<h1>numpy.ma.masked_array.mean<a class="headerlink" href="#numpy-ma-masked-array-mean" title="Permalink to this heading">#</a></h1>
+<p>method</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="numpy.ma.masked_array.mean">
+<span class="sig-prename descclassname"><span class="pre">ma.masked_array.</span></span><span class="sig-name descname"><span class="pre">mean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdims=&lt;no</span> <span class="pre">value&gt;</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/ma/core.py#L5272-L5325"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.ma.masked_array.mean" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the average of the array elements along given axis.</p>
+<p>Masked entries are ignored, and result elements which are not
+finite will be masked.</p>
+<p>Refer to <a class="reference internal" href="numpy.mean.html#numpy.mean" title="numpy.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.mean</span></code></a> for full documentation.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.ndarray.mean.html#numpy.ndarray.mean" title="numpy.ndarray.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray.mean</span></code></a></dt><dd><p>corresponding function for ndarrays</p>
+</dd>
+<dt><a class="reference internal" href="numpy.mean.html#numpy.mean" title="numpy.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.mean</span></code></a></dt><dd><p>Equivalent function</p>
+</dd>
+<dt><a class="reference internal" href="numpy.ma.average.html#numpy.ma.average" title="numpy.ma.average"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ma.average</span></code></a></dt><dd><p>Weighted average.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">mask</span><span class="o">=</span><span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">masked_array(data=[1, 2, --],</span>
+<span class="go">             mask=[False, False,  True],</span>
+<span class="go">       fill_value=999999)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="go">1.5</span>
+</pre></div>
+</div>
+</dd></dl>
+

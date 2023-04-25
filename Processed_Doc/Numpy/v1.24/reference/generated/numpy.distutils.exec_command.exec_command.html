@@ -1,0 +1,34 @@
+
+<h1>numpy.distutils.exec_command.exec_command<a class="headerlink" href="#numpy-distutils-exec-command-exec-command" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.distutils.exec_command.exec_command">
+<span class="sig-prename descclassname"><span class="pre">distutils.exec_command.</span></span><span class="sig-name descname"><span class="pre">exec_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">execute_in</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_shell</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_tee</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_with_python</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">env</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/distutils/exec_command.py#L177-L250"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.distutils.exec_command.exec_command" title="Permalink to this definition">#</a></dt>
+<dd><p>Return (status,output) of executed command.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 1.17: </span>Use subprocess.Popen instead</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>command</strong><span class="classifier">str</span></dt><dd><p>A concatenated string of executable and arguments.</p>
+</dd>
+<dt><strong>execute_in</strong><span class="classifier">str</span></dt><dd><p>Before running command <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">execute_in</span></code> and after <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">-</span></code>.</p>
+</dd>
+<dt><strong>use_shell</strong><span class="classifier">{bool, None}, optional</span></dt><dd><p>If True, execute <code class="docutils literal notranslate"><span class="pre">sh</span> <span class="pre">-c</span> <span class="pre">command</span></code>. Default None (True)</p>
+</dd>
+<dt><strong>use_tee</strong><span class="classifier">{bool, None}, optional</span></dt><dd><p>If True use tee. Default None (True)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>res</strong><span class="classifier">str</span></dt><dd><p>Both stdout and stderr messages.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>On NT, DOS systems the returned status is correct for external commands.
+Wild cards will not work for non-posix systems or when use_shell=0.</p>
+</dd></dl>
+

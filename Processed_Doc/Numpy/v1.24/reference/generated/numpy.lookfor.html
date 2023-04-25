@@ -1,0 +1,50 @@
+
+<h1>numpy.lookfor<a class="headerlink" href="#numpy-lookfor" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.lookfor">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">lookfor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">what</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">import_modules</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regenerate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/utils.py#L759-L881"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.lookfor" title="Permalink to this definition">#</a></dt>
+<dd><p>Do a keyword search on docstrings.</p>
+<p>A list of objects that matched the search is displayed,
+sorted by relevance. All given keywords need to be found in the
+docstring for it to be returned as a result, but the order does
+not matter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>what</strong><span class="classifier">str</span></dt><dd><p>String containing words to look for.</p>
+</dd>
+<dt><strong>module</strong><span class="classifier">str or list, optional</span></dt><dd><p>Name of module(s) whose docstrings to go through.</p>
+</dd>
+<dt><strong>import_modules</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to import sub-modules in packages. Default is True.</p>
+</dd>
+<dt><strong>regenerate</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to re-generate the docstring cache. Default is False.</p>
+</dd>
+<dt><strong>output</strong><span class="classifier">file-like, optional</span></dt><dd><p>File-like object to write the output to. If omitted, use a pager.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.source.html#numpy.source" title="numpy.source"><code class="xref py py-obj docutils literal notranslate"><span class="pre">source</span></code></a>, <a class="reference internal" href="numpy.info.html#numpy.info" title="numpy.info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">info</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Relevance is determined only roughly, by checking if the keywords occur
+in the function name, at the start of a docstring, etc.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">lookfor</span><span class="p">(</span><span class="s1">&#39;binary representation&#39;</span><span class="p">)</span> 
+<span class="go">Search results for &#39;binary representation&#39;</span>
+<span class="go">------------------------------------------</span>
+<span class="go">numpy.binary_repr</span>
+<span class="go">    Return the binary representation of the input number as a string.</span>
+<span class="go">numpy.core.setup_common.long_double_representation</span>
+<span class="go">    Given a binary dump as given by GNU od -b, look for long double</span>
+<span class="go">numpy.base_repr</span>
+<span class="go">    Return a string representation of a number in the given base system.</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+</dd></dl>
+

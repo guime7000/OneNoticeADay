@@ -1,0 +1,27 @@
+
+<h1>numpy.dtype.base<a class="headerlink" href="#numpy-dtype-base" title="Permalink to this heading">#</a></h1>
+<p>attribute</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="numpy.dtype.base">
+<span class="sig-prename descclassname"><span class="pre">dtype.</span></span><span class="sig-name descname"><span class="pre">base</span></span><a class="headerlink" href="#numpy.dtype.base" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns dtype for the base element of the subarrays,
+regardless of their dimension or shape.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.dtype.subdtype.html#numpy.dtype.subdtype" title="numpy.dtype.subdtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype.subdtype</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;8f&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">base</span>
+<span class="go">dtype(&#39;float32&#39;)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span>  <span class="n">numpy</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;i2&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">base</span>
+<span class="go">dtype(&#39;int16&#39;)</span>
+</pre></div>
+</div>
+</dd></dl>
+

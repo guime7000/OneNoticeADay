@@ -1,0 +1,61 @@
+
+<h1>numpy.ma.cov<a class="headerlink" href="#numpy-ma-cov" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.ma.cov">
+<span class="sig-prename descclassname"><span class="pre">ma.</span></span><span class="sig-name descname"><span class="pre">cov</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rowvar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_masked</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ddof</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/ma/extras.py#L1356-L1426"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.ma.cov" title="Permalink to this definition">#</a></dt>
+<dd><p>Estimate the covariance matrix.</p>
+<p>Except for the handling of missing data this function does the same as
+<a class="reference internal" href="numpy.cov.html#numpy.cov" title="numpy.cov"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.cov</span></code></a>. For more details and examples, see <a class="reference internal" href="numpy.cov.html#numpy.cov" title="numpy.cov"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.cov</span></code></a>.</p>
+<p>By default, masked values are recognized as such. If <em class="xref py py-obj">x</em> and <em class="xref py py-obj">y</em> have the
+same shape, a common mask is allocated: if <code class="docutils literal notranslate"><span class="pre">x[i,j]</span></code> is masked, then
+<code class="docutils literal notranslate"><span class="pre">y[i,j]</span></code> will also be masked.
+Setting <em class="xref py py-obj">allow_masked</em> to False will raise an exception if values are
+missing in either of the input arrays.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>x</strong><span class="classifier">array_like</span></dt><dd><p>A 1-D or 2-D array containing multiple variables and observations.
+Each row of <em class="xref py py-obj">x</em> represents a variable, and each column a single
+observation of all those variables. Also see <em class="xref py py-obj">rowvar</em> below.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">array_like, optional</span></dt><dd><p>An additional set of variables and observations. <em class="xref py py-obj">y</em> has the same
+shape as <em class="xref py py-obj">x</em>.</p>
+</dd>
+<dt><strong>rowvar</strong><span class="classifier">bool, optional</span></dt><dd><p>If <em class="xref py py-obj">rowvar</em> is True (default), then each row represents a
+variable, with observations in the columns. Otherwise, the relationship
+is transposed: each column represents a variable, while the rows
+contain observations.</p>
+</dd>
+<dt><strong>bias</strong><span class="classifier">bool, optional</span></dt><dd><p>Default normalization (False) is by <code class="docutils literal notranslate"><span class="pre">(N-1)</span></code>, where <code class="docutils literal notranslate"><span class="pre">N</span></code> is the
+number of observations given (unbiased estimate). If <em class="xref py py-obj">bias</em> is True,
+then normalization is by <code class="docutils literal notranslate"><span class="pre">N</span></code>. This keyword can be overridden by
+the keyword <code class="docutils literal notranslate"><span class="pre">ddof</span></code> in numpy versions &gt;= 1.5.</p>
+</dd>
+<dt><strong>allow_masked</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, masked values are propagated pair-wise: if a value is masked
+in <em class="xref py py-obj">x</em>, the corresponding value is masked in <em class="xref py py-obj">y</em>.
+If False, raises a <em class="xref py py-obj">ValueError</em> exception when some values are missing.</p>
+</dd>
+<dt><strong>ddof</strong><span class="classifier">{None, int}, optional</span></dt><dd><p>If not <code class="docutils literal notranslate"><span class="pre">None</span></code> normalization is by <code class="docutils literal notranslate"><span class="pre">(N</span> <span class="pre">-</span> <span class="pre">ddof)</span></code>, where <code class="docutils literal notranslate"><span class="pre">N</span></code> is
+the number of observations; this overrides the value implied by
+<code class="docutils literal notranslate"><span class="pre">bias</span></code>. The default value is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.5.</span></p>
+</div>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>ValueError</dt><dd><p>Raised if some values are missing and <em class="xref py py-obj">allow_masked</em> is False.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.cov.html#numpy.cov" title="numpy.cov"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.cov</span></code></a></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
+

@@ -1,0 +1,40 @@
+
+<h1>numpy.recarray.newbyteorder<a class="headerlink" href="#numpy-recarray-newbyteorder" title="Permalink to this heading">#</a></h1>
+<p>method</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="numpy.recarray.newbyteorder">
+<span class="sig-prename descclassname"><span class="pre">recarray.</span></span><span class="sig-name descname"><span class="pre">newbyteorder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'S'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#numpy.recarray.newbyteorder" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the array with the same data viewed with a different byte order.</p>
+<p>Equivalent to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">arr</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">newbytorder</span><span class="p">(</span><span class="n">new_order</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Changes are also made in all fields and sub-arrays of the array data
+type.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>new_order</strong><span class="classifier">string, optional</span></dt><dd><p>Byte order to force; a value from the byte order specifications
+below. <em class="xref py py-obj">new_order</em> codes can be any of:</p>
+<ul class="simple">
+<li><p>‘S’ - swap dtype from current to opposite endian</p></li>
+<li><p>{‘&lt;’, ‘little’} - little endian</p></li>
+<li><p>{‘&gt;’, ‘big’} - big endian</p></li>
+<li><p>{‘=’, ‘native’} - native order, equivalent to <a class="reference external" href="https://docs.python.org/3/library/sys.html#sys.byteorder" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sys.byteorder</span></code></a></p></li>
+<li><p>{‘|’, ‘I’} - ignore (no change to byte order)</p></li>
+</ul>
+<p>The default value (‘S’) results in swapping the current
+byte order.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>new_arr</strong><span class="classifier">array</span></dt><dd><p>New array object with the dtype reflecting given change to the
+byte order.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+

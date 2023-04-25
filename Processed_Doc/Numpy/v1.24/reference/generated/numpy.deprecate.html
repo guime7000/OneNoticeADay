@@ -1,0 +1,45 @@
+
+<h1>numpy.deprecate<a class="headerlink" href="#numpy-deprecate" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.deprecate">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">deprecate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/utils.py#L208-L258"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.deprecate" title="Permalink to this definition">#</a></dt>
+<dd><p>Issues a DeprecationWarning, adds warning to <em class="xref py py-obj">old_name</em>’s
+docstring, rebinds <code class="docutils literal notranslate"><span class="pre">old_name.__name__</span></code> and returns the new
+function object.</p>
+<p>This function may also be used as a decorator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>func</strong><span class="classifier">function</span></dt><dd><p>The function to be deprecated.</p>
+</dd>
+<dt><strong>old_name</strong><span class="classifier">str, optional</span></dt><dd><p>The name of the function to be deprecated. Default is None, in
+which case the name of <em class="xref py py-obj">func</em> is used.</p>
+</dd>
+<dt><strong>new_name</strong><span class="classifier">str, optional</span></dt><dd><p>The new name for the function. Default is None, in which case the
+deprecation message is that <em class="xref py py-obj">old_name</em> is deprecated. If given, the
+deprecation message is that <em class="xref py py-obj">old_name</em> is deprecated and <em class="xref py py-obj">new_name</em>
+should be used instead.</p>
+</dd>
+<dt><strong>message</strong><span class="classifier">str, optional</span></dt><dd><p>Additional explanation of the deprecation.  Displayed in the
+docstring after the warning.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>old_func</strong><span class="classifier">function</span></dt><dd><p>The deprecated function.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">olduint</span></code> returns a value after printing Deprecation
+Warning:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">olduint</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deprecate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint</span><span class="p">)</span>
+<span class="go">DeprecationWarning: `uint64` is deprecated! # may vary</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">olduint</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="go">6</span>
+</pre></div>
+</div>
+</dd></dl>
+

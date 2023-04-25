@@ -1,0 +1,42 @@
+
+<h1>numpy.polynomial.chebyshev.Chebyshev.interpolate<a class="headerlink" href="#numpy-polynomial-chebyshev-chebyshev-interpolate" title="Permalink to this heading">#</a></h1>
+<p>method</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="numpy.polynomial.chebyshev.Chebyshev.interpolate">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">polynomial.chebyshev.Chebyshev.</span></span><span class="sig-name descname"><span class="pre">interpolate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/polynomial/chebyshev.py#L2031-L2071"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.polynomial.chebyshev.Chebyshev.interpolate" title="Permalink to this definition">#</a></dt>
+<dd><p>Interpolate a function at the Chebyshev points of the first kind.</p>
+<p>Returns the series that interpolates <em class="xref py py-obj">func</em> at the Chebyshev points of
+the first kind scaled and shifted to the <a class="reference internal" href="numpy.polynomial.chebyshev.Chebyshev.domain.html#numpy.polynomial.chebyshev.Chebyshev.domain" title="numpy.polynomial.chebyshev.Chebyshev.domain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">domain</span></code></a>. The resulting series
+tends to a minmax approximation of <em class="xref py py-obj">func</em> when the function is
+continuous in the domain.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.14.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>func</strong><span class="classifier">function</span></dt><dd><p>The function to be interpolated. It must be a function of a single
+variable of the form <code class="docutils literal notranslate"><span class="pre">f(x,</span> <span class="pre">a,</span> <span class="pre">b,</span> <span class="pre">c...)</span></code>, where <code class="docutils literal notranslate"><span class="pre">a,</span> <span class="pre">b,</span> <span class="pre">c...</span></code> are
+extra arguments passed in the <em class="xref py py-obj">args</em> parameter.</p>
+</dd>
+<dt><strong>deg</strong><span class="classifier">int</span></dt><dd><p>Degree of the interpolating polynomial.</p>
+</dd>
+<dt><strong>domain</strong><span class="classifier">{None, [beg, end]}, optional</span></dt><dd><p>Domain over which <em class="xref py py-obj">func</em> is interpolated. The default is None, in
+which case the domain is [-1, 1].</p>
+</dd>
+<dt><strong>args</strong><span class="classifier">tuple, optional</span></dt><dd><p>Extra arguments to be used in the function call. Default is no
+extra arguments.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>polynomial</strong><span class="classifier">Chebyshev instance</span></dt><dd><p>Interpolating Chebyshev instance.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>See <em class="xref py py-obj">numpy.polynomial.chebfromfunction</em> for more details.</p>
+</dd></dl>
+

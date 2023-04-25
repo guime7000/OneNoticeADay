@@ -1,0 +1,65 @@
+
+<h1>numpy.ma.MaskedArray.put<a class="headerlink" href="#numpy-ma-maskedarray-put" title="Permalink to this heading">#</a></h1>
+<p>method</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="numpy.ma.MaskedArray.put">
+<span class="sig-prename descclassname"><span class="pre">ma.MaskedArray.</span></span><span class="sig-name descname"><span class="pre">put</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'raise'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/ma/core.py#L4736-L4819"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.ma.MaskedArray.put" title="Permalink to this definition">#</a></dt>
+<dd><p>Set storage-indexed locations to corresponding values.</p>
+<p>Sets self._data.flat[n] = values[n] for each n in indices.
+If <em class="xref py py-obj">values</em> is shorter than <a class="reference internal" href="numpy.indices.html#numpy.indices" title="numpy.indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">indices</span></code></a> then it will repeat.
+If <em class="xref py py-obj">values</em> has some masked values, the initial mask is updated
+in consequence, else the corresponding values are unmasked.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>indices</strong><span class="classifier">1-D array_like</span></dt><dd><p>Target indices, interpreted as integers.</p>
+</dd>
+<dt><strong>values</strong><span class="classifier">array_like</span></dt><dd><p>Values to place in self._data copy at target indices.</p>
+</dd>
+<dt><strong>mode</strong><span class="classifier">{‘raise’, ‘wrap’, ‘clip’}, optional</span></dt><dd><p>Specifies how out-of-bounds indices will behave.
+‘raise’ : raise an error.
+‘wrap’ : wrap around.
+‘clip’ : clip to the range.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p><em class="xref py py-obj">values</em> can be a scalar or length 1 array.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]],</span> <span class="n">mask</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">masked_array(</span>
+<span class="go">  data=[[1, --, 3],</span>
+<span class="go">        [--, 5, --],</span>
+<span class="go">        [7, --, 9]],</span>
+<span class="go">  mask=[[False,  True, False],</span>
+<span class="go">        [ True, False,  True],</span>
+<span class="go">        [False,  True, False]],</span>
+<span class="go">  fill_value=999999)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">put</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">],[</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">masked_array(</span>
+<span class="go">  data=[[10, --, 3],</span>
+<span class="go">        [--, 20, --],</span>
+<span class="go">        [7, --, 30]],</span>
+<span class="go">  mask=[[False,  True, False],</span>
+<span class="go">        [ True, False,  True],</span>
+<span class="go">        [False,  True, False]],</span>
+<span class="go">  fill_value=999999)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">999</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">masked_array(</span>
+<span class="go">  data=[[10, --, 3],</span>
+<span class="go">        [--, 999, --],</span>
+<span class="go">        [7, --, 30]],</span>
+<span class="go">  mask=[[False,  True, False],</span>
+<span class="go">        [ True, False,  True],</span>
+<span class="go">        [False,  True, False]],</span>
+<span class="go">  fill_value=999999)</span>
+</pre></div>
+</div>
+</dd></dl>
+

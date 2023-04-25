@@ -1,0 +1,83 @@
+
+<h1>numpy.vander<a class="headerlink" href="#numpy-vander" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.vander">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">vander</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">increasing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/twodim_base.py#L546-L634"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.vander" title="Permalink to this definition">#</a></dt>
+<dd><p>Generate a Vandermonde matrix.</p>
+<p>The columns of the output matrix are powers of the input vector. The
+order of the powers is determined by the <em class="xref py py-obj">increasing</em> boolean argument.
+Specifically, when <em class="xref py py-obj">increasing</em> is False, the <em class="xref py py-obj">i</em>-th output column is
+the input vector raised element-wise to the power of <code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">-</span> <span class="pre">i</span> <span class="pre">-</span> <span class="pre">1</span></code>. Such
+a matrix with a geometric progression in each row is named for Alexandre-
+Theophile Vandermonde.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>x</strong><span class="classifier">array_like</span></dt><dd><p>1-D input array.</p>
+</dd>
+<dt><strong>N</strong><span class="classifier">int, optional</span></dt><dd><p>Number of columns in the output.  If <em class="xref py py-obj">N</em> is not specified, a square
+array is returned (<code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">=</span> <span class="pre">len(x)</span></code>).</p>
+</dd>
+<dt><strong>increasing</strong><span class="classifier">bool, optional</span></dt><dd><p>Order of the powers of the columns.  If True, the powers increase
+from left to right, if False (the default) they are reversed.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.9.0.</span></p>
+</div>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ndarray</span></dt><dd><p>Vandermonde matrix.  If <em class="xref py py-obj">increasing</em> is False, the first column is
+<code class="docutils literal notranslate"><span class="pre">x^(N-1)</span></code>, the second <code class="docutils literal notranslate"><span class="pre">x^(N-2)</span></code> and so forth. If <em class="xref py py-obj">increasing</em> is
+True, the columns are <code class="docutils literal notranslate"><span class="pre">x^0,</span> <span class="pre">x^1,</span> <span class="pre">...,</span> <span class="pre">x^(N-1)</span></code>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.polynomial.polynomial.polyvander.html#numpy.polynomial.polynomial.polyvander" title="numpy.polynomial.polynomial.polyvander"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polynomial.polynomial.polyvander</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">N</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">vander</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="go">array([[ 1,  1,  1],</span>
+<span class="go">       [ 4,  2,  1],</span>
+<span class="go">       [ 9,  3,  1],</span>
+<span class="go">       [25,  5,  1]])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">x</span><span class="o">**</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)])</span>
+<span class="go">array([[ 1,  1,  1],</span>
+<span class="go">       [ 4,  2,  1],</span>
+<span class="go">       [ 9,  3,  1],</span>
+<span class="go">       [25,  5,  1]])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">vander</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">array([[  1,   1,   1,   1],</span>
+<span class="go">       [  8,   4,   2,   1],</span>
+<span class="go">       [ 27,   9,   3,   1],</span>
+<span class="go">       [125,  25,   5,   1]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">vander</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">increasing</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">array([[  1,   1,   1,   1],</span>
+<span class="go">       [  1,   2,   4,   8],</span>
+<span class="go">       [  1,   3,   9,  27],</span>
+<span class="go">       [  1,   5,  25, 125]])</span>
+</pre></div>
+</div>
+<p>The determinant of a square Vandermonde matrix is the product
+of the differences between the values of the input vector:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vander</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="go">48.000000000000043 # may vary</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">5</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">5</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">5</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">48</span>
+</pre></div>
+</div>
+</dd></dl>
+

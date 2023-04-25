@@ -1,0 +1,35 @@
+
+<h1>numpy.testing.dec.deprecated<a class="headerlink" href="#numpy-testing-dec-deprecated" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.testing.dec.deprecated">
+<span class="sig-prename descclassname"><span class="pre">testing.dec.</span></span><span class="sig-name descname"><span class="pre">deprecated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conditional</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/testing/_private/decorators.py#L253-L304"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.testing.dec.deprecated" title="Permalink to this definition">#</a></dt>
+<dd><div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 1.21: </span>This decorator is retained for compatibility with the nose testing framework, which is being phased out.
+Please use the nose2 or pytest frameworks instead.</p>
+</div>
+<p>Filter deprecation warnings while running the test suite.</p>
+<p>This decorator can be used to filter DeprecationWarning’s, to avoid
+printing them during the test suite run, while checking that the test
+actually raises a DeprecationWarning.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>conditional</strong><span class="classifier">bool or callable, optional</span></dt><dd><p>Flag to determine whether to mark test as deprecated or not. If the
+condition is a callable, it is used at runtime to dynamically make the
+decision. Default is True.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>decorator</strong><span class="classifier">function</span></dt><dd><p>The <a class="reference internal" href="#numpy.testing.dec.deprecated" title="numpy.testing.dec.deprecated"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deprecated</span></code></a> decorator itself.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.4.0.</span></p>
+</div>
+</dd></dl>
+

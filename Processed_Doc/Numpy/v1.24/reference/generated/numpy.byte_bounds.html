@@ -1,0 +1,39 @@
+
+<h1>numpy.byte_bounds<a class="headerlink" href="#numpy-byte-bounds" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.byte_bounds">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">byte_bounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/utils.py#L292-L341"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.byte_bounds" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns pointers to the end-points of an array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>a</strong><span class="classifier">ndarray</span></dt><dd><p>Input array. It must conform to the Python-side of the array
+interface.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>(low, high)</strong><span class="classifier">tuple of 2 integers</span></dt><dd><p>The first integer is the first byte of the array, the second
+integer is just past the last byte of the array.  If <em class="xref py py-obj">a</em> is not
+contiguous it will not use every byte between the (<em class="xref py py-obj">low</em>, <em class="xref py py-obj">high</em>)
+values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;f&#39;</span><span class="p">);</span> <span class="n">I</span><span class="o">.</span><span class="n">dtype</span>
+<span class="go">dtype(&#39;float32&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">byte_bounds</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">high</span> <span class="o">-</span> <span class="n">low</span> <span class="o">==</span> <span class="n">I</span><span class="o">.</span><span class="n">size</span><span class="o">*</span><span class="n">I</span><span class="o">.</span><span class="n">itemsize</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="n">I</span><span class="o">.</span><span class="n">dtype</span>
+<span class="go">dtype(&#39;float64&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">byte_bounds</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">high</span> <span class="o">-</span> <span class="n">low</span> <span class="o">==</span> <span class="n">I</span><span class="o">.</span><span class="n">size</span><span class="o">*</span><span class="n">I</span><span class="o">.</span><span class="n">itemsize</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+

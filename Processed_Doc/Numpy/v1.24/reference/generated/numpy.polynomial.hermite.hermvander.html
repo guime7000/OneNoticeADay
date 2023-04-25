@@ -1,0 +1,49 @@
+
+<h1>numpy.polynomial.hermite.hermvander<a class="headerlink" href="#numpy-polynomial-hermite-hermvander" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.polynomial.hermite.hermvander">
+<span class="sig-prename descclassname"><span class="pre">polynomial.hermite.</span></span><span class="sig-name descname"><span class="pre">hermvander</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deg</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/polynomial/hermite.py#L1107-L1165"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.polynomial.hermite.hermvander" title="Permalink to this definition">#</a></dt>
+<dd><p>Pseudo-Vandermonde matrix of given degree.</p>
+<p>Returns the pseudo-Vandermonde matrix of degree <em class="xref py py-obj">deg</em> and sample points
+<em class="xref py py-obj">x</em>. The pseudo-Vandermonde matrix is defined by</p>
+<div class="math notranslate nohighlight">
+\[V[..., i] = H_i(x),\]</div>
+<p>where <em class="xref py py-obj">0 &lt;= i &lt;= deg</em>. The leading indices of <em class="xref py py-obj">V</em> index the elements of
+<em class="xref py py-obj">x</em> and the last index is the degree of the Hermite polynomial.</p>
+<p>If <em class="xref py py-obj">c</em> is a 1-D array of coefficients of length <em class="xref py py-obj">n + 1</em> and <em class="xref py py-obj">V</em> is the
+array <code class="docutils literal notranslate"><span class="pre">V</span> <span class="pre">=</span> <span class="pre">hermvander(x,</span> <span class="pre">n)</span></code>, then <code class="docutils literal notranslate"><span class="pre">np.dot(V,</span> <span class="pre">c)</span></code> and
+<code class="docutils literal notranslate"><span class="pre">hermval(x,</span> <span class="pre">c)</span></code> are the same up to roundoff. This equivalence is
+useful both for least squares fitting and for the evaluation of a large
+number of Hermite series of the same degree and sample points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">array_like</span></dt><dd><p>Array of points. The dtype is converted to float64 or complex128
+depending on whether any of the elements are complex. If <em class="xref py py-obj">x</em> is
+scalar it is converted to a 1-D array.</p>
+</dd>
+<dt><strong>deg</strong><span class="classifier">int</span></dt><dd><p>Degree of the resulting matrix.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>vander</strong><span class="classifier">ndarray</span></dt><dd><p>The pseudo-Vandermonde matrix. The shape of the returned matrix is
+<code class="docutils literal notranslate"><span class="pre">x.shape</span> <span class="pre">+</span> <span class="pre">(deg</span> <span class="pre">+</span> <span class="pre">1,)</span></code>, where The last index is the degree of the
+corresponding Hermite polynomial.  The dtype will be the same as
+the converted <em class="xref py py-obj">x</em>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy.polynomial.hermite</span> <span class="kn">import</span> <span class="n">hermvander</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hermvander</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">array([[ 1., -2.,  2.,  4.],</span>
+<span class="go">       [ 1.,  0., -2., -0.],</span>
+<span class="go">       [ 1.,  2.,  2., -4.]])</span>
+</pre></div>
+</div>
+</dd></dl>
+

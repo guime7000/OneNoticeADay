@@ -1,0 +1,42 @@
+
+<h1>numpy.char.find<a class="headerlink" href="#numpy-char-find" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.char.find">
+<span class="sig-prename descclassname"><span class="pre">char.</span></span><span class="sig-name descname"><span class="pre">find</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/core/defchararray.py#L728-L767"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.char.find" title="Permalink to this definition">#</a></dt>
+<dd><p>For each element, return the lowest index in the string where
+substring <em class="xref py py-obj">sub</em> is found.</p>
+<p>Calls <em class="xref py py-obj">str.find</em> element-wise.</p>
+<p>For each element, return the lowest index in the string where
+substring <em class="xref py py-obj">sub</em> is found, such that <em class="xref py py-obj">sub</em> is contained in the
+range [<em class="xref py py-obj">start</em>, <em class="xref py py-obj">end</em>].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>a</strong><span class="classifier">array_like of str or unicode</span></dt><dd></dd>
+<dt><strong>sub</strong><span class="classifier">str or unicode</span></dt><dd></dd>
+<dt><strong>start, end</strong><span class="classifier">int, optional</span></dt><dd><p>Optional arguments <em class="xref py py-obj">start</em> and <em class="xref py py-obj">end</em> are interpreted as in
+slice notation.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ndarray or int</span></dt><dd><p>Output array of ints.  Returns -1 if <em class="xref py py-obj">sub</em> is not found.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str.find" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str.find</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">&quot;NumPy is a Python library&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">char</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s2">&quot;Python&quot;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="go">array([11])</span>
+</pre></div>
+</div>
+</dd></dl>
+

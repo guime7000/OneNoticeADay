@@ -1,0 +1,42 @@
+
+<h1>numpy.char.compare_chararrays<a class="headerlink" href="#numpy-char-compare-chararrays" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.char.compare_chararrays">
+<span class="sig-prename descclassname"><span class="pre">char.</span></span><span class="sig-name descname"><span class="pre">compare_chararrays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rstrip</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#numpy.char.compare_chararrays" title="Permalink to this definition">#</a></dt>
+<dd><p>Performs element-wise comparison of two string arrays using the
+comparison operator specified by <em class="xref py py-obj">cmp_op</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>a1, a2</strong><span class="classifier">array_like</span></dt><dd><p>Arrays to be compared.</p>
+</dd>
+<dt><strong>cmp</strong><span class="classifier">{“&lt;”, “&lt;=”, “==”, “&gt;=”, “&gt;”, “!=”}</span></dt><dd><p>Type of comparison.</p>
+</dd>
+<dt><strong>rstrip</strong><span class="classifier">Boolean</span></dt><dd><p>If True, the spaces at the end of Strings are removed before the comparison.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ndarray</span></dt><dd><p>The output array of type Boolean with the same shape as a and b.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>ValueError</dt><dd><p>If <em class="xref py py-obj">cmp_op</em> is not valid.</p>
+</dd>
+<dt>TypeError</dt><dd><p>If at least one of <em class="xref py py-obj">a</em> or <em class="xref py py-obj">b</em> is a non-string array</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;cde&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;dec&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">compare_chararrays</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;&gt;&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="go">array([False,  True, False])</span>
+</pre></div>
+</div>
+</dd></dl>
+

@@ -1,0 +1,52 @@
+
+<h1>numpy.isrealobj<a class="headerlink" href="#numpy-isrealobj" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.isrealobj">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">isrealobj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/type_check.py#L344-L390"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.isrealobj" title="Permalink to this definition">#</a></dt>
+<dd><p>Return True if x is a not complex type or an array of complex numbers.</p>
+<p>The type of the input is checked, not the value. So even if the input
+has an imaginary part equal to zero, <a class="reference internal" href="#numpy.isrealobj" title="numpy.isrealobj"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isrealobj</span></code></a> evaluates to False
+if the data type is complex.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">any</span></dt><dd><p>The input can be of any type and shape.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>y</strong><span class="classifier">bool</span></dt><dd><p>The return value, False if <em class="xref py py-obj">x</em> is of a complex type.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.iscomplexobj.html#numpy.iscomplexobj" title="numpy.iscomplexobj"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iscomplexobj</span></code></a>, <a class="reference internal" href="numpy.isreal.html#numpy.isreal" title="numpy.isreal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isreal</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>The function is only meant for arrays with numerical values but it
+accepts all other objects. Since it assumes array input, the return
+value of other objects may be True.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">isrealobj</span><span class="p">(</span><span class="s1">&#39;A string&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">isrealobj</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">isrealobj</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">isrealobj</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">isrealobj</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">0</span><span class="n">j</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">isrealobj</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="o">+</span><span class="mi">0</span><span class="n">j</span><span class="p">,</span> <span class="kc">True</span><span class="p">])</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+

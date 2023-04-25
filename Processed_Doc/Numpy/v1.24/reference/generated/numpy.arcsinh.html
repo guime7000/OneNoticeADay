@@ -1,0 +1,68 @@
+
+<h1>numpy.arcsinh<a class="headerlink" href="#numpy-arcsinh" title="Permalink to this heading">#</a></h1>
+<dl class="py data">
+<dt class="sig sig-object py" id="numpy.arcsinh">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">arcsinh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">casting='same_kind'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order='K'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subok=True</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">signature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extobj</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;ufunc</span> <span class="pre">'arcsinh'&gt;</span></em><a class="headerlink" href="#numpy.arcsinh" title="Permalink to this definition">#</a></dt>
+<dd><p>Inverse hyperbolic sine element-wise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">array_like</span></dt><dd><p>Input array.</p>
+</dd>
+<dt><strong>out</strong><span class="classifier">ndarray, None, or tuple of ndarray and None, optional</span></dt><dd><p>A location into which the result is stored. If provided, it must have
+a shape that the inputs broadcast to. If not provided or None,
+a freshly-allocated array is returned. A tuple (possible only as a
+keyword argument) must have length equal to the number of outputs.</p>
+</dd>
+<dt><strong>where</strong><span class="classifier">array_like, optional</span></dt><dd><p>This condition is broadcast over the input. At locations where the
+condition is True, the <em class="xref py py-obj">out</em> array will be set to the ufunc result.
+Elsewhere, the <em class="xref py py-obj">out</em> array will retain its original value.
+Note that if an uninitialized <em class="xref py py-obj">out</em> array is created via the default
+<code class="docutils literal notranslate"><span class="pre">out=None</span></code>, locations within it where the condition is False will
+remain uninitialized.</p>
+</dd>
+<dt><strong>**kwargs</strong></dt><dd><p>For other keyword-only arguments, see the
+<a class="reference internal" href="../ufuncs.html#ufuncs-kwargs"><span class="std std-ref">ufunc docs</span></a>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ndarray or scalar</span></dt><dd><p>Array of the same shape as <em class="xref py py-obj">x</em>.
+This is a scalar if <em class="xref py py-obj">x</em> is a scalar.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p><a class="reference internal" href="#numpy.arcsinh" title="numpy.arcsinh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arcsinh</span></code></a> is a multivalued function: for each <em class="xref py py-obj">x</em> there are infinitely
+many numbers <em class="xref py py-obj">z</em> such that <em class="xref py py-obj">sinh(z) = x</em>. The convention is to return the
+<em class="xref py py-obj">z</em> whose imaginary part lies in <em class="xref py py-obj">[-pi/2, pi/2]</em>.</p>
+<p>For real-valued input data types, <a class="reference internal" href="#numpy.arcsinh" title="numpy.arcsinh"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arcsinh</span></code></a> always returns real output.
+For each value that cannot be expressed as a real number or infinity, it
+returns <code class="docutils literal notranslate"><span class="pre">nan</span></code> and sets the <em class="xref py py-obj">invalid</em> floating point error flag.</p>
+<p>For complex-valued input, <a class="reference internal" href="numpy.arccos.html#numpy.arccos" title="numpy.arccos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arccos</span></code></a> is a complex analytical function that
+has branch cuts <em class="xref py py-obj">[1j, infj]</em> and <em class="xref py py-obj">[-1j, -infj]</em> and is continuous from
+the right on the former and from the left on the latter.</p>
+<p>The inverse hyperbolic sine is also known as <em class="xref py py-obj">asinh</em> or <code class="docutils literal notranslate"><span class="pre">sinh^-1</span></code>.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="rf6950a812c0f-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p>M. Abramowitz and I.A. Stegun, “Handbook of Mathematical Functions”,
+10th printing, 1964, pp. 86.
+<a class="reference external" href="https://personal.math.ubc.ca/~cbm/aands/page_86.htm">https://personal.math.ubc.ca/~cbm/aands/page_86.htm</a></p>
+</div>
+<div class="citation" id="rf6950a812c0f-2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<p>Wikipedia, “Inverse hyperbolic function”,
+<a class="reference external" href="https://en.wikipedia.org/wiki/Arcsinh">https://en.wikipedia.org/wiki/Arcsinh</a></p>
+</div>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">arcsinh</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">e</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">]))</span>
+<span class="go">array([ 1.72538256,  2.99822295])</span>
+</pre></div>
+</div>
+</dd></dl>
+

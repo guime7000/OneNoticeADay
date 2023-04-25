@@ -1,0 +1,54 @@
+
+<h1>numpy.mgrid<a class="headerlink" href="#numpy-mgrid" title="Permalink to this heading">#</a></h1>
+<dl class="py data">
+<dt class="sig sig-object py" id="numpy.mgrid">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">mgrid</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;numpy.lib.index_tricks.MGridClass</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#numpy.mgrid" title="Permalink to this definition">#</a></dt>
+<dd><p><em class="xref py py-obj">nd_grid</em> instance which returns a dense multi-dimensional “meshgrid”.</p>
+<p>An instance of <code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.lib.index_tricks.nd_grid</span></code> which returns an dense
+(or fleshed out) mesh-grid when indexed, so that each returned argument
+has the same shape.  The dimensions and number of the output arrays are
+equal to the number of indexing dimensions.  If the step length is not a
+complex number, then the stop is not inclusive.</p>
+<p>However, if the step length is a <strong>complex number</strong> (e.g. 5j), then
+the integer part of its magnitude is interpreted as specifying the
+number of points to create between the start and stop values, where
+the stop value <strong>is inclusive</strong>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>mesh-grid <em class="xref py py-obj">ndarrays</em> all of the same dimensions</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">lib.index_tricks.nd_grid</span></code></dt><dd><p>class of <a class="reference internal" href="numpy.ogrid.html#numpy.ogrid" title="numpy.ogrid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ogrid</span></code></a> and <a class="reference internal" href="#numpy.mgrid" title="numpy.mgrid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mgrid</span></code></a> objects</p>
+</dd>
+<dt><a class="reference internal" href="numpy.ogrid.html#numpy.ogrid" title="numpy.ogrid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ogrid</span></code></a></dt><dd><p>like mgrid but returns open (not fleshed out) mesh grids</p>
+</dd>
+<dt><a class="reference internal" href="numpy.meshgrid.html#numpy.meshgrid" title="numpy.meshgrid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">meshgrid</span></code></a></dt><dd><p>return coordinate matrices from coordinate vectors</p>
+</dd>
+<dt><a class="reference internal" href="numpy.r_.html#numpy.r_" title="numpy.r_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">r_</span></code></a></dt><dd><p>array concatenator</p>
+</dd>
+<dt><a class="reference internal" href="../../user/how-to-partition.html#how-to-partition"><span class="std std-ref">How to create arrays with regularly-spaced values</span></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+<span class="go">array([[[0, 0, 0, 0, 0],</span>
+<span class="go">        [1, 1, 1, 1, 1],</span>
+<span class="go">        [2, 2, 2, 2, 2],</span>
+<span class="go">        [3, 3, 3, 3, 3],</span>
+<span class="go">        [4, 4, 4, 4, 4]],</span>
+<span class="go">       [[0, 1, 2, 3, 4],</span>
+<span class="go">        [0, 1, 2, 3, 4],</span>
+<span class="go">        [0, 1, 2, 3, 4],</span>
+<span class="go">        [0, 1, 2, 3, 4],</span>
+<span class="go">        [0, 1, 2, 3, 4]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="n">j</span><span class="p">]</span>
+<span class="go">array([-1. , -0.5,  0. ,  0.5,  1. ])</span>
+</pre></div>
+</div>
+</dd></dl>
+

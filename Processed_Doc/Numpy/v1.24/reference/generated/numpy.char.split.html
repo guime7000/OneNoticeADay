@@ -1,0 +1,34 @@
+
+<h1>numpy.char.split<a class="headerlink" href="#numpy-char-split" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.char.split">
+<span class="sig-prename descclassname"><span class="pre">char.</span></span><span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxsplit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/core/defchararray.py#L1495-L1527"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.char.split" title="Permalink to this definition">#</a></dt>
+<dd><p>For each element in <em class="xref py py-obj">a</em>, return a list of the words in the
+string, using <em class="xref py py-obj">sep</em> as the delimiter string.</p>
+<p>Calls <em class="xref py py-obj">str.split</em> element-wise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>a</strong><span class="classifier">array_like of str or unicode</span></dt><dd></dd>
+<dt><strong>sep</strong><span class="classifier">str or unicode, optional</span></dt><dd><p>If <em class="xref py py-obj">sep</em> is not specified or None, any whitespace string is a
+separator.</p>
+</dd>
+<dt><strong>maxsplit</strong><span class="classifier">int, optional</span></dt><dd><p>If <em class="xref py py-obj">maxsplit</em> is given, at most <em class="xref py py-obj">maxsplit</em> splits are done.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ndarray</span></dt><dd><p>Array of list objects</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str.split" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str.split</span></code></a>, <a class="reference internal" href="numpy.char.rsplit.html#numpy.char.rsplit" title="numpy.char.rsplit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rsplit</span></code></a></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
+

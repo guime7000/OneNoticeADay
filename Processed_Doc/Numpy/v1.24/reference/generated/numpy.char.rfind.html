@@ -1,0 +1,34 @@
+
+<h1>numpy.char.rfind<a class="headerlink" href="#numpy-char-rfind" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.char.rfind">
+<span class="sig-prename descclassname"><span class="pre">char.</span></span><span class="sig-name descname"><span class="pre">rfind</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sub</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/core/defchararray.py#L1269-L1299"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.char.rfind" title="Permalink to this definition">#</a></dt>
+<dd><p>For each element in <em class="xref py py-obj">a</em>, return the highest index in the string
+where substring <em class="xref py py-obj">sub</em> is found, such that <em class="xref py py-obj">sub</em> is contained
+within [<em class="xref py py-obj">start</em>, <em class="xref py py-obj">end</em>].</p>
+<p>Calls <em class="xref py py-obj">str.rfind</em> element-wise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>a</strong><span class="classifier">array-like of str or unicode</span></dt><dd></dd>
+<dt><strong>sub</strong><span class="classifier">str or unicode</span></dt><dd></dd>
+<dt><strong>start, end</strong><span class="classifier">int, optional</span></dt><dd><p>Optional arguments <em class="xref py py-obj">start</em> and <em class="xref py py-obj">end</em> are interpreted as in
+slice notation.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ndarray</span></dt><dd><p>Output array of ints.  Return -1 on failure.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str.rfind" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str.rfind</span></code></a></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
+

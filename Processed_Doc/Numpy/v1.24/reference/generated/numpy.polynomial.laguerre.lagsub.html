@@ -1,0 +1,43 @@
+
+<h1>numpy.polynomial.laguerre.lagsub<a class="headerlink" href="#numpy-polynomial-laguerre-lagsub" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.polynomial.laguerre.lagsub">
+<span class="sig-prename descclassname"><span class="pre">polynomial.laguerre.</span></span><span class="sig-name descname"><span class="pre">lagsub</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c2</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/polynomial/laguerre.py#L348-L385"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.polynomial.laguerre.lagsub" title="Permalink to this definition">#</a></dt>
+<dd><p>Subtract one Laguerre series from another.</p>
+<p>Returns the difference of two Laguerre series <em class="xref py py-obj">c1</em> - <em class="xref py py-obj">c2</em>.  The
+sequences of coefficients are from lowest order term to highest, i.e.,
+[1,2,3] represents the series <code class="docutils literal notranslate"><span class="pre">P_0</span> <span class="pre">+</span> <span class="pre">2*P_1</span> <span class="pre">+</span> <span class="pre">3*P_2</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>c1, c2</strong><span class="classifier">array_like</span></dt><dd><p>1-D arrays of Laguerre series coefficients ordered from low to
+high.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ndarray</span></dt><dd><p>Of Laguerre series coefficients representing their difference.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.polynomial.laguerre.lagadd.html#numpy.polynomial.laguerre.lagadd" title="numpy.polynomial.laguerre.lagadd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lagadd</span></code></a>, <a class="reference internal" href="numpy.polynomial.laguerre.lagmulx.html#numpy.polynomial.laguerre.lagmulx" title="numpy.polynomial.laguerre.lagmulx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lagmulx</span></code></a>, <a class="reference internal" href="numpy.polynomial.laguerre.lagmul.html#numpy.polynomial.laguerre.lagmul" title="numpy.polynomial.laguerre.lagmul"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lagmul</span></code></a>, <a class="reference internal" href="numpy.polynomial.laguerre.lagdiv.html#numpy.polynomial.laguerre.lagdiv" title="numpy.polynomial.laguerre.lagdiv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lagdiv</span></code></a>, <a class="reference internal" href="numpy.polynomial.laguerre.lagpow.html#numpy.polynomial.laguerre.lagpow" title="numpy.polynomial.laguerre.lagpow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lagpow</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Unlike multiplication, division, etc., the difference of two Laguerre
+series is a Laguerre series (without having to “reproject” the result
+onto the basis set) so subtraction, just like that of “standard”
+polynomials, is simply “component-wise.”</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy.polynomial.laguerre</span> <span class="kn">import</span> <span class="n">lagsub</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lagsub</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="go">array([0.,  0.,  0.,  4.])</span>
+</pre></div>
+</div>
+</dd></dl>
+

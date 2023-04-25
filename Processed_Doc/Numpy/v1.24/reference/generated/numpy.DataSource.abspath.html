@@ -1,0 +1,28 @@
+
+<h1>numpy.DataSource.abspath<a class="headerlink" href="#numpy-datasource-abspath" title="Permalink to this heading">#</a></h1>
+<p>method</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="numpy.DataSource.abspath">
+<span class="sig-prename descclassname"><span class="pre">DataSource.</span></span><span class="sig-name descname"><span class="pre">abspath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/_datasource.py#L375-L415"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.DataSource.abspath" title="Permalink to this definition">#</a></dt>
+<dd><p>Return absolute path of file in the DataSource directory.</p>
+<p>If <em class="xref py py-obj">path</em> is an URL, then <a class="reference internal" href="#numpy.DataSource.abspath" title="numpy.DataSource.abspath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">abspath</span></code></a> will return either the location
+the file exists locally or the location it would exist when opened
+using the <a class="reference internal" href="numpy.DataSource.open.html#numpy.DataSource.open" title="numpy.DataSource.open"><code class="xref py py-obj docutils literal notranslate"><span class="pre">open</span></code></a> method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Can be a local file or a remote URL.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">str</span></dt><dd><p>Complete path, including the <a class="reference internal" href="numpy.DataSource.html#numpy.DataSource" title="numpy.DataSource"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataSource</span></code></a> destination directory.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The functionality is based on <a class="reference external" href="https://docs.python.org/3/library/os.path.html#os.path.abspath" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">os.path.abspath</span></code></a>.</p>
+</dd></dl>
+

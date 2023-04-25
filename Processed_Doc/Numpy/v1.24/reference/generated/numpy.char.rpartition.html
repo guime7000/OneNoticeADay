@@ -1,0 +1,38 @@
+
+<h1>numpy.char.rpartition<a class="headerlink" href="#numpy-char-rpartition" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.char.rpartition">
+<span class="sig-prename descclassname"><span class="pre">char.</span></span><span class="sig-name descname"><span class="pre">rpartition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/core/defchararray.py#L1368-L1401"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.char.rpartition" title="Permalink to this definition">#</a></dt>
+<dd><p>Partition (split) each element around the right-most separator.</p>
+<p>Calls <em class="xref py py-obj">str.rpartition</em> element-wise.</p>
+<p>For each element in <em class="xref py py-obj">a</em>, split the element as the last
+occurrence of <em class="xref py py-obj">sep</em>, and return 3 strings containing the part
+before the separator, the separator itself, and the part after
+the separator. If the separator is not found, return 3 strings
+containing the string itself, followed by two empty strings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>a</strong><span class="classifier">array_like of str or unicode</span></dt><dd><p>Input array</p>
+</dd>
+<dt><strong>sep</strong><span class="classifier">str or unicode</span></dt><dd><p>Right-most separator to split each element in array.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ndarray</span></dt><dd><p>Output array of string or unicode, depending on input
+type.  The output array will have an extra dimension with
+3 elements per input element.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str.rpartition" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str.rpartition</span></code></a></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
+

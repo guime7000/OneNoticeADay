@@ -1,0 +1,50 @@
+
+<h1>numpy.ma.masked_array.torecords<a class="headerlink" href="#numpy-ma-masked-array-torecords" title="Permalink to this heading">#</a></h1>
+<p>method</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="numpy.ma.masked_array.torecords">
+<span class="sig-prename descclassname"><span class="pre">ma.masked_array.</span></span><span class="sig-name descname"><span class="pre">torecords</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/ma/core.py#L6189-L6246"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.ma.masked_array.torecords" title="Permalink to this definition">#</a></dt>
+<dd><p>Transforms a masked array into a flexible-type array.</p>
+<p>The flexible type array that is returned will have two fields:</p>
+<ul class="simple">
+<li><p>the <code class="docutils literal notranslate"><span class="pre">_data</span></code> field stores the <code class="docutils literal notranslate"><span class="pre">_data</span></code> part of the array.</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">_mask</span></code> field stores the <code class="docutils literal notranslate"><span class="pre">_mask</span></code> part of the array.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>None</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>record</strong><span class="classifier">ndarray</span></dt><dd><p>A new flexible-type <a class="reference internal" href="numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ndarray</span></code></a> with two fields: the first element
+containing a value, the second element containing the corresponding
+mask boolean. The returned record shape matches self.shape.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>A side-effect of transforming a masked array into a flexible <a class="reference internal" href="numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ndarray</span></code></a> is
+that meta information (<code class="docutils literal notranslate"><span class="pre">fill_value</span></code>, …) will be lost.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]],</span> <span class="n">mask</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">masked_array(</span>
+<span class="go">  data=[[1, --, 3],</span>
+<span class="go">        [--, 5, --],</span>
+<span class="go">        [7, --, 9]],</span>
+<span class="go">  mask=[[False,  True, False],</span>
+<span class="go">        [ True, False,  True],</span>
+<span class="go">        [False,  True, False]],</span>
+<span class="go">  fill_value=999999)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">toflex</span><span class="p">()</span>
+<span class="go">array([[(1, False), (2,  True), (3, False)],</span>
+<span class="go">       [(4,  True), (5, False), (6,  True)],</span>
+<span class="go">       [(7, False), (8,  True), (9, False)]],</span>
+<span class="go">      dtype=[(&#39;_data&#39;, &#39;&lt;i8&#39;), (&#39;_mask&#39;, &#39;?&#39;)])</span>
+</pre></div>
+</div>
+</dd></dl>
+

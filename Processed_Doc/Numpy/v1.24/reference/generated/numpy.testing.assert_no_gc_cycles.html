@@ -1,0 +1,36 @@
+
+<h1>numpy.testing.assert_no_gc_cycles<a class="headerlink" href="#numpy-testing-assert-no-gc-cycles" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.testing.assert_no_gc_cycles">
+<span class="sig-prename descclassname"><span class="pre">testing.</span></span><span class="sig-name descname"><span class="pre">assert_no_gc_cycles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/testing/_private/utils.py#L2420-L2452"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.testing.assert_no_gc_cycles" title="Permalink to this definition">#</a></dt>
+<dd><p>Fail if the given callable produces any reference cycles.</p>
+<p>If called with all arguments omitted, may be used as a context manager:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>with assert_no_gc_cycles():</dt><dd><p>do_something()</p>
+</dd>
+</dl>
+</div></blockquote>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.15.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>func</strong><span class="classifier">callable</span></dt><dd><p>The callable to test.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">Arguments</span></dt><dd><p>Arguments passed to <em class="xref py py-obj">func</em>.</p>
+</dd>
+<dt><strong>**kwargs</strong><span class="classifier">Kwargs</span></dt><dd><p>Keyword arguments passed to <em class="xref py py-obj">func</em>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>Nothing. The result is deliberately discarded to ensure that all cycles</dt><dd></dd>
+<dt>are found.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+

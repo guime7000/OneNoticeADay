@@ -1,0 +1,49 @@
+
+<h1>numpy.emath.arcsin<a class="headerlink" href="#numpy-emath-arcsin" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.emath.arcsin">
+<span class="sig-prename descclassname"><span class="pre">emath.</span></span><span class="sig-name descname"><span class="pre">arcsin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/scimath.py#L531-L574"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.emath.arcsin" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute the inverse sine of x.</p>
+<p>Return the “principal value” (for a description of this, see
+<a class="reference internal" href="numpy.arcsin.html#numpy.arcsin" title="numpy.arcsin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.arcsin</span></code></a>) of the inverse sine of <em class="xref py py-obj">x</em>. For real <em class="xref py py-obj">x</em> such that
+<em class="xref py py-obj">abs(x) &lt;= 1</em>, this is a real number in the closed interval
+<span class="math notranslate nohighlight">\([-\pi/2, \pi/2]\)</span>.  Otherwise, the complex principle value is
+returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">array_like or scalar</span></dt><dd><p>The value(s) whose arcsin is (are) required.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ndarray or scalar</span></dt><dd><p>The inverse sine(s) of the <em class="xref py py-obj">x</em> value(s). If <em class="xref py py-obj">x</em> was a scalar, so
+is <em class="xref py py-obj">out</em>, otherwise an array object is returned.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.arcsin.html#numpy.arcsin" title="numpy.arcsin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.arcsin</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>For an arcsin() that returns <code class="docutils literal notranslate"><span class="pre">NAN</span></code> when real <em class="xref py py-obj">x</em> is not in the
+interval <code class="docutils literal notranslate"><span class="pre">[-1,1]</span></code>, use <a class="reference internal" href="numpy.arcsin.html#numpy.arcsin" title="numpy.arcsin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.arcsin</span></code></a>.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">emath</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">0.0</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">emath</span><span class="o">.</span><span class="n">arcsin</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="go">array([0.    , 1.5708])</span>
+</pre></div>
+</div>
+</dd></dl>
+

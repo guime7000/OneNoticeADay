@@ -1,0 +1,56 @@
+
+<h1>numpy.polynomial.legendre.legvander3d<a class="headerlink" href="#numpy-polynomial-legendre-legvander3d" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.polynomial.legendre.legvander3d">
+<span class="sig-prename descclassname"><span class="pre">polynomial.legendre.</span></span><span class="sig-name descname"><span class="pre">legvander3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deg</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/polynomial/legendre.py#L1232-L1283"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.polynomial.legendre.legvander3d" title="Permalink to this definition">#</a></dt>
+<dd><p>Pseudo-Vandermonde matrix of given degrees.</p>
+<p>Returns the pseudo-Vandermonde matrix of degrees <em class="xref py py-obj">deg</em> and sample
+points <em class="xref py py-obj">(x, y, z)</em>. If <em class="xref py py-obj">l, m, n</em> are the given degrees in <em class="xref py py-obj">x, y, z</em>,
+then The pseudo-Vandermonde matrix is defined by</p>
+<div class="math notranslate nohighlight">
+\[V[..., (m+1)(n+1)i + (n+1)j + k] = L_i(x)*L_j(y)*L_k(z),\]</div>
+<p>where <em class="xref py py-obj">0 &lt;= i &lt;= l</em>, <em class="xref py py-obj">0 &lt;= j &lt;= m</em>, and <em class="xref py py-obj">0 &lt;= j &lt;= n</em>.  The leading
+indices of <em class="xref py py-obj">V</em> index the points <em class="xref py py-obj">(x, y, z)</em> and the last index encodes
+the degrees of the Legendre polynomials.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">V</span> <span class="pre">=</span> <span class="pre">legvander3d(x,</span> <span class="pre">y,</span> <span class="pre">z,</span> <span class="pre">[xdeg,</span> <span class="pre">ydeg,</span> <span class="pre">zdeg])</span></code>, then the columns
+of <em class="xref py py-obj">V</em> correspond to the elements of a 3-D coefficient array <em class="xref py py-obj">c</em> of
+shape (xdeg + 1, ydeg + 1, zdeg + 1) in the order</p>
+<div class="math notranslate nohighlight">
+\[c_{000}, c_{001}, c_{002},... , c_{010}, c_{011}, c_{012},...\]</div>
+<p>and <code class="docutils literal notranslate"><span class="pre">np.dot(V,</span> <span class="pre">c.flat)</span></code> and <code class="docutils literal notranslate"><span class="pre">legval3d(x,</span> <span class="pre">y,</span> <span class="pre">z,</span> <span class="pre">c)</span></code> will be the
+same up to roundoff. This equivalence is useful both for least squares
+fitting and for the evaluation of a large number of 3-D Legendre
+series of the same degrees and sample points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x, y, z</strong><span class="classifier">array_like</span></dt><dd><p>Arrays of point coordinates, all of the same shape. The dtypes will
+be converted to either float64 or complex128 depending on whether
+any of the elements are complex. Scalars are converted to 1-D
+arrays.</p>
+</dd>
+<dt><strong>deg</strong><span class="classifier">list of ints</span></dt><dd><p>List of maximum degrees of the form [x_deg, y_deg, z_deg].</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>vander3d</strong><span class="classifier">ndarray</span></dt><dd><p>The shape of the returned matrix is <code class="docutils literal notranslate"><span class="pre">x.shape</span> <span class="pre">+</span> <span class="pre">(order,)</span></code>, where
+<span class="math notranslate nohighlight">\(order = (deg[0]+1)*(deg[1]+1)*(deg[2]+1)\)</span>.  The dtype will
+be the same as the converted <em class="xref py py-obj">x</em>, <em class="xref py py-obj">y</em>, and <em class="xref py py-obj">z</em>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.polynomial.legendre.legvander.html#numpy.polynomial.legendre.legvander" title="numpy.polynomial.legendre.legvander"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legvander</span></code></a>, <a class="reference internal" href="#numpy.polynomial.legendre.legvander3d" title="numpy.polynomial.legendre.legvander3d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legvander3d</span></code></a>, <a class="reference internal" href="numpy.polynomial.legendre.legval2d.html#numpy.polynomial.legendre.legval2d" title="numpy.polynomial.legendre.legval2d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legval2d</span></code></a>, <a class="reference internal" href="numpy.polynomial.legendre.legval3d.html#numpy.polynomial.legendre.legval3d" title="numpy.polynomial.legendre.legval3d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legval3d</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.7.0.</span></p>
+</div>
+</dd></dl>
+

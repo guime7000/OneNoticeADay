@@ -1,0 +1,54 @@
+
+<h1>numpy.show_runtime<a class="headerlink" href="#numpy-show-runtime" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.show_runtime">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">show_runtime</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/utils.py#L21-L94"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.show_runtime" title="Permalink to this definition">#</a></dt>
+<dd><p>Print information about various resources in the system
+including available intrinsic support and BLAS/LAPACK library
+in use</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.show_config.html#numpy.show_config" title="numpy.show_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_config</span></code></a></dt><dd><p>Show libraries in the system on which NumPy was built.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<ol class="arabic simple">
+<li><p>Information is derived with the help of <a class="reference external" href="https://pypi.org/project/threadpoolctl/">threadpoolctl</a>
+library.</p></li>
+<li><p>SIMD related information is derived from <code class="docutils literal notranslate"><span class="pre">__cpu_features__</span></code>,
+<code class="docutils literal notranslate"><span class="pre">__cpu_baseline__</span></code> and <code class="docutils literal notranslate"><span class="pre">__cpu_dispatch__</span></code></p></li>
+</ol>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">show_runtime</span><span class="p">()</span>
+<span class="go">[{&#39;simd_extensions&#39;: {&#39;baseline&#39;: [&#39;SSE&#39;, &#39;SSE2&#39;, &#39;SSE3&#39;],</span>
+<span class="go">                      &#39;found&#39;: [&#39;SSSE3&#39;,</span>
+<span class="go">                                &#39;SSE41&#39;,</span>
+<span class="go">                                &#39;POPCNT&#39;,</span>
+<span class="go">                                &#39;SSE42&#39;,</span>
+<span class="go">                                &#39;AVX&#39;,</span>
+<span class="go">                                &#39;F16C&#39;,</span>
+<span class="go">                                &#39;FMA3&#39;,</span>
+<span class="go">                                &#39;AVX2&#39;],</span>
+<span class="go">                      &#39;not_found&#39;: [&#39;AVX512F&#39;,</span>
+<span class="go">                                    &#39;AVX512CD&#39;,</span>
+<span class="go">                                    &#39;AVX512_KNL&#39;,</span>
+<span class="go">                                    &#39;AVX512_KNM&#39;,</span>
+<span class="go">                                    &#39;AVX512_SKX&#39;,</span>
+<span class="go">                                    &#39;AVX512_CLX&#39;,</span>
+<span class="go">                                    &#39;AVX512_CNL&#39;,</span>
+<span class="go">                                    &#39;AVX512_ICL&#39;]}},</span>
+<span class="go"> {&#39;architecture&#39;: &#39;Zen&#39;,</span>
+<span class="go">  &#39;filepath&#39;: &#39;/usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so&#39;,</span>
+<span class="go">  &#39;internal_api&#39;: &#39;openblas&#39;,</span>
+<span class="go">  &#39;num_threads&#39;: 12,</span>
+<span class="go">  &#39;prefix&#39;: &#39;libopenblas&#39;,</span>
+<span class="go">  &#39;threading_layer&#39;: &#39;pthreads&#39;,</span>
+<span class="go">  &#39;user_api&#39;: &#39;blas&#39;,</span>
+<span class="go">  &#39;version&#39;: &#39;0.3.20&#39;}]</span>
+</pre></div>
+</div>
+</dd></dl>
+

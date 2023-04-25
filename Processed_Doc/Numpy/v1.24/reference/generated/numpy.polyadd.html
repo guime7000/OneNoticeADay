@@ -1,0 +1,60 @@
+
+<h1>numpy.polyadd<a class="headerlink" href="#numpy-polyadd" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.polyadd">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">polyadd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a2</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/polynomial.py#L787-L852"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.polyadd" title="Permalink to this definition">#</a></dt>
+<dd><p>Find the sum of two polynomials.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This forms part of the old polynomial API. Since version 1.4, the
+new polynomial API defined in <a class="reference internal" href="../routines.polynomials.package.html#module-numpy.polynomial" title="numpy.polynomial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.polynomial</span></code></a> is preferred.
+A summary of the differences can be found in the
+<a class="reference internal" href="../routines.polynomials.html"><span class="doc">transition guide</span></a>.</p>
+</div>
+<p>Returns the polynomial resulting from the sum of two input polynomials.
+Each input must be either a poly1d object or a 1D sequence of polynomial
+coefficients, from highest to lowest degree.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>a1, a2</strong><span class="classifier">array_like or poly1d object</span></dt><dd><p>Input polynomials.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ndarray or poly1d object</span></dt><dd><p>The sum of the inputs. If either input is a poly1d object, then the
+output is also a poly1d object. Otherwise, it is a 1D array of
+polynomial coefficients from highest to lowest degree.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.poly1d.html#numpy.poly1d" title="numpy.poly1d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">poly1d</span></code></a></dt><dd><p>A one-dimensional polynomial class.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.poly.html#numpy.poly" title="numpy.poly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">poly</span></code></a>, <a class="reference internal" href="#numpy.polyadd" title="numpy.polyadd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polyadd</span></code></a>, <a class="reference internal" href="numpy.polyder.html#numpy.polyder" title="numpy.polyder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polyder</span></code></a>, <a class="reference internal" href="numpy.polydiv.html#numpy.polydiv" title="numpy.polydiv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polydiv</span></code></a>, <a class="reference internal" href="numpy.polyfit.html#numpy.polyfit" title="numpy.polyfit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polyfit</span></code></a>, <a class="reference internal" href="numpy.polyint.html#numpy.polyint" title="numpy.polyint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polyint</span></code></a>, <a class="reference internal" href="numpy.polysub.html#numpy.polysub" title="numpy.polysub"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polysub</span></code></a>, <a class="reference internal" href="numpy.polyval.html#numpy.polyval" title="numpy.polyval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polyval</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">polyadd</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="go">array([9, 6, 6])</span>
+</pre></div>
+</div>
+<p>Using poly1d objects:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">([</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span>
+<span class="go">1 x + 2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">p2</span><span class="p">)</span>
+<span class="go">   2</span>
+<span class="go">9 x + 5 x + 4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">polyadd</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">))</span>
+<span class="go">   2</span>
+<span class="go">9 x + 6 x + 6</span>
+</pre></div>
+</div>
+</dd></dl>
+

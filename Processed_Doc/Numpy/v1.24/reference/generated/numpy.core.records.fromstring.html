@@ -1,0 +1,64 @@
+
+<h1>numpy.core.records.fromstring<a class="headerlink" href="#numpy-core-records-fromstring" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.core.records.fromstring">
+<span class="sig-prename descclassname"><span class="pre">core.records.</span></span><span class="sig-name descname"><span class="pre">fromstring</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datastring</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">titles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aligned</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">byteorder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/core/records.py#L768-L841"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.core.records.fromstring" title="Permalink to this definition">#</a></dt>
+<dd><p>Create a record array from binary data</p>
+<p>Note that despite the name of this function it does not accept <em class="xref py py-obj">str</em>
+instances.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>datastring</strong><span class="classifier">bytes-like</span></dt><dd><p>Buffer of binary data</p>
+</dd>
+<dt><strong>dtype</strong><span class="classifier">data-type, optional</span></dt><dd><p>Valid dtype for all arrays</p>
+</dd>
+<dt><strong>shape</strong><span class="classifier">int or tuple of ints, optional</span></dt><dd><p>Shape of each array.</p>
+</dd>
+<dt><strong>offset</strong><span class="classifier">int, optional</span></dt><dd><p>Position in the buffer to start reading from.</p>
+</dd>
+<dt><strong>formats, names, titles, aligned, byteorder</strong></dt><dd><p>If <a class="reference internal" href="numpy.dtype.html#numpy.dtype" title="numpy.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a> is <code class="docutils literal notranslate"><span class="pre">None</span></code>, these arguments are passed to
+<a class="reference internal" href="numpy.format_parser.html#numpy.format_parser" title="numpy.format_parser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.format_parser</span></code></a> to construct a dtype. See that function for
+detailed documentation.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.recarray</dt><dd><p>Record array view into the data in datastring. This will be readonly
+if <em class="xref py py-obj">datastring</em> is readonly.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.frombuffer.html#numpy.frombuffer" title="numpy.frombuffer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.frombuffer</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x01\x02\x03</span><span class="s1">abc&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">records</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;u1,u1,u1,S3&#39;</span><span class="p">)</span>
+<span class="go">rec.array([(1, 2, 3, b&#39;abc&#39;)],</span>
+<span class="go">        dtype=[(&#39;f0&#39;, &#39;u1&#39;), (&#39;f1&#39;, &#39;u1&#39;), (&#39;f2&#39;, &#39;u1&#39;), (&#39;f3&#39;, &#39;S3&#39;)])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">grades_dtype</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;Name&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">str_</span><span class="p">,</span> <span class="mi">10</span><span class="p">)),</span> <span class="p">(</span><span class="s1">&#39;Marks&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span>
+<span class="gp">... </span>                <span class="p">(</span><span class="s1">&#39;GradeLevel&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">grades_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="s1">&#39;Sam&#39;</span><span class="p">,</span> <span class="mf">33.3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;Mike&#39;</span><span class="p">,</span> <span class="mf">44.4</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+<span class="gp">... </span>                        <span class="p">(</span><span class="s1">&#39;Aadi&#39;</span><span class="p">,</span> <span class="mf">66.6</span><span class="p">,</span> <span class="mi">6</span><span class="p">)],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">grades_dtype</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">records</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">grades_array</span><span class="o">.</span><span class="n">tobytes</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">grades_dtype</span><span class="p">)</span>
+<span class="go">rec.array([(&#39;Sam&#39;, 33.3, 3), (&#39;Mike&#39;, 44.4, 5), (&#39;Aadi&#39;, 66.6, 6)],</span>
+<span class="go">        dtype=[(&#39;Name&#39;, &#39;&lt;U10&#39;), (&#39;Marks&#39;, &#39;&lt;f8&#39;), (&#39;GradeLevel&#39;, &#39;&lt;i4&#39;)])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\x01\x02\x03</span><span class="s1">abc&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">records</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;u1,u1,u1,S3&#39;</span><span class="p">)</span>
+<span class="go">Traceback (most recent call last)</span>
+<span class="go">   ...</span>
+<span class="go">TypeError: a bytes-like object is required, not &#39;str&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+

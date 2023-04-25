@@ -1,0 +1,126 @@
+
+<h1>numpy.bartlett<a class="headerlink" href="#numpy-bartlett" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.bartlett">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">bartlett</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">M</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/function_base.py#L2967-L3072"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.bartlett" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the Bartlett window.</p>
+<p>The Bartlett window is very similar to a triangular window, except
+that the end points are at zero.  It is often used in signal
+processing for tapering a signal, without generating too much
+ripple in the frequency domain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>M</strong><span class="classifier">int</span></dt><dd><p>Number of points in the output window. If zero or less, an
+empty array is returned.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">array</span></dt><dd><p>The triangular window, with the maximum value normalized to one
+(the value one appears only if the number of samples is odd), with
+the first and last samples equal to zero.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.blackman.html#numpy.blackman" title="numpy.blackman"><code class="xref py py-obj docutils literal notranslate"><span class="pre">blackman</span></code></a>, <a class="reference internal" href="numpy.hamming.html#numpy.hamming" title="numpy.hamming"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hamming</span></code></a>, <a class="reference internal" href="numpy.hanning.html#numpy.hanning" title="numpy.hanning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hanning</span></code></a>, <a class="reference internal" href="numpy.kaiser.html#numpy.kaiser" title="numpy.kaiser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kaiser</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>The Bartlett window is defined as</p>
+<div class="math notranslate nohighlight">
+\[w(n) = \frac{2}{M-1} \left(
+\frac{M-1}{2} - \left|n - \frac{M-1}{2}\right|
+\right)\]</div>
+<p>Most references to the Bartlett window come from the signal processing
+literature, where it is used as one of many windowing functions for
+smoothing values.  Note that convolution with this window produces linear
+interpolation.  It is also known as an apodization (which means “removing
+the foot”, i.e. smoothing discontinuities at the beginning and end of the
+sampled signal) or tapering function. The Fourier transform of the
+Bartlett window is the product of two sinc functions. Note the excellent
+discussion in Kanasewich <a class="reference internal" href="#r3a7a5a2c0d2a-2" id="id1">[2]</a>.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r3a7a5a2c0d2a-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p>M.S. Bartlett, “Periodogram Analysis and Continuous Spectra”,
+Biometrika 37, 1-16, 1950.</p>
+</div>
+<div class="citation" id="r3a7a5a2c0d2a-2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">2</a><span class="fn-bracket">]</span></span>
+<p>E.R. Kanasewich, “Time Sequence Analysis in Geophysics”,
+The University of Alberta Press, 1975, pp. 109-110.</p>
+</div>
+<div class="citation" id="r3a7a5a2c0d2a-3" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<p>A.V. Oppenheim and R.W. Schafer, “Discrete-Time Signal
+Processing”, Prentice-Hall, 1999, pp. 468-471.</p>
+</div>
+<div class="citation" id="r3a7a5a2c0d2a-4" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></span>
+<p>Wikipedia, “Window function”,
+<a class="reference external" href="https://en.wikipedia.org/wiki/Window_function">https://en.wikipedia.org/wiki/Window_function</a></p>
+</div>
+<div class="citation" id="r3a7a5a2c0d2a-5" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></span>
+<p>W.H. Press,  B.P. Flannery, S.A. Teukolsky, and W.T. Vetterling,
+“Numerical Recipes”, Cambridge University Press, 1986, page 429.</p>
+</div>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">bartlett</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+<span class="go">array([ 0.        ,  0.18181818,  0.36363636,  0.54545455,  0.72727273, # may vary</span>
+<span class="go">        0.90909091,  0.90909091,  0.72727273,  0.54545455,  0.36363636,</span>
+<span class="go">        0.18181818,  0.        ])</span>
+</pre></div>
+</div>
+<p>Plot the window and its frequency response (requires SciPy and matplotlib):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy.fft</span> <span class="kn">import</span> <span class="n">fft</span><span class="p">,</span> <span class="n">fftshift</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">window</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bartlett</span><span class="p">(</span><span class="mi">51</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">window</span><span class="p">)</span>
+<span class="go">[&lt;matplotlib.lines.Line2D object at 0x...&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Bartlett window&quot;</span><span class="p">)</span>
+<span class="go">Text(0.5, 1.0, &#39;Bartlett window&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Amplitude&quot;</span><span class="p">)</span>
+<span class="go">Text(0, 0.5, &#39;Amplitude&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Sample&quot;</span><span class="p">)</span>
+<span class="go">Text(0.5, 0, &#39;Sample&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../_images/numpy-bartlett-1_00_00.png" class="plot-directive" src="../../_images/numpy-bartlett-1_00_00.png" />
+</figure>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="go">&lt;Figure size 640x480 with 0 Axes&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">fft</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="mi">2048</span><span class="p">)</span> <span class="o">/</span> <span class="mf">25.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fftshift</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">freq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">divide</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">invalid</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">response</span> <span class="o">=</span> <span class="mi">20</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">mag</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">response</span><span class="p">)</span>
+<span class="go">[&lt;matplotlib.lines.Line2D object at 0x...&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Frequency response of Bartlett window&quot;</span><span class="p">)</span>
+<span class="go">Text(0.5, 1.0, &#39;Frequency response of Bartlett window&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Magnitude [dB]&quot;</span><span class="p">)</span>
+<span class="go">Text(0, 0.5, &#39;Magnitude [dB]&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Normalized frequency [cycles per sample]&quot;</span><span class="p">)</span>
+<span class="go">Text(0.5, 0, &#39;Normalized frequency [cycles per sample]&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../_images/numpy-bartlett-1_01_00.png" class="plot-directive" src="../../_images/numpy-bartlett-1_01_00.png" />
+</figure>
+</dd></dl>
+

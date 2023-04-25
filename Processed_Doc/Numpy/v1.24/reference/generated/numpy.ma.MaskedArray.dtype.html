@@ -1,0 +1,47 @@
+
+<h1>numpy.ma.MaskedArray.dtype<a class="headerlink" href="#numpy-ma-maskedarray-dtype" title="Permalink to this heading">#</a></h1>
+<p>property</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="numpy.ma.MaskedArray.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ma.MaskedArray.</span></span><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#numpy.ma.MaskedArray.dtype" title="Permalink to this definition">#</a></dt>
+<dd><p>Data-type of the array’s elements.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Setting <code class="docutils literal notranslate"><span class="pre">arr.dtype</span></code> is discouraged and may be deprecated in the
+future.  Setting will replace the <code class="docutils literal notranslate"><span class="pre">dtype</span></code> without modifying the
+memory (see also <a class="reference internal" href="numpy.ndarray.view.html#numpy.ndarray.view" title="numpy.ndarray.view"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ndarray.view</span></code></a> and <a class="reference internal" href="numpy.ndarray.astype.html#numpy.ndarray.astype" title="numpy.ndarray.astype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ndarray.astype</span></code></a>).</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>None</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>d</strong><span class="classifier">numpy dtype object</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.ndarray.astype.html#numpy.ndarray.astype" title="numpy.ndarray.astype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ndarray.astype</span></code></a></dt><dd><p>Cast the values contained in the array to a new data-type.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.ndarray.view.html#numpy.ndarray.view" title="numpy.ndarray.view"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ndarray.view</span></code></a></dt><dd><p>Create a view of the same data but a different data-type.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.dtype.html#numpy.dtype" title="numpy.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.dtype</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">array([[0, 1],</span>
+<span class="go">       [2, 3]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span>
+<span class="go">dtype(&#39;int32&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="go">&lt;type &#39;numpy.dtype&#39;&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+

@@ -1,0 +1,50 @@
+
+<h1>numpy.matlib.ones<a class="headerlink" href="#numpy-matlib-ones" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.matlib.ones">
+<span class="sig-prename descclassname"><span class="pre">matlib.</span></span><span class="sig-name descname"><span class="pre">ones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/matlib.py#L62-L105"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.matlib.ones" title="Permalink to this definition">#</a></dt>
+<dd><p>Matrix of ones.</p>
+<p>Return a matrix of given shape and type, filled with ones.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>shape</strong><span class="classifier">{sequence of ints, int}</span></dt><dd><p>Shape of the matrix</p>
+</dd>
+<dt><strong>dtype</strong><span class="classifier">data-type, optional</span></dt><dd><p>The desired data-type for the matrix, default is np.float64.</p>
+</dd>
+<dt><strong>order</strong><span class="classifier">{‘C’, ‘F’}, optional</span></dt><dd><p>Whether to store matrix in C- or Fortran-contiguous order,
+default is ‘C’.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">matrix</span></dt><dd><p>Matrix of ones of given shape, dtype, and order.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.ones.html#numpy.ones" title="numpy.ones"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ones</span></code></a></dt><dd><p>Array of ones.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.matlib.zeros.html#numpy.matlib.zeros" title="numpy.matlib.zeros"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matlib.zeros</span></code></a></dt><dd><p>Zero matrix.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>If <a class="reference internal" href="numpy.shape.html#numpy.shape" title="numpy.shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shape</span></code></a> has length one i.e. <code class="docutils literal notranslate"><span class="pre">(N,)</span></code>, or is a scalar <code class="docutils literal notranslate"><span class="pre">N</span></code>,
+<em class="xref py py-obj">out</em> becomes a single row matrix of shape <code class="docutils literal notranslate"><span class="pre">(1,N)</span></code>.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">matlib</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="go">matrix([[1.,  1.,  1.],</span>
+<span class="go">        [1.,  1.,  1.]])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">matlib</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">matrix([[1.,  1.]])</span>
+</pre></div>
+</div>
+</dd></dl>
+

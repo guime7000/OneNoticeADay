@@ -1,0 +1,48 @@
+
+<h1>numpy.emath.power<a class="headerlink" href="#numpy-emath-power" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.emath.power">
+<span class="sig-prename descclassname"><span class="pre">emath.</span></span><span class="sig-name descname"><span class="pre">power</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/scimath.py#L441-L483"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.emath.power" title="Permalink to this definition">#</a></dt>
+<dd><p>Return x to the power p, (x**p).</p>
+<p>If <em class="xref py py-obj">x</em> contains negative values, the output is converted to the
+complex domain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">array_like</span></dt><dd><p>The input value(s).</p>
+</dd>
+<dt><strong>p</strong><span class="classifier">array_like of ints</span></dt><dd><p>The power(s) to which <em class="xref py py-obj">x</em> is raised. If <em class="xref py py-obj">x</em> contains multiple values,
+<em class="xref py py-obj">p</em> has to either be a scalar, or contain the same number of values
+as <em class="xref py py-obj">x</em>. In the latter case, the result is
+<code class="docutils literal notranslate"><span class="pre">x[0]**p[0],</span> <span class="pre">x[1]**p[1],</span> <span class="pre">...</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ndarray or scalar</span></dt><dd><p>The result of <code class="docutils literal notranslate"><span class="pre">x**p</span></code>. If <em class="xref py py-obj">x</em> and <em class="xref py py-obj">p</em> are scalars, so is <em class="xref py py-obj">out</em>,
+otherwise an array is returned.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.power.html#numpy.power" title="numpy.power"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.power</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">emath</span><span class="o">.</span><span class="n">power</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">array([ 4, 16])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">emath</span><span class="o">.</span><span class="n">power</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">array([0.25  ,  0.0625])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">emath</span><span class="o">.</span><span class="n">power</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">array([ 4.-0.j, 16.+0.j])</span>
+</pre></div>
+</div>
+</dd></dl>
+

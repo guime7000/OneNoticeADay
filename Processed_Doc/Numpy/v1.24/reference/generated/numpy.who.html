@@ -1,0 +1,49 @@
+
+<h1>numpy.who<a class="headerlink" href="#numpy-who" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.who">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">who</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vardict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/utils.py#L349-L441"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.who" title="Permalink to this definition">#</a></dt>
+<dd><p>Print the NumPy arrays in the given dictionary.</p>
+<p>If there is no dictionary passed in or <em class="xref py py-obj">vardict</em> is None then returns
+NumPy arrays in the globals() dictionary (all NumPy arrays in the
+namespace).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>vardict</strong><span class="classifier">dict, optional</span></dt><dd><p>A dictionary possibly containing ndarrays.  Default is globals().</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">None</span></dt><dd><p>Returns ‘None’.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Prints out the name, shape, bytes and type of all of the ndarrays
+present in <em class="xref py py-obj">vardict</em>.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">who</span><span class="p">()</span>
+<span class="go">Name            Shape            Bytes            Type</span>
+<span class="go">===========================================================</span>
+<span class="go">a               10               80               int64</span>
+<span class="go">b               20               160              float64</span>
+<span class="go">Upper bound on total bytes  =       240</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">2.0</span><span class="p">),</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">3.0</span><span class="p">),</span> <span class="s1">&#39;txt&#39;</span><span class="p">:</span> <span class="s1">&#39;Some str&#39;</span><span class="p">,</span>
+<span class="gp">... </span><span class="s1">&#39;idx&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">who</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="go">Name            Shape            Bytes            Type</span>
+<span class="go">===========================================================</span>
+<span class="go">x               2                16               float64</span>
+<span class="go">y               3                24               float64</span>
+<span class="go">Upper bound on total bytes  =       40</span>
+</pre></div>
+</div>
+</dd></dl>
+

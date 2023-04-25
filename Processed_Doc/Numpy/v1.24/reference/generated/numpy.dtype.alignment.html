@@ -1,0 +1,21 @@
+
+<h1>numpy.dtype.alignment<a class="headerlink" href="#numpy-dtype-alignment" title="Permalink to this heading">#</a></h1>
+<p>attribute</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="numpy.dtype.alignment">
+<span class="sig-prename descclassname"><span class="pre">dtype.</span></span><span class="sig-name descname"><span class="pre">alignment</span></span><a class="headerlink" href="#numpy.dtype.alignment" title="Permalink to this definition">#</a></dt>
+<dd><p>The required alignment (bytes) of this data-type according to the compiler.</p>
+<p>More information is available in the C-API section of the manual.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;i4&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">alignment</span>
+<span class="go">4</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">alignment</span>
+<span class="go">8</span>
+</pre></div>
+</div>
+</dd></dl>
+

@@ -1,0 +1,86 @@
+
+<h1>numpy.ma.mask_rowcols<a class="headerlink" href="#numpy-ma-mask-rowcols" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.ma.mask_rowcols">
+<span class="sig-prename descclassname"><span class="pre">ma.</span></span><span class="sig-name descname"><span class="pre">mask_rowcols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/ma/core.py#L7567-L7653"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.ma.mask_rowcols" title="Permalink to this definition">#</a></dt>
+<dd><p>Mask rows and/or columns of a 2D array that contain masked values.</p>
+<p>Mask whole rows and/or columns of a 2D array that contain
+masked values.  The masking behavior is selected using the
+<em class="xref py py-obj">axis</em> parameter.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>If <em class="xref py py-obj">axis</em> is None, rows <em>and</em> columns are masked.</p></li>
+<li><p>If <em class="xref py py-obj">axis</em> is 0, only rows are masked.</p></li>
+<li><p>If <em class="xref py py-obj">axis</em> is 1 or -1, only columns are masked.</p></li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>a</strong><span class="classifier">array_like, MaskedArray</span></dt><dd><p>The array to mask.  If not a MaskedArray instance (or if no array
+elements are masked).  The result is a MaskedArray with <em class="xref py py-obj">mask</em> set
+to <a class="reference internal" href="../maskedarray.baseclass.html#numpy.ma.nomask" title="numpy.ma.nomask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nomask</span></code></a> (False). Must be a 2D array.</p>
+</dd>
+<dt><strong>axis</strong><span class="classifier">int, optional</span></dt><dd><p>Axis along which to perform the operation. If None, applies to a
+flattened version of the array.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>a</strong><span class="classifier">MaskedArray</span></dt><dd><p>A modified version of the input array, masked depending on the value
+of the <em class="xref py py-obj">axis</em> parameter.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>NotImplementedError</dt><dd><p>If input array <em class="xref py py-obj">a</em> is not 2D.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.ma.mask_rows.html#numpy.ma.mask_rows" title="numpy.ma.mask_rows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mask_rows</span></code></a></dt><dd><p>Mask rows of a 2D array that contain masked values.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.ma.mask_cols.html#numpy.ma.mask_cols" title="numpy.ma.mask_cols"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mask_cols</span></code></a></dt><dd><p>Mask cols of a 2D array that contain masked values.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.ma.masked_where.html#numpy.ma.masked_where" title="numpy.ma.masked_where"><code class="xref py py-obj docutils literal notranslate"><span class="pre">masked_where</span></code></a></dt><dd><p>Mask where a condition is met.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>The input array’s mask is modified by this function.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy.ma</span> <span class="k">as</span> <span class="nn">ma</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">array([[0, 0, 0],</span>
+<span class="go">       [0, 1, 0],</span>
+<span class="go">       [0, 0, 0]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">ma</span><span class="o">.</span><span class="n">masked_equal</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">masked_array(</span>
+<span class="go">  data=[[0, 0, 0],</span>
+<span class="go">        [0, --, 0],</span>
+<span class="go">        [0, 0, 0]],</span>
+<span class="go">  mask=[[False, False, False],</span>
+<span class="go">        [False,  True, False],</span>
+<span class="go">        [False, False, False]],</span>
+<span class="go">  fill_value=1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ma</span><span class="o">.</span><span class="n">mask_rowcols</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">masked_array(</span>
+<span class="go">  data=[[0, --, 0],</span>
+<span class="go">        [--, --, --],</span>
+<span class="go">        [0, --, 0]],</span>
+<span class="go">  mask=[[False,  True, False],</span>
+<span class="go">        [ True,  True,  True],</span>
+<span class="go">        [False,  True, False]],</span>
+<span class="go">  fill_value=1)</span>
+</pre></div>
+</div>
+</dd></dl>
+

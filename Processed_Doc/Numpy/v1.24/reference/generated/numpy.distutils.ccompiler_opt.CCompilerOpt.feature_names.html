@@ -1,0 +1,24 @@
+
+<h1>numpy.distutils.ccompiler_opt.CCompilerOpt.feature_names<a class="headerlink" href="#numpy-distutils-ccompiler-opt-ccompileropt-feature-names" title="Permalink to this heading">#</a></h1>
+<p>method</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="numpy.distutils.ccompiler_opt.CCompilerOpt.feature_names">
+<span class="sig-prename descclassname"><span class="pre">distutils.ccompiler_opt.CCompilerOpt.</span></span><span class="sig-name descname"><span class="pre">feature_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_flags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">macros</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/distutils/ccompiler_opt.py#L1261-L1294"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.distutils.ccompiler_opt.CCompilerOpt.feature_names" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns a set of CPU feature names that supported by platform and the <strong>C</strong> compiler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>names</strong><span class="classifier">sequence or None, optional</span></dt><dd><p>Specify certain CPU features to test it against the <strong>C</strong> compiler.
+if None(default), it will test all current supported features.
+<strong>Note</strong>: feature names must be in upper-case.</p>
+</dd>
+<dt><strong>force_flags</strong><span class="classifier">list or None, optional</span></dt><dd><p>If None(default), default compiler flags for every CPU feature will
+be used during the test.</p>
+</dd>
+<dt><strong>macros</strong><span class="classifier">list of tuples, optional</span></dt><dd><p>A list of C macro definitions.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+

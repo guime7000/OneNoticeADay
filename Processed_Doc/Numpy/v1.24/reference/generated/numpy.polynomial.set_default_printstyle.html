@@ -1,0 +1,41 @@
+
+<h1>numpy.polynomial.set_default_printstyle<a class="headerlink" href="#numpy-polynomial-set-default-printstyle" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.polynomial.set_default_printstyle">
+<span class="sig-prename descclassname"><span class="pre">polynomial.</span></span><span class="sig-name descname"><span class="pre">set_default_printstyle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">style</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/polynomial/__init__.py#L134-L180"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.polynomial.set_default_printstyle" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the default format for the string representation of polynomials.</p>
+<p>Values for <code class="docutils literal notranslate"><span class="pre">style</span></code> must be valid inputs to <code class="docutils literal notranslate"><span class="pre">__format__</span></code>, i.e. ‘ascii’
+or ‘unicode’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>style</strong><span class="classifier">str</span></dt><dd><p>Format string for default printing style. Must be either ‘ascii’ or
+‘unicode’.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The default format depends on the platform: ‘unicode’ is used on
+Unix-based systems and ‘ascii’ on Windows. This determination is based on
+default font support for the unicode superscript and subscript ranges.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polynomial</span><span class="o">.</span><span class="n">Polynomial</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polynomial</span><span class="o">.</span><span class="n">Chebyshev</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">polynomial</span><span class="o">.</span><span class="n">set_default_printstyle</span><span class="p">(</span><span class="s1">&#39;unicode&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="go">1.0 + 2.0·x + 3.0·x²</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="go">1.0 + 2.0·T₁(x) + 3.0·T₂(x)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">polynomial</span><span class="o">.</span><span class="n">set_default_printstyle</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="go">1.0 + 2.0 x + 3.0 x**2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="go">1.0 + 2.0 T_1(x) + 3.0 T_2(x)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Formatting supersedes all class/package-level defaults</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="si">:</span><span class="s2">unicode</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="go">1.0 + 2.0·x + 3.0·x²</span>
+</pre></div>
+</div>
+</dd></dl>
+

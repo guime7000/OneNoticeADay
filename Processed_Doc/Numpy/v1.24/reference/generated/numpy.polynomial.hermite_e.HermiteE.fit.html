@@ -1,0 +1,80 @@
+
+<h1>numpy.polynomial.hermite_e.HermiteE.fit<a class="headerlink" href="#numpy-polynomial-hermite-e-hermitee-fit" title="Permalink to this heading">#</a></h1>
+<p>method</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="numpy.polynomial.hermite_e.HermiteE.fit">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">polynomial.hermite_e.HermiteE.</span></span><span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rcond</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">full</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'x'</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/polynomial/_polybase.py#L933-L1023"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.polynomial.hermite_e.HermiteE.fit" title="Permalink to this definition">#</a></dt>
+<dd><p>Least squares fit to data.</p>
+<p>Return a series instance that is the least squares fit to the data
+<em class="xref py py-obj">y</em> sampled at <em class="xref py py-obj">x</em>. The domain of the returned instance can be
+specified and this will often result in a superior fit with less
+chance of ill conditioning.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>x</strong><span class="classifier">array_like, shape (M,)</span></dt><dd><p>x-coordinates of the M sample points <code class="docutils literal notranslate"><span class="pre">(x[i],</span> <span class="pre">y[i])</span></code>.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">array_like, shape (M,)</span></dt><dd><p>y-coordinates of the M sample points <code class="docutils literal notranslate"><span class="pre">(x[i],</span> <span class="pre">y[i])</span></code>.</p>
+</dd>
+<dt><strong>deg</strong><span class="classifier">int or 1-D array_like</span></dt><dd><p>Degree(s) of the fitting polynomials. If <em class="xref py py-obj">deg</em> is a single integer
+all terms up to and including the <em class="xref py py-obj">deg</em>’th term are included in the
+fit. For NumPy versions &gt;= 1.11.0 a list of integers specifying the
+degrees of the terms to include may be used instead.</p>
+</dd>
+<dt><strong>domain</strong><span class="classifier">{None, [beg, end], []}, optional</span></dt><dd><p>Domain to use for the returned series. If <code class="docutils literal notranslate"><span class="pre">None</span></code>,
+then a minimal domain that covers the points <em class="xref py py-obj">x</em> is chosen.  If
+<code class="docutils literal notranslate"><span class="pre">[]</span></code> the class domain is used. The default value was the
+class domain in NumPy 1.4 and <code class="docutils literal notranslate"><span class="pre">None</span></code> in later versions.
+The <code class="docutils literal notranslate"><span class="pre">[]</span></code> option was added in numpy 1.5.0.</p>
+</dd>
+<dt><strong>rcond</strong><span class="classifier">float, optional</span></dt><dd><p>Relative condition number of the fit. Singular values smaller
+than this relative to the largest singular value will be
+ignored. The default value is len(x)*eps, where eps is the
+relative precision of the float type, about 2e-16 in most
+cases.</p>
+</dd>
+<dt><strong>full</strong><span class="classifier">bool, optional</span></dt><dd><p>Switch determining nature of return value. When it is False
+(the default) just the coefficients are returned, when True
+diagnostic information from the singular value decomposition is
+also returned.</p>
+</dd>
+<dt><strong>w</strong><span class="classifier">array_like, shape (M,), optional</span></dt><dd><p>Weights. If not None, the weight <code class="docutils literal notranslate"><span class="pre">w[i]</span></code> applies to the unsquared
+residual <code class="docutils literal notranslate"><span class="pre">y[i]</span> <span class="pre">-</span> <span class="pre">y_hat[i]</span></code> at <code class="docutils literal notranslate"><span class="pre">x[i]</span></code>. Ideally the weights are
+chosen so that the errors of the products <code class="docutils literal notranslate"><span class="pre">w[i]*y[i]</span></code> all have
+the same variance.  When using inverse-variance weighting, use
+<code class="docutils literal notranslate"><span class="pre">w[i]</span> <span class="pre">=</span> <span class="pre">1/sigma(y[i])</span></code>.  The default value is None.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.5.0.</span></p>
+</div>
+</dd>
+<dt><strong>window</strong><span class="classifier">{[beg, end]}, optional</span></dt><dd><p>Window to use for the returned series. The default
+value is the default class domain</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.6.0.</span></p>
+</div>
+</dd>
+<dt><strong>symbol</strong><span class="classifier">str, optional</span></dt><dd><p>Symbol representing the independent variable. Default is ‘x’.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl>
+<dt><strong>new_series</strong><span class="classifier">series</span></dt><dd><p>A series that represents the least squares fit to the data and
+has the domain and window specified in the call. If the
+coefficients for the unscaled and unshifted basis polynomials are
+of interest, do <code class="docutils literal notranslate"><span class="pre">new_series.convert().coef</span></code>.</p>
+</dd>
+<dt><strong>[resid, rank, sv, rcond]</strong><span class="classifier">list</span></dt><dd><p>These values are only returned if <code class="docutils literal notranslate"><span class="pre">full</span> <span class="pre">==</span> <span class="pre">True</span></code></p>
+<ul class="simple">
+<li><p>resid – sum of squared residuals of the least squares fit</p></li>
+<li><p>rank – the numerical rank of the scaled Vandermonde matrix</p></li>
+<li><p>sv – singular values of the scaled Vandermonde matrix</p></li>
+<li><p>rcond – value of <em class="xref py py-obj">rcond</em>.</p></li>
+</ul>
+<p>For more details, see <a class="reference internal" href="numpy.linalg.lstsq.html#numpy.linalg.lstsq" title="numpy.linalg.lstsq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">linalg.lstsq</span></code></a>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+

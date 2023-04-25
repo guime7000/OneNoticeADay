@@ -1,0 +1,72 @@
+
+<h1>numpy.linalg.solve<a class="headerlink" href="#numpy-linalg-solve" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.linalg.solve">
+<span class="sig-prename descclassname"><span class="pre">linalg.</span></span><span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/linalg/linalg.py#L306-L388"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.linalg.solve" title="Permalink to this definition">#</a></dt>
+<dd><p>Solve a linear matrix equation, or system of linear scalar equations.</p>
+<p>Computes the “exact” solution, <em class="xref py py-obj">x</em>, of the well-determined, i.e., full
+rank, linear matrix equation <em class="xref py py-obj">ax = b</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>a</strong><span class="classifier">(…, M, M) array_like</span></dt><dd><p>Coefficient matrix.</p>
+</dd>
+<dt><strong>b</strong><span class="classifier">{(…, M,), (…, M, K)}, array_like</span></dt><dd><p>Ordinate or “dependent variable” values.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">{(…, M,), (…, M, K)} ndarray</span></dt><dd><p>Solution to the system a x = b.  Returned shape is identical to <em class="xref py py-obj">b</em>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>LinAlgError</dt><dd><p>If <em class="xref py py-obj">a</em> is singular or not square.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.solve.html#scipy.linalg.solve" title="(in SciPy v1.9.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.linalg.solve</span></code></a></dt><dd><p>Similar function in SciPy.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.8.0.</span></p>
+</div>
+<p>Broadcasting rules apply, see the <a class="reference internal" href="../routines.linalg.html#module-numpy.linalg" title="numpy.linalg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.linalg</span></code></a> documentation for
+details.</p>
+<p>The solutions are computed using LAPACK routine <code class="docutils literal notranslate"><span class="pre">_gesv</span></code>.</p>
+<p><em class="xref py py-obj">a</em> must be square and of full-rank, i.e., all rows (or, equivalently,
+columns) must be linearly independent; if either is not true, use
+<a class="reference internal" href="numpy.linalg.lstsq.html#numpy.linalg.lstsq" title="numpy.linalg.lstsq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lstsq</span></code></a> for the least-squares best “solution” of the
+system/equation.</p>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="rba3609d25bf2-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p>G. Strang, <em>Linear Algebra and Its Applications</em>, 2nd Ed., Orlando,
+FL, Academic Press, Inc., 1980, pg. 22.</p>
+</div>
+</div>
+<p class="rubric">Examples</p>
+<p>Solve the system of equations <code class="docutils literal notranslate"><span class="pre">x0</span> <span class="pre">+</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">x1</span> <span class="pre">=</span> <span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">*</span> <span class="pre">x0</span> <span class="pre">+</span> <span class="pre">5</span> <span class="pre">*</span> <span class="pre">x1</span> <span class="pre">=</span> <span class="pre">2</span></code>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">array([-1.,  1.])</span>
+</pre></div>
+</div>
+<p>Check that the solution is correct:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="n">b</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+

@@ -1,0 +1,46 @@
+
+<h1>numpy.polynomial.legendre.legmul<a class="headerlink" href="#numpy-polynomial-legendre-legmul" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.polynomial.legendre.legmul">
+<span class="sig-prename descclassname"><span class="pre">polynomial.legendre.</span></span><span class="sig-name descname"><span class="pre">legmul</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c2</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/polynomial/legendre.py#L464-L529"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.polynomial.legendre.legmul" title="Permalink to this definition">#</a></dt>
+<dd><p>Multiply one Legendre series by another.</p>
+<p>Returns the product of two Legendre series <em class="xref py py-obj">c1</em> * <em class="xref py py-obj">c2</em>.  The arguments
+are sequences of coefficients, from lowest order “term” to highest,
+e.g., [1,2,3] represents the series <code class="docutils literal notranslate"><span class="pre">P_0</span> <span class="pre">+</span> <span class="pre">2*P_1</span> <span class="pre">+</span> <span class="pre">3*P_2</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>c1, c2</strong><span class="classifier">array_like</span></dt><dd><p>1-D arrays of Legendre series coefficients ordered from low to
+high.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ndarray</span></dt><dd><p>Of Legendre series coefficients representing their product.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.polynomial.legendre.legadd.html#numpy.polynomial.legendre.legadd" title="numpy.polynomial.legendre.legadd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legadd</span></code></a>, <a class="reference internal" href="numpy.polynomial.legendre.legsub.html#numpy.polynomial.legendre.legsub" title="numpy.polynomial.legendre.legsub"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legsub</span></code></a>, <a class="reference internal" href="numpy.polynomial.legendre.legmulx.html#numpy.polynomial.legendre.legmulx" title="numpy.polynomial.legendre.legmulx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legmulx</span></code></a>, <a class="reference internal" href="numpy.polynomial.legendre.legdiv.html#numpy.polynomial.legendre.legdiv" title="numpy.polynomial.legendre.legdiv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legdiv</span></code></a>, <a class="reference internal" href="numpy.polynomial.legendre.legpow.html#numpy.polynomial.legendre.legpow" title="numpy.polynomial.legendre.legpow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">legpow</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>In general, the (polynomial) product of two C-series results in terms
+that are not in the Legendre polynomial basis set.  Thus, to express
+the product as a Legendre series, it is necessary to “reproject” the
+product onto said basis set, which may produce “unintuitive” (but
+correct) results; see Examples section below.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy.polynomial</span> <span class="kn">import</span> <span class="n">legendre</span> <span class="k">as</span> <span class="n">L</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">L</span><span class="o">.</span><span class="n">legmul</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span><span class="n">c2</span><span class="p">)</span> <span class="c1"># multiplication requires &quot;reprojection&quot;</span>
+<span class="go">array([  4.33333333,  10.4       ,  11.66666667,   3.6       ]) # may vary</span>
+</pre></div>
+</div>
+</dd></dl>
+

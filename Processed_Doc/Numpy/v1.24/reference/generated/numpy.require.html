@@ -1,0 +1,86 @@
+
+<h1>numpy.require<a class="headerlink" href="#numpy-require" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.require">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">require</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requirements</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">like</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/core/_asarray.py#L31-L135"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.require" title="Permalink to this definition">#</a></dt>
+<dd><p>Return an ndarray of the provided type that satisfies requirements.</p>
+<p>This function is useful to be sure that an array with the correct flags
+is returned for passing to compiled code (perhaps through ctypes).</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>a</strong><span class="classifier">array_like</span></dt><dd><p>The object to be converted to a type-and-requirement-satisfying array.</p>
+</dd>
+<dt><strong>dtype</strong><span class="classifier">data-type</span></dt><dd><p>The required data-type. If None preserve the current dtype. If your
+application requires the data to be in native byteorder, include
+a byteorder specification as a part of the dtype specification.</p>
+</dd>
+<dt><strong>requirements</strong><span class="classifier">str or sequence of str</span></dt><dd><p>The requirements list can be any of the following</p>
+<ul class="simple">
+<li><p>‘F_CONTIGUOUS’ (‘F’) - ensure a Fortran-contiguous array</p></li>
+<li><p>‘C_CONTIGUOUS’ (‘C’) - ensure a C-contiguous array</p></li>
+<li><p>‘ALIGNED’ (‘A’)      - ensure a data-type aligned array</p></li>
+<li><p>‘WRITEABLE’ (‘W’)    - ensure a writable array</p></li>
+<li><p>‘OWNDATA’ (‘O’)      - ensure an array that owns its own data</p></li>
+<li><p>‘ENSUREARRAY’, (‘E’) - ensure a base array, instead of a subclass</p></li>
+</ul>
+</dd>
+<dt><strong>like</strong><span class="classifier">array_like, optional</span></dt><dd><p>Reference object to allow the creation of arrays which are not
+NumPy arrays. If an array-like passed in as <code class="docutils literal notranslate"><span class="pre">like</span></code> supports
+the <code class="docutils literal notranslate"><span class="pre">__array_function__</span></code> protocol, the result will be defined
+by it. In this case, it ensures the creation of an array object
+compatible with that passed in via this argument.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.20.0.</span></p>
+</div>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ndarray</span></dt><dd><p>Array with specified requirements and type if given.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.asarray.html#numpy.asarray" title="numpy.asarray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asarray</span></code></a></dt><dd><p>Convert input to an ndarray.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.asanyarray.html#numpy.asanyarray" title="numpy.asanyarray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asanyarray</span></code></a></dt><dd><p>Convert to an ndarray, but pass through ndarray subclasses.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.ascontiguousarray.html#numpy.ascontiguousarray" title="numpy.ascontiguousarray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ascontiguousarray</span></code></a></dt><dd><p>Convert input to a contiguous array.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.asfortranarray.html#numpy.asfortranarray" title="numpy.asfortranarray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asfortranarray</span></code></a></dt><dd><p>Convert input to an ndarray with column-major memory order.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.ndarray.flags.html#numpy.ndarray.flags" title="numpy.ndarray.flags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ndarray.flags</span></code></a></dt><dd><p>Information about the memory layout of the array.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>The returned array will be guaranteed to have the listed requirements
+by making a copy if needed.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">flags</span>
+<span class="go">  C_CONTIGUOUS : True</span>
+<span class="go">  F_CONTIGUOUS : False</span>
+<span class="go">  OWNDATA : False</span>
+<span class="go">  WRITEABLE : True</span>
+<span class="go">  ALIGNED : True</span>
+<span class="go">  WRITEBACKIFCOPY : False</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">requirements</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">flags</span>
+<span class="go">  C_CONTIGUOUS : False</span>
+<span class="go">  F_CONTIGUOUS : True</span>
+<span class="go">  OWNDATA : True</span>
+<span class="go">  WRITEABLE : True</span>
+<span class="go">  ALIGNED : True</span>
+<span class="go">  WRITEBACKIFCOPY : False</span>
+</pre></div>
+</div>
+</dd></dl>
+

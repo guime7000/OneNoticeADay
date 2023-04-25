@@ -1,0 +1,83 @@
+
+<h1>numpy.cumsum<a class="headerlink" href="#numpy-cumsum" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.cumsum">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">cumsum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/core/fromnumeric.py#L2523-L2597"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.cumsum" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the cumulative sum of the elements along a given axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>a</strong><span class="classifier">array_like</span></dt><dd><p>Input array.</p>
+</dd>
+<dt><strong>axis</strong><span class="classifier">int, optional</span></dt><dd><p>Axis along which the cumulative sum is computed. The default
+(None) is to compute the cumsum over the flattened array.</p>
+</dd>
+<dt><strong>dtype</strong><span class="classifier">dtype, optional</span></dt><dd><p>Type of the returned array and of the accumulator in which the
+elements are summed.  If <a class="reference internal" href="numpy.dtype.html#numpy.dtype" title="numpy.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a> is not specified, it defaults
+to the dtype of <em class="xref py py-obj">a</em>, unless <em class="xref py py-obj">a</em> has an integer dtype with a
+precision less than that of the default platform integer.  In
+that case, the default platform integer is used.</p>
+</dd>
+<dt><strong>out</strong><span class="classifier">ndarray, optional</span></dt><dd><p>Alternative output array in which to place the result. It must
+have the same shape and buffer length as the expected output
+but the type will be cast if necessary. See <a class="reference internal" href="../../user/basics.ufuncs.html#ufuncs-output-type"><span class="std std-ref">Output type determination</span></a> for
+more details.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>cumsum_along_axis</strong><span class="classifier">ndarray.</span></dt><dd><p>A new array holding the result is returned unless <em class="xref py py-obj">out</em> is
+specified, in which case a reference to <em class="xref py py-obj">out</em> is returned. The
+result has the same size as <em class="xref py py-obj">a</em>, and the same shape as <em class="xref py py-obj">a</em> if
+<em class="xref py py-obj">axis</em> is not None or <em class="xref py py-obj">a</em> is a 1-d array.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.sum.html#numpy.sum" title="numpy.sum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sum</span></code></a></dt><dd><p>Sum array elements.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.trapz.html#numpy.trapz" title="numpy.trapz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trapz</span></code></a></dt><dd><p>Integration of array values using the composite trapezoidal rule.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.diff.html#numpy.diff" title="numpy.diff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">diff</span></code></a></dt><dd><p>Calculate the n-th discrete difference along given axis.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Arithmetic is modular when using integer types, and no error is
+raised on overflow.</p>
+<p><code class="docutils literal notranslate"><span class="pre">cumsum(a)[-1]</span></code> may not be equal to <code class="docutils literal notranslate"><span class="pre">sum(a)</span></code> for floating-point
+values since <code class="docutils literal notranslate"><span class="pre">sum</span></code> may use a pairwise summation routine, reducing
+the roundoff-error. See <a class="reference internal" href="numpy.sum.html#numpy.sum" title="numpy.sum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sum</span></code></a> for more information.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">array([[1, 2, 3],</span>
+<span class="go">       [4, 5, 6]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">array([ 1,  3,  6, 10, 15, 21])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>     <span class="c1"># specifies type of output value(s)</span>
+<span class="go">array([  1.,   3.,   6.,  10.,  15.,  21.])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>      <span class="c1"># sum over rows for each of the 3 columns</span>
+<span class="go">array([[1, 2, 3],</span>
+<span class="go">       [5, 7, 9]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>      <span class="c1"># sum over columns for each of the 2 rows</span>
+<span class="go">array([[ 1,  3,  6],</span>
+<span class="go">       [ 4,  9, 15]])</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">cumsum(b)[-1]</span></code> may not be equal to <code class="docutils literal notranslate"><span class="pre">sum(b)</span></code></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2e-9</span><span class="p">,</span> <span class="mf">3e-9</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1000000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">1000000.0050045159</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="go">1000000.0050000029</span>
+</pre></div>
+</div>
+</dd></dl>
+

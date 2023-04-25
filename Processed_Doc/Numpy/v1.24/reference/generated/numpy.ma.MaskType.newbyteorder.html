@@ -1,0 +1,34 @@
+
+<h1>numpy.ma.MaskType.newbyteorder<a class="headerlink" href="#numpy-ma-masktype-newbyteorder" title="Permalink to this heading">#</a></h1>
+<p>method</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="numpy.ma.MaskType.newbyteorder">
+<span class="sig-prename descclassname"><span class="pre">ma.MaskType.</span></span><span class="sig-name descname"><span class="pre">newbyteorder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'S'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#numpy.ma.MaskType.newbyteorder" title="Permalink to this definition">#</a></dt>
+<dd><p>Return a new <a class="reference internal" href="numpy.dtype.html#numpy.dtype" title="numpy.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a> with a different byte order.</p>
+<p>Changes are also made in all fields and sub-arrays of the data type.</p>
+<p>The <em class="xref py py-obj">new_order</em> code can be any from the following:</p>
+<ul class="simple">
+<li><p>‘S’ - swap dtype from current to opposite endian</p></li>
+<li><p>{‘&lt;’, ‘little’} - little endian</p></li>
+<li><p>{‘&gt;’, ‘big’} - big endian</p></li>
+<li><p>{‘=’, ‘native’} - native order</p></li>
+<li><p>{‘|’, ‘I’} - ignore (no change to byte order)</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>new_order</strong><span class="classifier">str, optional</span></dt><dd><p>Byte order to force; a value from the byte order specifications
+above.  The default value (‘S’) results in swapping the current
+byte order.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>new_dtype</strong><span class="classifier">dtype</span></dt><dd><p>New <a class="reference internal" href="numpy.dtype.html#numpy.dtype" title="numpy.dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtype</span></code></a> object with the given change to the byte order.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+

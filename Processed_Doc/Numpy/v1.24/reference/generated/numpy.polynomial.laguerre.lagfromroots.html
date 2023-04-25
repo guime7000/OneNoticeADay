@@ -1,0 +1,58 @@
+
+<h1>numpy.polynomial.laguerre.lagfromroots<a class="headerlink" href="#numpy-polynomial-laguerre-lagfromroots" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.polynomial.laguerre.lagfromroots">
+<span class="sig-prename descclassname"><span class="pre">polynomial.laguerre.</span></span><span class="sig-name descname"><span class="pre">lagfromroots</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">roots</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/polynomial/laguerre.py#L251-L304"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.polynomial.laguerre.lagfromroots" title="Permalink to this definition">#</a></dt>
+<dd><p>Generate a Laguerre series with given roots.</p>
+<p>The function returns the coefficients of the polynomial</p>
+<div class="math notranslate nohighlight">
+\[p(x) = (x - r_0) * (x - r_1) * ... * (x - r_n),\]</div>
+<p>in Laguerre form, where the <em class="xref py py-obj">r_n</em> are the roots specified in <a class="reference internal" href="numpy.roots.html#numpy.roots" title="numpy.roots"><code class="xref py py-obj docutils literal notranslate"><span class="pre">roots</span></code></a>.
+If a zero has multiplicity n, then it must appear in <a class="reference internal" href="numpy.roots.html#numpy.roots" title="numpy.roots"><code class="xref py py-obj docutils literal notranslate"><span class="pre">roots</span></code></a> n times.
+For instance, if 2 is a root of multiplicity three and 3 is a root of
+multiplicity 2, then <a class="reference internal" href="numpy.roots.html#numpy.roots" title="numpy.roots"><code class="xref py py-obj docutils literal notranslate"><span class="pre">roots</span></code></a> looks something like [2, 2, 2, 3, 3]. The
+roots can appear in any order.</p>
+<p>If the returned coefficients are <em class="xref py py-obj">c</em>, then</p>
+<div class="math notranslate nohighlight">
+\[p(x) = c_0 + c_1 * L_1(x) + ... +  c_n * L_n(x)\]</div>
+<p>The coefficient of the last term is not generally 1 for monic
+polynomials in Laguerre form.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>roots</strong><span class="classifier">array_like</span></dt><dd><p>Sequence containing the roots.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ndarray</span></dt><dd><p>1-D array of coefficients.  If all roots are real then <em class="xref py py-obj">out</em> is a
+real array, if some of the roots are complex, then <em class="xref py py-obj">out</em> is complex
+even if all the coefficients in the result are real (see Examples
+below).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.polynomial.polynomial.polyfromroots.html#numpy.polynomial.polynomial.polyfromroots" title="numpy.polynomial.polynomial.polyfromroots"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.polynomial.polynomial.polyfromroots</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="numpy.polynomial.legendre.legfromroots.html#numpy.polynomial.legendre.legfromroots" title="numpy.polynomial.legendre.legfromroots"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.polynomial.legendre.legfromroots</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="numpy.polynomial.chebyshev.chebfromroots.html#numpy.polynomial.chebyshev.chebfromroots" title="numpy.polynomial.chebyshev.chebfromroots"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.polynomial.chebyshev.chebfromroots</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="numpy.polynomial.hermite.hermfromroots.html#numpy.polynomial.hermite.hermfromroots" title="numpy.polynomial.hermite.hermfromroots"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.polynomial.hermite.hermfromroots</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="numpy.polynomial.hermite_e.hermefromroots.html#numpy.polynomial.hermite_e.hermefromroots" title="numpy.polynomial.hermite_e.hermefromroots"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.polynomial.hermite_e.hermefromroots</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy.polynomial.laguerre</span> <span class="kn">import</span> <span class="n">lagfromroots</span><span class="p">,</span> <span class="n">lagval</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">coef</span> <span class="o">=</span> <span class="n">lagfromroots</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lagval</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">coef</span><span class="p">)</span>
+<span class="go">array([0.,  0.,  0.])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">coef</span> <span class="o">=</span> <span class="n">lagfromroots</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="p">,</span> <span class="mi">1</span><span class="n">j</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lagval</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="p">,</span> <span class="mi">1</span><span class="n">j</span><span class="p">),</span> <span class="n">coef</span><span class="p">)</span>
+<span class="go">array([0.+0.j, 0.+0.j])</span>
+</pre></div>
+</div>
+</dd></dl>
+

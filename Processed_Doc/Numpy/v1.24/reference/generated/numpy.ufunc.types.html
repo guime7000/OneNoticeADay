@@ -1,0 +1,45 @@
+
+<h1>numpy.ufunc.types<a class="headerlink" href="#numpy-ufunc-types" title="Permalink to this heading">#</a></h1>
+<p>attribute</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="numpy.ufunc.types">
+<span class="sig-prename descclassname"><span class="pre">ufunc.</span></span><span class="sig-name descname"><span class="pre">types</span></span><a class="headerlink" href="#numpy.ufunc.types" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns a list with types grouped input-&gt;output.</p>
+<p>Data attribute listing the data-type “Domain-Range” groupings the ufunc can
+deliver. The data-types are given using the character codes.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.ufunc.ntypes.html#numpy.ufunc.ntypes" title="numpy.ufunc.ntypes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ufunc.ntypes</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">types</span>
+<span class="go">[&#39;??-&gt;?&#39;, &#39;bb-&gt;b&#39;, &#39;BB-&gt;B&#39;, &#39;hh-&gt;h&#39;, &#39;HH-&gt;H&#39;, &#39;ii-&gt;i&#39;, &#39;II-&gt;I&#39;, &#39;ll-&gt;l&#39;,</span>
+<span class="go">&#39;LL-&gt;L&#39;, &#39;qq-&gt;q&#39;, &#39;QQ-&gt;Q&#39;, &#39;ff-&gt;f&#39;, &#39;dd-&gt;d&#39;, &#39;gg-&gt;g&#39;, &#39;FF-&gt;F&#39;, &#39;DD-&gt;D&#39;,</span>
+<span class="go">&#39;GG-&gt;G&#39;, &#39;OO-&gt;O&#39;]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="o">.</span><span class="n">types</span>
+<span class="go">[&#39;??-&gt;?&#39;, &#39;bb-&gt;b&#39;, &#39;BB-&gt;B&#39;, &#39;hh-&gt;h&#39;, &#39;HH-&gt;H&#39;, &#39;ii-&gt;i&#39;, &#39;II-&gt;I&#39;, &#39;ll-&gt;l&#39;,</span>
+<span class="go">&#39;LL-&gt;L&#39;, &#39;qq-&gt;q&#39;, &#39;QQ-&gt;Q&#39;, &#39;ff-&gt;f&#39;, &#39;dd-&gt;d&#39;, &#39;gg-&gt;g&#39;, &#39;FF-&gt;F&#39;, &#39;DD-&gt;D&#39;,</span>
+<span class="go">&#39;GG-&gt;G&#39;, &#39;OO-&gt;O&#39;]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">types</span>
+<span class="go">[&#39;bb-&gt;b&#39;, &#39;BB-&gt;B&#39;, &#39;hh-&gt;h&#39;, &#39;HH-&gt;H&#39;, &#39;ii-&gt;i&#39;, &#39;II-&gt;I&#39;, &#39;ll-&gt;l&#39;, &#39;LL-&gt;L&#39;,</span>
+<span class="go">&#39;qq-&gt;q&#39;, &#39;QQ-&gt;Q&#39;, &#39;ff-&gt;f&#39;, &#39;dd-&gt;d&#39;, &#39;gg-&gt;g&#39;, &#39;FF-&gt;F&#39;, &#39;DD-&gt;D&#39;, &#39;GG-&gt;G&#39;,</span>
+<span class="go">&#39;OO-&gt;O&#39;]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="o">.</span><span class="n">types</span>
+<span class="go">[&#39;f-&gt;f&#39;, &#39;d-&gt;d&#39;, &#39;g-&gt;g&#39;, &#39;F-&gt;F&#39;, &#39;D-&gt;D&#39;, &#39;G-&gt;G&#39;, &#39;O-&gt;O&#39;]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">remainder</span><span class="o">.</span><span class="n">types</span>
+<span class="go">[&#39;bb-&gt;b&#39;, &#39;BB-&gt;B&#39;, &#39;hh-&gt;h&#39;, &#39;HH-&gt;H&#39;, &#39;ii-&gt;i&#39;, &#39;II-&gt;I&#39;, &#39;ll-&gt;l&#39;, &#39;LL-&gt;L&#39;,</span>
+<span class="go">&#39;qq-&gt;q&#39;, &#39;QQ-&gt;Q&#39;, &#39;ff-&gt;f&#39;, &#39;dd-&gt;d&#39;, &#39;gg-&gt;g&#39;, &#39;OO-&gt;O&#39;]</span>
+</pre></div>
+</div>
+</dd></dl>
+

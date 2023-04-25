@@ -1,0 +1,18 @@
+
+<h1>numpy.ma.MaskedArray.unshare_mask<a class="headerlink" href="#numpy-ma-maskedarray-unshare-mask" title="Permalink to this heading">#</a></h1>
+<p>method</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="numpy.ma.MaskedArray.unshare_mask">
+<span class="sig-prename descclassname"><span class="pre">ma.MaskedArray.</span></span><span class="sig-name descname"><span class="pre">unshare_mask</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/ma/core.py#L3612-L3628"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.ma.MaskedArray.unshare_mask" title="Permalink to this definition">#</a></dt>
+<dd><p>Copy the mask and set the <a class="reference internal" href="../maskedarray.baseclass.html#numpy.ma.MaskedArray.sharedmask" title="numpy.ma.MaskedArray.sharedmask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sharedmask</span></code></a> flag to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>Whether the mask is shared between masked arrays can be seen from
+the <a class="reference internal" href="../maskedarray.baseclass.html#numpy.ma.MaskedArray.sharedmask" title="numpy.ma.MaskedArray.sharedmask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sharedmask</span></code></a> property. <a class="reference internal" href="#numpy.ma.MaskedArray.unshare_mask" title="numpy.ma.MaskedArray.unshare_mask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unshare_mask</span></code></a> ensures the mask is not
+shared. A copy of the mask is only made if it was shared.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="../maskedarray.baseclass.html#numpy.ma.MaskedArray.sharedmask" title="numpy.ma.MaskedArray.sharedmask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sharedmask</span></code></a></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
+

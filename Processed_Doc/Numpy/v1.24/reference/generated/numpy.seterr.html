@@ -1,0 +1,89 @@
+
+<h1>numpy.seterr<a class="headerlink" href="#numpy-seterr" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.seterr">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">seterr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">all</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">divide</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">over</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">under</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invalid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/core/_ufunc_config.py#L33-L129"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.seterr" title="Permalink to this definition">#</a></dt>
+<dd><p>Set how floating-point errors are handled.</p>
+<p>Note that operations on integer scalar types (such as <a class="reference internal" href="../arrays.scalars.html#numpy.int16" title="numpy.int16"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int16</span></code></a>) are
+handled like floating point, and are affected by these settings.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>all</strong><span class="classifier">{‘ignore’, ‘warn’, ‘raise’, ‘call’, ‘print’, ‘log’}, optional</span></dt><dd><p>Set treatment for all types of floating-point errors at once:</p>
+<ul class="simple">
+<li><p>ignore: Take no action when the exception occurs.</p></li>
+<li><p>warn: Print a <em class="xref py py-obj">RuntimeWarning</em> (via the Python <a class="reference external" href="https://docs.python.org/3/library/warnings.html#module-warnings" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">warnings</span></code></a> module).</p></li>
+<li><p>raise: Raise a <em class="xref py py-obj">FloatingPointError</em>.</p></li>
+<li><p>call: Call a function specified using the <a class="reference internal" href="numpy.seterrcall.html#numpy.seterrcall" title="numpy.seterrcall"><code class="xref py py-obj docutils literal notranslate"><span class="pre">seterrcall</span></code></a> function.</p></li>
+<li><p>print: Print a warning directly to <code class="docutils literal notranslate"><span class="pre">stdout</span></code>.</p></li>
+<li><p>log: Record error in a Log object specified by <a class="reference internal" href="numpy.seterrcall.html#numpy.seterrcall" title="numpy.seterrcall"><code class="xref py py-obj docutils literal notranslate"><span class="pre">seterrcall</span></code></a>.</p></li>
+</ul>
+<p>The default is not to change the current behavior.</p>
+</dd>
+<dt><strong>divide</strong><span class="classifier">{‘ignore’, ‘warn’, ‘raise’, ‘call’, ‘print’, ‘log’}, optional</span></dt><dd><p>Treatment for division by zero.</p>
+</dd>
+<dt><strong>over</strong><span class="classifier">{‘ignore’, ‘warn’, ‘raise’, ‘call’, ‘print’, ‘log’}, optional</span></dt><dd><p>Treatment for floating-point overflow.</p>
+</dd>
+<dt><strong>under</strong><span class="classifier">{‘ignore’, ‘warn’, ‘raise’, ‘call’, ‘print’, ‘log’}, optional</span></dt><dd><p>Treatment for floating-point underflow.</p>
+</dd>
+<dt><strong>invalid</strong><span class="classifier">{‘ignore’, ‘warn’, ‘raise’, ‘call’, ‘print’, ‘log’}, optional</span></dt><dd><p>Treatment for invalid floating-point operation.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>old_settings</strong><span class="classifier">dict</span></dt><dd><p>Dictionary containing the old settings.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.seterrcall.html#numpy.seterrcall" title="numpy.seterrcall"><code class="xref py py-obj docutils literal notranslate"><span class="pre">seterrcall</span></code></a></dt><dd><p>Set a callback function for the ‘call’ mode.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.geterr.html#numpy.geterr" title="numpy.geterr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geterr</span></code></a>, <a class="reference internal" href="numpy.geterrcall.html#numpy.geterrcall" title="numpy.geterrcall"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geterrcall</span></code></a>, <a class="reference internal" href="numpy.errstate.html#numpy.errstate" title="numpy.errstate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">errstate</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>The floating-point exceptions are defined in the IEEE 754 standard <a class="reference internal" href="#r4cab4292821f-1" id="id1">[1]</a>:</p>
+<ul class="simple">
+<li><p>Division by zero: infinite result obtained from finite numbers.</p></li>
+<li><p>Overflow: result too large to be expressed.</p></li>
+<li><p>Underflow: result so close to zero that some precision
+was lost.</p></li>
+<li><p>Invalid operation: result is not an expressible number, typically
+indicates that a NaN was produced.</p></li>
+</ul>
+<div role="list" class="citation-list">
+<div class="citation" id="r4cab4292821f-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/IEEE_754">https://en.wikipedia.org/wiki/IEEE_754</a></p>
+</div>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">old_settings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">seterr</span><span class="p">(</span><span class="nb">all</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>  <span class="c1">#seterr to known value</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">seterr</span><span class="p">(</span><span class="n">over</span><span class="o">=</span><span class="s1">&#39;raise&#39;</span><span class="p">)</span>
+<span class="go">{&#39;divide&#39;: &#39;ignore&#39;, &#39;over&#39;: &#39;ignore&#39;, &#39;under&#39;: &#39;ignore&#39;, &#39;invalid&#39;: &#39;ignore&#39;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">seterr</span><span class="p">(</span><span class="o">**</span><span class="n">old_settings</span><span class="p">)</span>  <span class="c1"># reset to default</span>
+<span class="go">{&#39;divide&#39;: &#39;ignore&#39;, &#39;over&#39;: &#39;raise&#39;, &#39;under&#39;: &#39;ignore&#39;, &#39;invalid&#39;: &#39;ignore&#39;}</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="mi">32000</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">30464</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">old_settings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">seterr</span><span class="p">(</span><span class="nb">all</span><span class="o">=</span><span class="s1">&#39;warn&#39;</span><span class="p">,</span> <span class="n">over</span><span class="o">=</span><span class="s1">&#39;raise&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="mi">32000</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">FloatingPointError</span>: <span class="n">overflow encountered in scalar multiply</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">old_settings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">seterr</span><span class="p">(</span><span class="nb">all</span><span class="o">=</span><span class="s1">&#39;print&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">geterr</span><span class="p">()</span>
+<span class="go">{&#39;divide&#39;: &#39;print&#39;, &#39;over&#39;: &#39;print&#39;, &#39;under&#39;: &#39;print&#39;, &#39;invalid&#39;: &#39;print&#39;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="mi">32000</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">30464</span>
+</pre></div>
+</div>
+</dd></dl>
+

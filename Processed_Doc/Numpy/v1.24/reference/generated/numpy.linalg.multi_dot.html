@@ -1,0 +1,95 @@
+
+<h1>numpy.linalg.multi_dot<a class="headerlink" href="#numpy-linalg-multi-dot" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.linalg.multi_dot">
+<span class="sig-prename descclassname"><span class="pre">linalg.</span></span><span class="sig-name descname"><span class="pre">multi_dot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arrays</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/linalg/linalg.py#L2602-L2720"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.linalg.multi_dot" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute the dot product of two or more arrays in a single function call,
+while automatically selecting the fastest evaluation order.</p>
+<p><a class="reference internal" href="#numpy.linalg.multi_dot" title="numpy.linalg.multi_dot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multi_dot</span></code></a> chains <a class="reference internal" href="numpy.dot.html#numpy.dot" title="numpy.dot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.dot</span></code></a> and uses optimal parenthesization
+of the matrices <a class="reference internal" href="#r451bed364cc6-1" id="id1">[1]</a> <a class="reference internal" href="#r451bed364cc6-2" id="id2">[2]</a>. Depending on the shapes of the matrices,
+this can speed up the multiplication a lot.</p>
+<p>If the first argument is 1-D it is treated as a row vector.
+If the last argument is 1-D it is treated as a column vector.
+The other arguments must be 2-D.</p>
+<p>Think of <a class="reference internal" href="#numpy.linalg.multi_dot" title="numpy.linalg.multi_dot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multi_dot</span></code></a> as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">multi_dot</span><span class="p">(</span><span class="n">arrays</span><span class="p">):</span> <span class="k">return</span> <span class="n">functools</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">,</span> <span class="n">arrays</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>arrays</strong><span class="classifier">sequence of array_like</span></dt><dd><p>If the first argument is 1-D it is treated as row vector.
+If the last argument is 1-D it is treated as column vector.
+The other arguments must be 2-D.</p>
+</dd>
+<dt><strong>out</strong><span class="classifier">ndarray, optional</span></dt><dd><p>Output argument. This must have the exact kind that would be returned
+if it was not used. In particular, it must have the right type, must be
+C-contiguous, and its dtype must be the dtype that would be returned
+for <em class="xref py py-obj">dot(a, b)</em>. This is a performance feature. Therefore, if these
+conditions are not met, an exception is raised, instead of attempting
+to be flexible.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.19.0.</span></p>
+</div>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>output</strong><span class="classifier">ndarray</span></dt><dd><p>Returns the dot product of the supplied arrays.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.dot.html#numpy.dot" title="numpy.dot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.dot</span></code></a></dt><dd><p>dot multiplication with two arguments.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>The cost for a matrix multiplication can be calculated with the
+following function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cost</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">B</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Assume we have three matrices
+<span class="math notranslate nohighlight">\(A_{10x100}, B_{100x5}, C_{5x50}\)</span>.</p>
+<p>The costs for the two different parenthesizations are as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cost</span><span class="p">((</span><span class="n">AB</span><span class="p">)</span><span class="n">C</span><span class="p">)</span> <span class="o">=</span> <span class="mi">10</span><span class="o">*</span><span class="mi">100</span><span class="o">*</span><span class="mi">5</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="mi">5</span><span class="o">*</span><span class="mi">50</span>   <span class="o">=</span> <span class="mi">5000</span> <span class="o">+</span> <span class="mi">2500</span>   <span class="o">=</span> <span class="mi">7500</span>
+<span class="n">cost</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="n">BC</span><span class="p">))</span> <span class="o">=</span> <span class="mi">10</span><span class="o">*</span><span class="mi">100</span><span class="o">*</span><span class="mi">50</span> <span class="o">+</span> <span class="mi">100</span><span class="o">*</span><span class="mi">5</span><span class="o">*</span><span class="mi">50</span> <span class="o">=</span> <span class="mi">50000</span> <span class="o">+</span> <span class="mi">25000</span> <span class="o">=</span> <span class="mi">75000</span>
+</pre></div>
+</div>
+<p class="rubric">References</p>
+<div role="list" class="citation-list">
+<div class="citation" id="r451bed364cc6-1" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Cormen, “Introduction to Algorithms”, Chapter 15.2, p. 370-378</p>
+</div>
+<div class="citation" id="r451bed364cc6-2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Matrix_chain_multiplication">https://en.wikipedia.org/wiki/Matrix_chain_multiplication</a></p>
+</div>
+</div>
+<p class="rubric">Examples</p>
+<p><a class="reference internal" href="#numpy.linalg.multi_dot" title="numpy.linalg.multi_dot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">multi_dot</span></code></a> allows you to write:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy.linalg</span> <span class="kn">import</span> <span class="n">multi_dot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Prepare some data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">333</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># the actual dot multiplication</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">multi_dot</span><span class="p">([</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>instead of:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">),</span> <span class="n">C</span><span class="p">),</span> <span class="n">D</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># or</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">C</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+

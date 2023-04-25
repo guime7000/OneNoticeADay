@@ -1,0 +1,50 @@
+
+<h1>numpy.matlib.rand<a class="headerlink" href="#numpy-matlib-rand" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.matlib.rand">
+<span class="sig-prename descclassname"><span class="pre">matlib.</span></span><span class="sig-name descname"><span class="pre">rand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/matlib.py#L231-L275"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.matlib.rand" title="Permalink to this definition">#</a></dt>
+<dd><p>Return a matrix of random values with given shape.</p>
+<p>Create a matrix of the given shape and propagate it with
+random samples from a uniform distribution over <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1)</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>*args</strong><span class="classifier">Arguments</span></dt><dd><p>Shape of the output.
+If given as N integers, each integer specifies the size of one
+dimension.
+If given as a tuple, this tuple gives the complete shape.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ndarray</span></dt><dd><p>The matrix of random values with shape given by <em class="xref py py-obj">*args</em>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.matlib.randn.html#numpy.matlib.randn" title="numpy.matlib.randn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">randn</span></code></a>, <a class="reference internal" href="../random/generated/numpy.random.RandomState.rand.html#numpy.random.RandomState.rand" title="numpy.random.RandomState.rand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.random.RandomState.rand</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy.matlib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">matlib</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">matrix([[0.69646919, 0.28613933, 0.22685145],</span>
+<span class="go">        [0.55131477, 0.71946897, 0.42310646]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">matlib</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="go">matrix([[0.9807642 , 0.68482974, 0.4809319 ],</span>
+<span class="go">        [0.39211752, 0.34317802, 0.72904971]])</span>
+</pre></div>
+</div>
+<p>If the first argument is a tuple, other arguments are ignored:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">matlib</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">matrix([[0.43857224, 0.0596779 , 0.39804426],</span>
+<span class="go">        [0.73799541, 0.18249173, 0.17545176]])</span>
+</pre></div>
+</div>
+</dd></dl>
+

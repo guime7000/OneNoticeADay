@@ -1,0 +1,42 @@
+
+<h1>numpy.ma.clump_masked<a class="headerlink" href="#numpy-ma-clump-masked" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.ma.clump_masked">
+<span class="sig-prename descclassname"><span class="pre">ma.</span></span><span class="sig-name descname"><span class="pre">clump_masked</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/ma/extras.py#L1953-L1989"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.ma.clump_masked" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns a list of slices corresponding to the masked clumps of a 1-D array.
+(A “clump” is defined as a contiguous region of the array).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>a</strong><span class="classifier">ndarray</span></dt><dd><p>A one-dimensional masked array.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>slices</strong><span class="classifier">list of slice</span></dt><dd><p>The list of slices, one for each continuous region of masked elements
+in <em class="xref py py-obj">a</em>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.ma.flatnotmasked_edges.html#numpy.ma.flatnotmasked_edges" title="numpy.ma.flatnotmasked_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flatnotmasked_edges</span></code></a>, <a class="reference internal" href="numpy.ma.flatnotmasked_contiguous.html#numpy.ma.flatnotmasked_contiguous" title="numpy.ma.flatnotmasked_contiguous"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flatnotmasked_contiguous</span></code></a>, <a class="reference internal" href="numpy.ma.notmasked_edges.html#numpy.ma.notmasked_edges" title="numpy.ma.notmasked_edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">notmasked_edges</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="numpy.ma.notmasked_contiguous.html#numpy.ma.notmasked_contiguous" title="numpy.ma.notmasked_contiguous"><code class="xref py py-obj docutils literal notranslate"><span class="pre">notmasked_contiguous</span></code></a>, <a class="reference internal" href="numpy.ma.clump_unmasked.html#numpy.ma.clump_unmasked" title="numpy.ma.clump_unmasked"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clump_unmasked</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.4.0.</span></p>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">clump_masked</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">[slice(0, 3, None), slice(6, 7, None), slice(8, 10, None)]</span>
+</pre></div>
+</div>
+</dd></dl>
+

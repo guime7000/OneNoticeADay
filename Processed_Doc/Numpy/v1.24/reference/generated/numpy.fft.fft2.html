@@ -1,0 +1,98 @@
+
+<h1>numpy.fft.fft2<a class="headerlink" href="#numpy-fft-fft2" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.fft.fft2">
+<span class="sig-prename descclassname"><span class="pre">fft.</span></span><span class="sig-name descname"><span class="pre">fft2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(-2,</span> <span class="pre">-1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/fft/_pocketfft.py#L921-L1014"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.fft.fft2" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute the 2-dimensional discrete Fourier Transform.</p>
+<p>This function computes the <em>n</em>-dimensional discrete Fourier Transform
+over any axes in an <em>M</em>-dimensional array by means of the
+Fast Fourier Transform (FFT).  By default, the transform is computed over
+the last two axes of the input array, i.e., a 2-dimensional FFT.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>a</strong><span class="classifier">array_like</span></dt><dd><p>Input array, can be complex</p>
+</dd>
+<dt><strong>s</strong><span class="classifier">sequence of ints, optional</span></dt><dd><p>Shape (length of each transformed axis) of the output
+(<code class="docutils literal notranslate"><span class="pre">s[0]</span></code> refers to axis 0, <code class="docutils literal notranslate"><span class="pre">s[1]</span></code> to axis 1, etc.).
+This corresponds to <code class="docutils literal notranslate"><span class="pre">n</span></code> for <code class="docutils literal notranslate"><span class="pre">fft(x,</span> <span class="pre">n)</span></code>.
+Along each axis, if the given shape is smaller than that of the input,
+the input is cropped.  If it is larger, the input is padded with zeros.
+if <em class="xref py py-obj">s</em> is not given, the shape of the input along the axes specified
+by <em class="xref py py-obj">axes</em> is used.</p>
+</dd>
+<dt><strong>axes</strong><span class="classifier">sequence of ints, optional</span></dt><dd><p>Axes over which to compute the FFT.  If not given, the last two
+axes are used.  A repeated index in <em class="xref py py-obj">axes</em> means the transform over
+that axis is performed multiple times.  A one-element sequence means
+that a one-dimensional FFT is performed.</p>
+</dd>
+<dt><strong>norm</strong><span class="classifier">{“backward”, “ortho”, “forward”}, optional</span></dt><dd><div class="versionadded">
+<p><span class="versionmodified added">New in version 1.10.0.</span></p>
+</div>
+<p>Normalization mode (see <a class="reference internal" href="../routines.fft.html#module-numpy.fft" title="numpy.fft"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.fft</span></code></a>). Default is “backward”.
+Indicates which direction of the forward/backward pair of transforms
+is scaled and with what normalization factor.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.20.0: </span>The “backward”, “forward” values were added.</p>
+</div>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">complex ndarray</span></dt><dd><p>The truncated or zero-padded input, transformed along the axes
+indicated by <em class="xref py py-obj">axes</em>, or the last two axes if <em class="xref py py-obj">axes</em> is not given.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>ValueError</dt><dd><p>If <em class="xref py py-obj">s</em> and <em class="xref py py-obj">axes</em> have different length, or <em class="xref py py-obj">axes</em> not given and
+<code class="docutils literal notranslate"><span class="pre">len(s)</span> <span class="pre">!=</span> <span class="pre">2</span></code>.</p>
+</dd>
+<dt>IndexError</dt><dd><p>If an element of <em class="xref py py-obj">axes</em> is larger than than the number of axes of <em class="xref py py-obj">a</em>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="../routines.fft.html#module-numpy.fft" title="numpy.fft"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.fft</span></code></a></dt><dd><p>Overall view of discrete Fourier transforms, with definitions and conventions used.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.fft.ifft2.html#numpy.fft.ifft2" title="numpy.fft.ifft2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ifft2</span></code></a></dt><dd><p>The inverse two-dimensional FFT.</p>
+</dd>
+<dt><a class="reference internal" href="../routines.fft.html#module-numpy.fft" title="numpy.fft"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fft</span></code></a></dt><dd><p>The one-dimensional FFT.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.fft.fftn.html#numpy.fft.fftn" title="numpy.fft.fftn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fftn</span></code></a></dt><dd><p>The <em>n</em>-dimensional FFT.</p>
+</dd>
+<dt><a class="reference internal" href="numpy.fft.fftshift.html#numpy.fft.fftshift" title="numpy.fft.fftshift"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fftshift</span></code></a></dt><dd><p>Shifts zero-frequency terms to the center of the array. For two-dimensional input, swaps first and third quadrants, and second and fourth quadrants.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p><a class="reference internal" href="#numpy.fft.fft2" title="numpy.fft.fft2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fft2</span></code></a> is just <a class="reference internal" href="numpy.fft.fftn.html#numpy.fft.fftn" title="numpy.fft.fftn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fftn</span></code></a> with a different default for <em class="xref py py-obj">axes</em>.</p>
+<p>The output, analogously to <a class="reference internal" href="../routines.fft.html#module-numpy.fft" title="numpy.fft"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fft</span></code></a>, contains the term for zero frequency in
+the low-order corner of the transformed axes, the positive frequency terms
+in the first half of these axes, the term for the Nyquist frequency in the
+middle of the axes and the negative frequency terms in the second half of
+the axes, in order of decreasingly negative frequency.</p>
+<p>See <a class="reference internal" href="numpy.fft.fftn.html#numpy.fft.fftn" title="numpy.fft.fftn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fftn</span></code></a> for details and a plotting example, and <a class="reference internal" href="../routines.fft.html#module-numpy.fft" title="numpy.fft"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.fft</span></code></a> for
+definitions and conventions used.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[:</span><span class="mi">5</span><span class="p">,</span> <span class="p">:</span><span class="mi">5</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft2</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">array([[ 50.  +0.j        ,   0.  +0.j        ,   0.  +0.j        , # may vary</span>
+<span class="go">          0.  +0.j        ,   0.  +0.j        ],</span>
+<span class="go">       [-12.5+17.20477401j,   0.  +0.j        ,   0.  +0.j        ,</span>
+<span class="go">          0.  +0.j        ,   0.  +0.j        ],</span>
+<span class="go">       [-12.5 +4.0614962j ,   0.  +0.j        ,   0.  +0.j        ,</span>
+<span class="go">          0.  +0.j        ,   0.  +0.j        ],</span>
+<span class="go">       [-12.5 -4.0614962j ,   0.  +0.j        ,   0.  +0.j        ,</span>
+<span class="go">          0.  +0.j        ,   0.  +0.j        ],</span>
+<span class="go">       [-12.5-17.20477401j,   0.  +0.j        ,   0.  +0.j        ,</span>
+<span class="go">          0.  +0.j        ,   0.  +0.j        ]])</span>
+</pre></div>
+</div>
+</dd></dl>
+

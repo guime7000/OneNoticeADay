@@ -1,0 +1,80 @@
+
+<h1>numpy.polyint<a class="headerlink" href="#numpy-polyint" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="numpy.polyint">
+<span class="sig-prename descclassname"><span class="pre">numpy.</span></span><span class="sig-name descname"><span class="pre">polyint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/numpy/numpy/blob/v1.24.0/numpy/lib/polynomial.py#L267-L365"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#numpy.polyint" title="Permalink to this definition">#</a></dt>
+<dd><p>Return an antiderivative (indefinite integral) of a polynomial.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This forms part of the old polynomial API. Since version 1.4, the
+new polynomial API defined in <a class="reference internal" href="../routines.polynomials.package.html#module-numpy.polynomial" title="numpy.polynomial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.polynomial</span></code></a> is preferred.
+A summary of the differences can be found in the
+<a class="reference internal" href="../routines.polynomials.html"><span class="doc">transition guide</span></a>.</p>
+</div>
+<p>The returned order <em class="xref py py-obj">m</em> antiderivative <em class="xref py py-obj">P</em> of polynomial <em class="xref py py-obj">p</em> satisfies
+<span class="math notranslate nohighlight">\(\frac{d^m}{dx^m}P(x) = p(x)\)</span> and is defined up to <em class="xref py py-obj">m - 1</em>
+integration constants <em class="xref py py-obj">k</em>. The constants determine the low-order
+polynomial part</p>
+<div class="math notranslate nohighlight">
+\[\frac{k_{m-1}}{0!} x^0 + \ldots + \frac{k_0}{(m-1)!}x^{m-1}\]</div>
+<p>of <em class="xref py py-obj">P</em> so that <span class="math notranslate nohighlight">\(P^{(j)}(0) = k_{m-j-1}\)</span>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>p</strong><span class="classifier">array_like or poly1d</span></dt><dd><p>Polynomial to integrate.
+A sequence is interpreted as polynomial coefficients, see <a class="reference internal" href="numpy.poly1d.html#numpy.poly1d" title="numpy.poly1d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">poly1d</span></code></a>.</p>
+</dd>
+<dt><strong>m</strong><span class="classifier">int, optional</span></dt><dd><p>Order of the antiderivative. (Default: 1)</p>
+</dd>
+<dt><strong>k</strong><span class="classifier">list of <em class="xref py py-obj">m</em> scalars or scalar, optional</span></dt><dd><p>Integration constants. They are given in the order of integration:
+those corresponding to highest-order terms come first.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">None</span></code> (default), all constants are assumed to be zero.
+If <em class="xref py py-obj">m = 1</em>, a single scalar can be given instead of a list.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="numpy.polyder.html#numpy.polyder" title="numpy.polyder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polyder</span></code></a></dt><dd><p>derivative of a polynomial</p>
+</dd>
+<dt><a class="reference internal" href="numpy.poly1d.integ.html#numpy.poly1d.integ" title="numpy.poly1d.integ"><code class="xref py py-obj docutils literal notranslate"><span class="pre">poly1d.integ</span></code></a></dt><dd><p>equivalent method</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<p>The defining property of the antiderivative:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyint</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">P</span>
+<span class="go"> poly1d([ 0.33333333,  0.5       ,  1.        ,  0.        ]) # may vary</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">polyder</span><span class="p">(</span><span class="n">P</span><span class="p">)</span> <span class="o">==</span> <span class="n">p</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>The integration constants default to zero, but can be specified:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyint</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">P</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">0.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">polyder</span><span class="p">(</span><span class="n">P</span><span class="p">)(</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">0.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">polyder</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="mi">2</span><span class="p">)(</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">0.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyint</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">P</span>
+<span class="go">poly1d([ 0.01666667,  0.04166667,  0.16666667,  3. ,  5. ,  3. ]) # may vary</span>
+</pre></div>
+</div>
+<p>Note that 3 = 6 / 2!, and that the constants are given in the order of
+integrations. Constant of the highest-order polynomial term comes first:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">polyder</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="mi">2</span><span class="p">)(</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">6.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">polyder</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="mi">1</span><span class="p">)(</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">5.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">P</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">3.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
