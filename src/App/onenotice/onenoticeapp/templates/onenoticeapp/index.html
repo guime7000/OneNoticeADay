@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <title>Numpy's doc of {{myFuncName}}</title>
+
+    <script>
+        document.documentElement.dataset.mode = localStorage.getItem("mode") || "dark";
+        document.documentElement.dataset.theme = localStorage.getItem("theme") || "dark"
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>numpy.distutils.ccompiler &#8212; NumPy v1.24 Manual</title>
+
+    {% load static %}
+
+    <link href="{% static 'onenoticeapp/pydata-sphinx-theme.css' %}" rel="stylesheet">
+
+    <!-- <link rel="stylesheet" href="{% static 'onenoticeapp/generalCSS.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'onenoticeapp/monCSS_3cols.css' %}">
+
+
+    <!-- <link href="{% static 'onenoticeapp/theme.css?digest=92025949c220c2e29695' %}" rel="stylesheet"> -->
+    <link href="{% static 'onenoticeapp/theme.css' %}" rel="stylesheet">
+
+    <!-- <link href="{% static 'onenoticeapp/pydata-sphinx-theme.css?digest=92025949c220c2e29695' %}" rel="stylesheet"> -->
+
+
+
+    <link rel="stylesheet" href="{% static 'onenoticeapp/all.min.css' %}">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="{% static 'onenoticeapp/fa-solid-900.woff' %}">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="{% static 'onenoticeapp/fa-brands-400.woff2' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'onenoticeapp/pygments.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'onenoticeapp/graphviz.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'onenoticeapp/plot_directive.css' %}" />
+
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'onenoticeapp/design-style.4045f2051d55cab465a707391d5b2007.min.css' %}" />
+
+    <link rel="stylesheet" type="text/css" href="{% static 'onenoticeapp/numpy.css' %}" />
+
+</head>
+
+<!-- <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="light"> -->
+
+<body>
+
+
+    <div class='wrap'>
+        <div class='head'>
+            <h1>Refresh this page and you'll get a randomly chosen new function doc ! </h1>
+            <h3>Same player shoot again !</h3>
+            <h4> WARNING : Links in this page are dead (I know, it's really sad...). But if you reach
+                <a href={{officialDocUrl}} title="Link to official Numpys documentation page for {{myFuncName}} "
+                    target=”_blank”>
+                    {{myFuncName}} Numpy's official Doc page</a>, then those dead links will resurrect !
+            </h4>
+
+        </div>
+        <div class='bodywrap'>
+            <div class='left'></div>
+            <div class='right'></div>
+            <div class='center'>{{funcDocText|safe}}</div>
+        </div>
+    </div>
+
+
+    <!-- <div class="parent">
+        
+    </div> -->
+
+
+</body>
+
+</html>
